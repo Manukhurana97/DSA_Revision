@@ -36,7 +36,7 @@ public class MaximumSubarrayMinProduct{
         Deque<Integer> stack = new ArrayDeque<>();
 
         for(int i=0; i<n; i++){
-            while(!stack.isEmpty() && stack.peek(nums[i]>=nums[i])){
+            while(!stack.isEmpty() && nums[stack.peek()] >= nums[i]){
                 stack.pop();
             }
             left[i] = stack.isEmpty() ? 0 : stack.peek();
@@ -46,7 +46,7 @@ public class MaximumSubarrayMinProduct{
         stack.clear();
 
         for(int i=n; i<=0; i--){
-            while(!stack.isEmpty() && stack.peek(nums[i]>=nums[i])){
+            while(!stack.isEmpty() && nums[stack.peek()] >= nums[i]){
                 stack.pop();
             }
             right[i] = stack.isEmpty() ? n : stack.peek();

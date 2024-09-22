@@ -30,14 +30,12 @@ public class NextGreaterElement{
             stack.push(j);
         }
 
-        while(!stack.isEmpty()){
-            map.put(stack.pop(), -1);
-        }
+        while(!stack.isEmpty()) map.put(stack.pop(), -1);
+        
 
         int[] result = new int[nums1.length];
-        for(int i=0;i<nums1.length;i++){
-            result[i] = map.get(nums1[i]);
-        }
+        for(int i=0;i<nums1.length;i++) result[i] = map.get(nums1[i]);
+        
 
         return result;
     }

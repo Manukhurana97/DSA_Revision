@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class AstroidCollition{
 	public int[] asteroidCollision(int[] asteroids) {
         Stack<Integer> stack = new Stack<>();
@@ -11,27 +13,30 @@ public class AstroidCollition{
                 if(stack.peek() == j){
                     stack.pop();
                     isDistroyed = true;
-                }else if(stack.peek()>j){
-                    isDistroyed = true;
-                }else{
-                    stack.pop();
-                }            
+                }else if(stack.peek()>j) isDistroyed = true;
+                else stack.pop();
+                           
                 
-        
-
-            if(!isDistroyed){
-                stack.push(i);
+                if(!isDistroyed){
+                    stack.push(i);
+                }
+                
             }
-            
         }
 
 
         int[] result = new int[stack.size()];
-        int i = stack.size();
+        int j = stack.size();
         while(!stack.isEmpty()){
-            result[--i] = stack.pop();
+            result[--j] = stack.pop();
         }
 
+
         return result;
+    
+}
+
+    public static void main(String[] args) {
+        
     }
 }

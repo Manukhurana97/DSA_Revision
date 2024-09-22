@@ -78,7 +78,7 @@ public class RemoveAllAdjacentDuplicateInString{
     // ---------------------------------------------------------------------------
 
 
-    
+    // store the count in stack and when count == k , delete the value from string builder
     public String removeDuplicates(String s, int k) {
        
         while(true){
@@ -90,9 +90,8 @@ public class RemoveAllAdjacentDuplicateInString{
             for(char ch: charArr){
                 int count = 1;
                 if(!builder.isEmpty() && ch == builder.charAt(builder.length() - 1)) 
-                    count = stackCount.pop()+1;
+                    count = stackCount.pop()+1; // increment the value in stack count
                 stackCount.push(count);
-
                 builder.append(ch);
                 
                 if(stackCount.peek() == k){

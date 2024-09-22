@@ -6,9 +6,11 @@ public class LargestRectangleInHistogram{
     public int largestRectangleArea(int[] heights) {
         int n = heights.length;
         int maxArea = 0;
+
         for(int i=0; i<n; i++){
             var leftMin = i;
             var rightMin = i;
+            
             for(int left  = i; left >= 0; left--){
                 if(heights[left]<heights[i]) break;
                 leftMin-=1;
@@ -25,7 +27,7 @@ public class LargestRectangleInHistogram{
         return maxArea;
     }
 
-
+// -----------------------------------------------------------------------
 // create 2 array to store min on left and right
     public int largestRectangleArea2(int[] heights) {
         int n = heights.length;
@@ -37,13 +39,10 @@ public class LargestRectangleInHistogram{
 
         // compute left min
         for(int i=0; i<n; i++){
-            while(!stack.isEmpty() && heights[i]<=heights[stack.peek()]){
-                stack.pop();
-            }
+            while(!stack.isEmpty() && heights[i]<=heights[stack.peek()]) stack.pop();
 
             leftMin[i] = stack.isEmpty() ? -1: stack.peek();
             stack.add(i);
-           
         }
 
         stack.clear();
@@ -51,13 +50,10 @@ public class LargestRectangleInHistogram{
 
         // compute right min
         for(int i=n-1; i>=0; i--){
-            while(!stack.isEmpty() && heights[i]<=heights[stack.peek()]){
-                stack.pop();
-            }
-
+            while(!stack.isEmpty() && heights[i]<=heights[stack.peek()]) stack.pop();
+            
             rightMin[i] = stack.isEmpty() ? n: stack.peek();
             stack.add(i);
-           
         }
 
         
@@ -71,6 +67,7 @@ public class LargestRectangleInHistogram{
     }
 
 
+// ---------------------------------------------------------------------
 // monotonically increasing stack 
     public int largestRectangleArea3(int[] heights) {
         

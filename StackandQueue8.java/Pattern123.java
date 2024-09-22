@@ -23,6 +23,7 @@ public class Pattern123 {
     //     return false;
     // }
 
+
     // Time O(N), Space: O(N)
     public boolean find132pattern(int[] nums) {
        Stack<Node> stack = new Stack<>(); // monotonocally decreasing stack
@@ -34,9 +35,8 @@ public class Pattern123 {
             
             if(!stack.isEmpty() && stack.peek().min < i && i < stack.peek().val ) return true;
             
-            stack.push(new Node(minTillNow, i));
             minTillNow = Math.min(minTillNow, i);
-            
+            stack.push(new Node(minTillNow, i));
         }
 
         return false;

@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Node{
     int price;
     int index;
@@ -24,5 +26,12 @@ public class StockSpanner{
 
         return index;
     }
-}
+
+    public static void main(String[] args){
+        StockSpanner obj = new StockSpanner();
+        int[] arr = {100, 80, 60, 70, 60, 75, 85};
+
+        for(var i: arr)
+            System.out.print(obj.next(i)+" ");
+    }
 }

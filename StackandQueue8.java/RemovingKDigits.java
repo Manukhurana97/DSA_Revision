@@ -6,20 +6,19 @@ public class RemovingKDigits{
 	public static String removeKdigits(String num, int k) {
         if(num.length() <= k) return "0";
 
-        // use monotonically increasing stack
-        Stack<Integer> stack = new Stack<>();
+        Stack<Integer> stack = new Stack<>(); // use monotonically increasing stack
+        char[] CharArr = num.toCharArray();
 
-        char[] chs = num.toCharArray();
-        for(var ch: chs){
+        for(var ch: CharArr){
             int val = ch - '0';
-            while(!stack.isEmpty() && stack.peek() > val && k > 0){
+            while(!stack.isEmpty() && stack.peek() >= val && k >= 0){
                 k--;
                 stack.pop();
             }
             stack.push(val);
         }
 
-        // if still k > 0
+        // if still k > 0, remove from last
         while(!stack.isEmpty() && k>0){
             stack.pop();
             k--;
