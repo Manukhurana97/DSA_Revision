@@ -1,33 +1,33 @@
 class FruitsInBasket:
 	def totalFruits(self,arr):
-        # 2 bucket : each holds a unique fruits with inf quantity
-        bucket = {}
-        
-        current = last = 0
-        n = len(arr)
-        fruitCount = maxFruitCount = 0
-        
-        while current < n:      
-            if arr[current] in bucket: 
-                bucket[arr[current]] +=1
-            else:
-                bucket[arr[current]] = 1
-                
-            fruitCount +=1
-            
-            while(len(bucket)>2):
-                if(bucket[arr[last]] == 1):
-                    del bucket[arr[last]]
-                else :
-                    bucket[arr[last]] -=1
-                
-                last+=1
-                fruitCount -=1
-                
-            current+=1
-            maxFruitCount = max(maxFruitCount, fruitCount)
-        
-        return maxFruitCount
+		# 2 bucket : each holds a unique fruits with inf quantity
+		bucket = {}
+		
+		current = last = 0
+		n = len(arr)
+		fruitCount = maxFruitCount = 0
+		
+		while current < n:      
+			if arr[current] in bucket: 
+				bucket[arr[current]] += 1
+			else:
+				bucket[arr[current]] = 1
+				
+			fruitCount +=1
+			
+			while(len(bucket)>2):
+				if(bucket[arr[last]] == 1):
+					del bucket[arr[last]]
+				else :
+					bucket[arr[last]] -=1
+				
+				last+=1
+				fruitCount -=1
+				
+			current+=1
+			maxFruitCount = max(maxFruitCount, fruitCount)
+		
+		return maxFruitCount
 
 
 

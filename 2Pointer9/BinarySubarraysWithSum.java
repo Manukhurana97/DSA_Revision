@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/binary-subarrays-with-sum/description/
+
 public class BinarySubarraysWithSum{
 
 
@@ -20,7 +22,7 @@ public class BinarySubarraysWithSum{
 
 
     // find (subarray of goals) - (subarray of goals - 1)
-	public int numSubarraysWithSum(int[] nums, int goal) {
+	public int numSubarraysWithSum1(int[] nums, int goal) {
         return atMost(nums, goal) - atMost(nums, (goal - 1));        
     }
 
@@ -42,5 +44,12 @@ public class BinarySubarraysWithSum{
         }
 
         return count;
+    }
+
+    public static void main(String[] args) {
+        BinarySubarraysWithSum obj = new BinarySubarraysWithSum();
+        int[] arr = {1,0,1,0,1};
+        System.out.println(obj.numSubarraysWithSum(arr, 2));
+
     }
 }

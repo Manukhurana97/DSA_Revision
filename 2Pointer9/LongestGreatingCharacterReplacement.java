@@ -26,7 +26,7 @@ public class LongestGreatingCharacterReplacement{
 
 
 
-	public static int characterReplacement2(String s, int k) {
+    public static int characterReplacement2(String s, int k) {
 
         Map<Character, Integer> map = new HashMap<>();
         int l = 0, maxLength = 0, maxFreq = 0;
@@ -90,5 +90,5 @@ public class LongestGreatingCharacterReplacement{
         System.out.println(result5);  // Output: 7
 
     }
-   
+
 }

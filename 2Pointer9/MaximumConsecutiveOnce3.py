@@ -1,3 +1,5 @@
+from typing import List
+
 class MaximumConsecutiveOnce3:
 	
 	def longestOnes(self, nums: List[int], k: int) -> int:
