@@ -7,7 +7,6 @@ class SerializeDeserialize:
         queue = deque([root])
         result = ""
         
-
         while queue:
             size = len(queue)
 

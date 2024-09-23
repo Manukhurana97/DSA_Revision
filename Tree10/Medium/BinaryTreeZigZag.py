@@ -56,23 +56,27 @@ class BinaryTreeZigZag:
             result.append(list(tempresult))    
             index += 1
                     
-        return result   
+        return result 
+
+ #  ----------------------------------------------------------------------------------------
+         
 
 
     def zigzagLevelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
-        if not root:
-            return []
+        result = []
 
         def dfs(root, level):
-            if level == len(result): return
+            if not root: return 
+            if level == len(result): result.append(deque())
 
             if level%2==0:
                 result[level].append(root.val) # left to right
             else:
                 result[level].appendLeft(root.val) # right to left
 
-            if node.left: dfs(root.left, level+1)
-            if node.right: dfs(root.right, level+1)
+            dfs(root.left, level+1)
+            dfs(root.right, level+1)
 
+        if not root: return []
         dfs(root, 0)
         return [list(level) for level in result]

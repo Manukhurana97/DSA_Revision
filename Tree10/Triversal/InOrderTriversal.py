@@ -40,7 +40,6 @@ class InOrderTriversal: # (left root right)
             current = stack.pop()
             result.append(current.val)
 
-            
             current = current.right
 
         return result

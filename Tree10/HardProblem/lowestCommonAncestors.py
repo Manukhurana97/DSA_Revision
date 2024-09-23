@@ -54,3 +54,18 @@ class lowestCommonAncestors:
 
         return pLevel, qLevel
 
+# ----------------------------------------------------------------------------
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+
+        def dfs(root):
+            if root == None or root == p or root == q : return root
+
+            left = dfs(root.left)
+            right = dfs(root.right)
+
+            if left == None: return right
+            if right == None: return left
+            return root
+
+
+        return dfs(root)

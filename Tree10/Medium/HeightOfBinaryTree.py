@@ -1,4 +1,5 @@
 class HeightOfBinaryTree:
+    # BFS
 	def maxDepth(self, root: Optional[TreeNode]) -> int:
         if not root : return 0
         if not root.left and not root.right : return 1
@@ -19,7 +20,7 @@ class HeightOfBinaryTree:
         return height-1
 
 
-
+    # dfs
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         self.maxDepth = 0
 
