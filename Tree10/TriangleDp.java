@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/triangle/description/
+
 public class TriangleDp{
 
 	public int minimumTotal(List<List<Integer>> triangle) {

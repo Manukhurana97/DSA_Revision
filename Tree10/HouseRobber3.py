@@ -6,7 +6,6 @@ class HouseRobber3:
 
     def dfs(self, root):
         if not root: return [0, 0]
-        if not root.left and not root.right: return [root.val, 0]
 
         left = self.dfs(root.left)
         right = self.dfs(root.right)

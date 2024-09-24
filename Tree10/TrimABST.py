@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/trim-a-binary-search-tree/description/
+
 class TrimABST:
 	def trimBST(self, root: Optional[TreeNode], low: int, high: int) -> Optional[TreeNode]:
 

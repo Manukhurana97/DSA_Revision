@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/populating-next-right-pointers-in-each-node/description/
+
 class PopulatingNextPointerOfBT:
 
 	# 2 queue
@@ -25,6 +27,8 @@ class PopulatingNextPointerOfBT:
 
         return root
 
+# ------------------------------------------------------------------------ 
+
 
     # 1 queue
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
@@ -37,8 +41,7 @@ class PopulatingNextPointerOfBT:
             for i in range(size):
                 currentNode = queue.popleft()
 
-                if i< size - 1 and queue:
-                    currentNode.next = queue[0]
+                if i < size - 1 and queue: currentNode.next = queue[0]
 
                 if currentNode.left:
                     queue.append(currentNode.left)
@@ -47,22 +50,23 @@ class PopulatingNextPointerOfBT:
 
         return root
 
+    # ------------------------------------------------------------------------ 
+
     # No Queue
     def connect(self, root: 'Optional[Node]') -> 'Optional[Node]':
         if not root: return None
 
-        leftMost = root
+        head = root
 
-        while leftMost.left:
-            head = leftMost
+        while head.left:
+            child = head
 
-            while head:
-                head.left.next = head.right 
-                if head.next: head.right.next = head.next.left
-                head = head.next
+            while child:
+                child.left.next = child.right 
+                if child.next: child.right.next = child.next.left
+                child = child.next
                 
-            leftMost = leftMost.left
+            head = head.left
 
         return root
-        
         
