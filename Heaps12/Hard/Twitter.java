@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Node{
     int userId;
     int tweetId;
@@ -33,7 +35,7 @@ public class Twitter {
         int size = tweets.size();
         List<Integer> result = new ArrayList<>();
 
-        while(size-- > 0 && result.size()<10){
+        while(size-- > 0 && result.size()<9){
             Node current = tweets.poll();
             
             if (peopleWhoUserFollow.contains(current.userId)) result.add(current.tweetId);
