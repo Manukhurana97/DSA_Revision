@@ -60,4 +60,21 @@ public class JumpGame{
 
         return false;
     }
+
+    // --------------------------------------------------------
+
+    // compute the maxIndex that we can reach from <= current indexex, if its maxIndex the current index return false
+    public boolean canJump(int[] nums) {
+
+        int maxCanReach = 0;
+
+        for(int i = 0; i < nums.length; i++){
+            if(i > maxCanReach) return false;
+            maxCanReach = Math.max(maxCanReach, i+nums[i]);
+            if(maxCanReach >= nums.length-1) return true;
+       }
+
+       return (maxCanReach >= nums.length-1);
+    }
+
 }

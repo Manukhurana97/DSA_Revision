@@ -4,23 +4,24 @@ public class AssignCookie{
         Arrays.sort(s);
 
         int child = g.length -1, cookie = s.length -1;
-        int index = 0;
+        int count = 0;
 
         while(child >=0 && cookie>=0){
            if(g[child] <= s[cookie]){
-                index++;
+                count++;
                 cookie--;
            }
            child--;
            
         }
 
-        return index;
+        return count;
     }
 
 
     // --------------------------------------------------------------------
 
+    // c: [ 1 2 3 4] g: [1 2 3 4]
     public int findContentChildren(int[] g, int[] s) {
         Arrays.sort(g);
         Arrays.sort(s);

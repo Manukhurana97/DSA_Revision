@@ -10,7 +10,7 @@ def deleteClassFilesRecursively(directory):
 
 	for root, dir, files in os.walk(directory):
 		for file in files:
-			if file.endswith('.class'):
+				if file.endswith('.class'):
 				deleteFile(root, file)
 				count += 1
 			
