@@ -75,7 +75,8 @@ public class Candy{
 
             int down=1;
             while(i<arr.length && arr[i-1]>arr[i]){
-                sum+=down++;
+               
+               
                 i++;
             }
 

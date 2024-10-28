@@ -48,8 +48,6 @@ public class NonOverlappingIntervals{
     }
 
 
-    // ------------------------------------------------------------------------------------------------------------
-
 
 
     public static void main(String[] args) {

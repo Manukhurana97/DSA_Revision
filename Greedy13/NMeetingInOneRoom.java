@@ -13,7 +13,7 @@ class Node{
 public class NMeetingInOneRoom{
 	
 	public int maxMeetings(int start[], int end[]) {
-		PriorityQueue<Node> queue = new PriorityQueue<>((a, b) -> (a, b) -> a.endTime == b.endTime ? a.startTime - b.startTime : a.endTime - b.endTime);
+		PriorityQueue<Node> queue = new PriorityQueue<>((a, b) -> a.endTime == b.endTime ? a.startTime - b.startTime : a.endTime - b.endTime);
 		
 		for(int i = 0; i < start.length; i++) 
 			queue.add(new Node(start[i], end[i]));

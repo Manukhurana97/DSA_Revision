@@ -58,4 +58,3 @@ public class ShortedJobFirst{
 		System.out.println(getOrder(arr1));
 	}
 }
-}

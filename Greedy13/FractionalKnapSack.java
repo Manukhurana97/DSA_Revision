@@ -10,6 +10,7 @@ class Item{
 	}
 }
 
+// allowed to add fractional weights
 public class FractionalKnapSack{
 	static double fractionalKnapsack(int W, Item arr[], int n) {
 

@@ -56,8 +56,6 @@ public class MinimumPlatforms{
     			maxPlatformRequired = Math.max(maxPlatformRequired, currentTrains);
     		}
     		else currentTrains--;
-
-    		
     	}
 
     	return maxPlatformRequired;
