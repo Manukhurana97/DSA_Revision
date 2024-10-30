@@ -4,7 +4,7 @@ def countSubArraySumEqualsK(arr, k):
 	return countSubArraySumEqualsKRecurssion(0, 0, arr, k)
 
 
-def countSubArraySumEqualsKRecurssion(sum,  i, arr, k):
+def countSubArraySumEqualsKRecurssion(sum, i, arr, k):
 	if i == len(arr):
 		return 1 if sum == k else 0
 

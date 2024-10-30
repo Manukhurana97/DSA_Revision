@@ -28,18 +28,18 @@ def kadanesAlgo2(arr):
 # print the subarray
 def kadanesAlgo3(arr):
 	maxSum = 0
-	ss = 0
+	noSum = 0
 	startInd = 0
 	endInd = 0
 	for i in range(len(arr)):
-		if ss == 0: startInd = i
-		ss += arr[i]
+		if noSum == 0: startInd = i
+		noSum += arr[i]
 
-		if ss>maxSum:
-			maxSum = ss
+		if noSum>maxSum:
+			maxSum = noSum
 			endInd = i
 
-		if(ss<0): ss=0
+		if(noSum<0): noSum=0
 		
 	for i in range(startInd, endInd+1):
 		print(arr[i], end = ", ")

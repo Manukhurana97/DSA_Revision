@@ -51,31 +51,25 @@ def nextGreaterPermutation2(arr):
 
 
 # find the largest element from the right Space O(3N), Space O(1)
-def nextGreaterPermutation3(arr):
-    index = -1
+def nextGreaterPermutation3(nums):
+        peekIndex = -1 # acutally for peek-1
 
-    # Find the peak point
-    for i in range(len(arr) - 2, -1, -1): # from n-2 to -1, and last -1 for rev loop
-        if arr[i] < arr[i + 1]:
-            index = i
-            break
+        for i in range(len(nums)-2, -1, -1):
+            if nums[i] < nums[i+1]:
+                peekIndex = i
+                break
 
-    # If its a last permutation, then just reverse the array
-    if index == -1:
-        arr.reverse()
-        return arr
+        if peekIndex == -1: return nums.sort()
 
-    # Find the nearest greater element
-    nextGreaterIndex = -1
-    for i in range(len(arr) - 1, index, -1):
-        if arr[i] > arr[index]:
-            nextGreaterIndex = i
-            break
-
-    # Swap the elements and then sort the remaining
-    arr[index], arr[nextGreaterIndex] = arr[nextGreaterIndex], arr[index]
-    arr[index + 1:] = sorted(arr[index + 1:])
-    return arr
+        nextGreaterElemIndex = -1;
+        for i in range(len(nums)-1, -1, -1):
+            if nums[i]>nums[peekIndex]: 
+                nextGreaterElemIndex = i
+                break
+        
+        nums[peekIndex], nums[nextGreaterElemIndex] =  nums[nextGreaterElemIndex], nums[peekIndex]
+        nums[peekIndex+1: ] =sorted(nums[peekIndex+1:] )
+        return nums
 
 
 print(nextGreaterPermutation1([3, 2, 1]))

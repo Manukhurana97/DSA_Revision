@@ -7,9 +7,9 @@ def maxOnces(arr):
 	for i in range(len(arr)):
 		if(arr[i]==1):
 			maxI += 1
+			result = max(result, maxI)
 		else:
 			maxI = 0
-		result = max(result, maxI)
 
 	return result
 

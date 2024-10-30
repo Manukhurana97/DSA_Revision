@@ -53,9 +53,7 @@ def maxProductSubArray2(arr):
     if not arr:
         return 0
 
-    maxProduct = arr[0]
-    minProduct = arr[0]
-    result = arr[0]
+    maxProduct = minProduct = result = arr[0]
 
     for i in range(1, len(arr)):
         if arr[i] < 0:
@@ -67,6 +65,19 @@ def maxProductSubArray2(arr):
         result = max(result, maxProduct)
 
     return result
+
+
+def maxProduct(self, nums: List[int]) -> int:
+    prefix, sufix = 1,1
+    maxResult = max(nums)
+
+    for i in range(0, len(nums)):
+        prefix  = (prefix or 1) * nums[i]
+        sufix = (sufix or 1) * nums[-1 - i]
+        
+        maxResult = max(prefix, sufix, maxResult)
+
+    return maxResult
 
 
 
