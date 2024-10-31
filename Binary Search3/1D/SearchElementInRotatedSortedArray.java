@@ -11,35 +11,30 @@ public class SearchElementInRotatedSortedArray{
 
 
 	// Time: O(Log N), Space O(1)
-	public static int getIndex1(int[] arr, int k){
-		// get mid and check which section is sorted and check if element can present in which section
-	
-		int left = 0;
-		int right = arr.length-1;
+	public static int getIndex1(int[] nums, int target) {
+        int left = 0, right = nums.length - 1;
 
-		while(left <= right){
-			int mid = (left + right) / 2;
-			
-			if(arr[mid] == k){
-				return mid;
-			}
-			if (arr[left] <= arr[mid] ) { // if left array is sorted
-			 	if (arr[left] <= k && k <= arr[mid]) { // element in range()
-			 		right = mid-1;
-			 	}else{
-			 		left = mid+1;
-			 	}
-			}else{
-				if(arr[mid] <= k && k <= arr[right]){ // right is sorted and element in range
-					left = mid+1;
-				}else{
-					right = mid-1;
-				}
-			}
-		}
+        while(left <= right){
+           int mid = left + (right - left) / 2;
 
-		return -1;
-	}
+            if (nums[mid] == target) return mid;
+            if (nums[left] <= nums[mid]) {// left to mid is sorted
+                if (nums[left] <= target && target < nums[mid]) {
+                    right = mid - 1;
+                }else{
+                    left = mid + 1;
+                }
+            }else{
+                if (nums[mid] < target && target <= nums[right]) {
+                    left = mid + 1;
+                }else{
+                    right = mid - 1;
+                }
+            }
+        }
+
+        return -1;
+    }
 
 
 	public static void main(String[] args) {

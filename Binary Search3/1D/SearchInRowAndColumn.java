@@ -13,7 +13,7 @@ public class SearchInRowAndColumn{
 	}
 
 	// perform binary search in each row
-	// Time: O(M*logN), Space : O(1)
+	// Time: O(M*NlogN), Space : O(1)
 	public static boolean searchElement1(int[][] arr, int k){
 
 		for(int[] i: arr){ // for each row

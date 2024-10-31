@@ -12,7 +12,7 @@ public class FindTheSmallestPossibleDivisorGivenThreshold{
             for(int num: nums)
                 divisor += Math.ceil((double)num / (double)i);
 
-                if(divisor <= threshold) return i;
+            if(divisor <= threshold) return i;
         }
 
         return max;

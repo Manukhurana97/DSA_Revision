@@ -24,7 +24,7 @@ public class SearchElementInRotatedSortedArray2{
 				return mid;
 			}
 
-			if(arr[left] == arr[mid] && arr[right] == arr[mid]){
+			if(arr[left] == arr[mid] && arr[mid] == arr[right]){
 				left = left+1;
 				right = right-1;
 				continue;

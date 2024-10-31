@@ -12,25 +12,30 @@ public class PeekElementInArray{
     }
 
 
-	public static int getPeekIndex1(int[] arr){
+	public int findPeakElement(int[] arr) {
+        int n = arr.length;
+        if(n==1) return 0;
 
-		int n = arr.length;
-		if (n == 1) return 0;
- 		if(arr[0]>arr[1]) return 0;
- 		
-
- 		int left = 1;
- 		int right = n-2;
-
- 		while(left<=right){
- 			int mid = (left+right) /2;
-            if(arr[mid-1] < arr[mid] && arr[mid]>arr[mid+1]) return mid;
-            if(arr[mid]<arr[mid-1]) right = mid-1;
-            else left = mid+1;
-        }
+        if(arr[0]>arr[1]) return 0;
         
-        return (arr[n-1]>arr[n-2])? n - 1: -1;
-	}
+        int left = 0, right = n-1;
+
+        while( left < right){
+            int mid = (left + right) / 2;
+
+            if ((mid == 0 || arr[mid - 1] < arr[mid]) && (mid == n - 1 || arr[mid] > arr[mid + 1])) {
+                return mid;
+            }
+            
+            if (arr[mid] < arr[mid + 1]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+
+        return left;
+    }
 
 
 	public static void main(String[] args) {

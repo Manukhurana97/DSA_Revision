@@ -1,5 +1,6 @@
 class EncodeAndDecodeString:
 
+	# len+#+str
 	def encode(self, strs):
 		result = ""
 
@@ -8,15 +9,16 @@ class EncodeAndDecodeString:
 
 		return result
 
+
 	def decode(self, s):
 		result = []
 		i=0
 		while i < len(s):
 			j = i
-			while s[j] != '#':
+			while s[j] != '#': # get the #
 				j+=1
-			length = int(s[i:j])
-			result.append(s[j + 1: j + 1 + length])
+			length = int(s[i:j]) # get the length till hash
+			result.append(s[j + 1: j + 1 + length]) # #+1, #+1+length
 			i = j + 1 + length
 
 		return result

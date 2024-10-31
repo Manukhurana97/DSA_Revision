@@ -22,7 +22,7 @@ public class MatrixMedian{
 		int m = arr[0].length;
 
 		while(left <= right){
-			// (left + right)/2 right shift , divide by 2
+			// (left 	
 			int mid = (left + right) >> 1;  
 
 			int count = 0;

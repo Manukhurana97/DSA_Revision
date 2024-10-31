@@ -7,7 +7,7 @@ public class KthMissingPositiveNumber{
 		int i = 0;
 		while(k>0){
 			i += 1;
-			if(!isKIn(arr, i)) k--;
+			if(!isKIn(arr, i)) k--; // n log n
 		}
 		return i;
 	}
