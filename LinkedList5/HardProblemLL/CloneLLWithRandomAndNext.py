@@ -1,4 +1,4 @@
-# Time : O(2N), Space : O(N)
+# Time : O(2N), Space : O(N) // result space is not counted
 def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
 
         if not head: return head
@@ -27,7 +27,7 @@ def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
 
 # Intruduce new Node after current node
 # 
-# Time : O(3N), Space : O(N)
+# Time : O(3N), Space : O(1) // result space is not counted
 def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
 
         if not head : return head

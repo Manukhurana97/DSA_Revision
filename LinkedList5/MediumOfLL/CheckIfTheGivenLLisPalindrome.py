@@ -23,6 +23,7 @@ class CheckIfTheGivenLLisPalindrome:
 				return False
 		return True
 
+
 	# Time: O(N), Space: O(1)
 	def isPalindrome1(self, head) -> bool:
 
@@ -43,7 +44,6 @@ class CheckIfTheGivenLLisPalindrome:
 			current.next = prev
 			prev = current
 			current = nextNode
-
 
 
 		while head and prev:

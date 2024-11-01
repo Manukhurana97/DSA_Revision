@@ -1,4 +1,4 @@
-def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         if not head or not head.next or k <= 1: return head 
 
         dummyNode = ListNode(None)
@@ -6,7 +6,7 @@ def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         current = head
         
         while current :
-            kth = self.getKthNode(current, k)
+            kth = self.getKthNode(current, k) 
             
             if not kth: return dummyNode.next
             nextGroup = kth.next

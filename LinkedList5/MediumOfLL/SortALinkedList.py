@@ -78,7 +78,6 @@ class SortALinkedList:
             current.next = None
 
         while left :
-            
             current.next = left
             left = left.next
             current = current.next

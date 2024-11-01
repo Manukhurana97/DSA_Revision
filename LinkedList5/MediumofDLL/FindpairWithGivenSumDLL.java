@@ -9,10 +9,7 @@ public class FindpairWithGivenSumDLL{
         
         while(current != null){
              if(visited.contains(target - current.data)){
-                ArrayList<Integer> list = new ArrayList<>();
-                list.add(target - current.data);
-                list.add(current.data);
-                result.add(list);
+                result.add(new ArrayList<>(Arrays.asList(target - current.data, current.data)));
             }
             visited.add(current.data);
             current = current.next;
