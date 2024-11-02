@@ -13,5 +13,18 @@ def SubsetSum(arr):
 	return result
 
 
+
+# -----------------------------------------------------------------------------
+
+
+	def subsets(self, nums: List[int]) -> List[List[int]]:
+        result = [[]]
+        for num in nums:
+            newSubset = [cur  + [num] for cur in result]
+            result.extend(newSubset)
+
+        return result
+
+
 arr = [2,3]
 print(SubsetSum(arr))

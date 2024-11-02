@@ -70,7 +70,7 @@ class Solution:
         for i in range(size):
             if board[r][i] == 'Q' or board[i][c] == 'Q': return False
         
-xx
+
         # check diagonals
         i, j = r, c
         while i>=0 and j>=0:
@@ -107,7 +107,7 @@ xx
                 self.placeQueenOnBoard(board, c + 1, size, solutions)
                 board[r][c] = '.'
         
-    def solveNQueens(self, size: int) -> List[List[str]]:
+    def solveNQueens(self, size: int):
         board = [['.' for _ in range(size)] for _ in range(size)]
         solutions = []
         self.placeQueenOnBoard(board, 0, size, solutions)

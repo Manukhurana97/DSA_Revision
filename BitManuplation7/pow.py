@@ -6,7 +6,6 @@ def pow(x, n):
 		isNeg = True
 		n*=-1
 
-
 	while n > 0:
 		if n & 1 == 0:
 			x *= x

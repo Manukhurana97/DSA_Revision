@@ -1,22 +1,22 @@
 class POW:
 	def myPow(self, x: float, n: int) -> float:
-        if n>0: return self.myPowPos(x, n)
-        return self.myPowNeg(x, n)
+        if n >=0: return self.getPower(x, n, 1)
+        return self.getNegPower(x, n, 1)
 
-    def myPowPos(self, x: float, n: int):
-        if n <= 0: return 1
 
-        return self.myPowPos(x*x, n-1)
+    def getPower(self, x, n, s):
+        if n==0: return s
+
+        return self.getPower(x, n-1, s*x)
     
-    def myPowNeg(self, x: float, n: int):
-        if n >= 0: return 1
+    def getNegPower(self, x, n, s):
+        if n == 0: return s
 
-        return self.myPowNeg(x, n+1) / x
+        return self.getNegPower(x, n+1, s/x)
 
 
     # ----------------------------------------------------
 
-    #  if even the increment else multiple
     # 2^10 -> 4^5 -> 16^2 * 4 -> 256^1*4
     # 2^10 -> 4^4 * 4^1 -> 16^2 -> 256^1
     def myPow1(self, x: float, n: int) -> float:

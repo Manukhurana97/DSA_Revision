@@ -18,14 +18,16 @@ def divide2(a, b):
 
 	isNeg = ((a < 0 and b > 0) or (a > 0 and b < 0))
 
-	ind = sum = 0;
-	for i in range(31, 0, -1):
-		div = (1<<i)
-		if a >= div and sum <= a:
-			ind += i
-			a-=div
-			sum += div
-	return ind * (-1 if isNeg else 1)
+	a, b = abs(a), abs(b)
+	quotient = 0
+
+	for i in range(31, -1, -1):
+		if (b << i) <= a:
+			a -= (b << i)
+			quotient += (i<<i)
+			
+			
+	return quotient * (-1 if isNeg else 1)
 
 
 print(divide1(43, 8))
