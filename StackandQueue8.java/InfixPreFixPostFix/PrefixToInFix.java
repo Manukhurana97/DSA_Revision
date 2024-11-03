@@ -7,8 +7,10 @@ public class PrefixToInFix{
 
 		// iterate reverse 
 		for(int i=str.length()-1;i>=0;i--){
-			if(Character.isLetterOrDigit(str.charAt(i))) stack.push(str.charAt(i)+""); //push: add in stack
-			else stack.push("("+stack.pop()+str.charAt(i)+stack.pop()+")"); // pop: operator + operand + operator
+			if(Character.isLetterOrDigit(str.charAt(i))) 
+				stack.push(str.charAt(i)+""); //push: add in stack
+			else 
+				stack.push("("+stack.pop()+str.charAt(i)+stack.pop()+")"); // pop: operator + operand + operator
 		}
 
 		return stack.pop();

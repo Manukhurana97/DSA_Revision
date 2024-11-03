@@ -23,7 +23,7 @@ public class SlidingWindow{
 
         for(int index = k; index < n; index++){
             // remove the element that are out of window
-            while(!queue.isEmpty() && (queue.peek().index < index-k || queue.peek().data < data)){
+            while(!queue.isEmpty() && (queue.peek().index <= index-k || queue.peek().data < nums[index])){
                 queue.poll();
             }
 
@@ -42,7 +42,6 @@ public class SlidingWindow{
         // monotonocally increasing queue
         Deque<Integer> queue = new ArrayDeque<>();
         int[] result = new int[n - k + 1];
-        int index = 0;
         
         for(int i=0;i<n;i++){
             if(!queue.isEmpty() && queue.peekFirst() < i-k+1) queue.removeFirst();
@@ -51,7 +50,7 @@ public class SlidingWindow{
             queue.addLast(i);
 
             if(i >= k-1)
-                result[index++] = nums[queue.getFirst()];
+                result[i - k + 1] = nums[queue.getFirst()];
             
         } 
 

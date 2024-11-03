@@ -7,8 +7,7 @@ public class TrappingRainWater{
     public int trap(int[] height) {
         
         int n = height.length;
-        int leftmax = 0;
-        Stack<Integer> leftStack = new Stack<>();
+        Stack<Integer> leftStack = new Stack<>();t leftmax = 0;
 
         for(int i=0; i<n; i++){
             leftmax = Math.max(leftmax, height[i]);
@@ -16,12 +15,13 @@ public class TrappingRainWater{
         }
         
         int rightmax = 0;
-        int trappedWater =0;
+        int trappedWater = 0;
+
         for(int i=0; i<n; i++){
             rightmax = Math.max(rightmax, height[n-i-1]);
-            trappedWater += Math.min(leftStack.pop(), rightmax) - height[i];
+            trappedWater += Math.min(stack.pop(), rightMax) - height[n-i-1];
         }
-        
+            
         return trappedWater;
     }
 

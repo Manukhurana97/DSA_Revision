@@ -68,6 +68,37 @@ public class LargestRectangleInHistogram{
 
 
 // ---------------------------------------------------------------------
+
+    public int largestRectangleArea(int[] heights) {
+
+        int n = heights.length, maxArea = 0;
+        Stack<Integer> stack = new Stack<>();
+        int[] left = new int[n];
+
+        for(int i=0; i<n; i++){
+            while(!stack.isEmpty() && heights[stack.peek()]>=heights[i]){
+                stack.pop();
+            }
+            left[i] = stack.isEmpty() ? -1: stack.peek();
+            stack.push(i);
+        }
+
+        stack.clear();
+
+        for(int i=n-1;i>=0;i--){
+            while(!stack.isEmpty() && heights[stack.peek()]>=heights[i]){
+                stack.pop();
+            }
+            int right =  stack.isEmpty() ? n: stack.peek();
+            maxArea = Math.max(maxArea, (right - left[i] - 1) * heights[i]);
+            stack.push(i);  
+        }
+        
+        return maxArea;
+    }
+
+
+// ---------------------------------------------------------------------
 // monotonically increasing stack 
     public int largestRectangleArea3(int[] heights) {
         
@@ -77,8 +108,7 @@ public class LargestRectangleInHistogram{
         Stack<Integer> stack = new Stack<>();
 
         for(int i=0; i<=n; i++){
-            int currentHeight = (i == n) ? 0 : heights[i];
-
+            int currentHeight = (i == n) ? 0 : heights[i]; // we are going till n to remove all the builing thatswhy make n = 0
             while(!stack.isEmpty() && currentHeight < heights[stack.peek()]){
                 int height = heights[stack.pop()];
                 int width = stack.isEmpty() ? i : i - 1 - stack.peek(); // currentIndex - prevIndex - 1

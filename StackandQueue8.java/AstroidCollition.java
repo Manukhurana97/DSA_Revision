@@ -3,36 +3,33 @@ import java.util.*;
 public class AstroidCollition{
 	public int[] asteroidCollision(int[] asteroids) {
         Stack<Integer> stack = new Stack<>();
-       
 
-        for(int i: asteroids){
-            boolean isDistroyed = false;
-
-            while(i < 0 && !stack.isEmpty() && stack.peek() > 0){
-                int j = i*-1;
-                if(stack.peek() == j){
+        for(int asteroid: asteroids){
+            boolean isExploded = false;
+            while (!stack.isEmpty() && stack.peek() > 0 && asteroid < 0) {
+                if (stack.peek() < -asteroid) // Pop smaller positive asteroid
                     stack.pop();
-                    isDistroyed = true;
-                }else if(stack.peek()>j) isDistroyed = true;
-                else stack.pop();
-                           
-                
-                if(!isDistroyed){
-                    stack.push(i);
+                else if(stack.peek()==-asteroid){ // Both asteroids are equal; they explode
+                    stack.pop();
+                    isExploded = true;
+                    break;
+                }else { // The current negative asteroid is smaller
+                    isExploded = true;
+                    break;
                 }
-                
+            }
+            if(!isExploded){
+                stack.push(asteroid);
             }
         }
-
-
-        int[] result = new int[stack.size()];
-        int j = stack.size();
+        int n = stack.size();
+        int[] result = new int[n];
         while(!stack.isEmpty()){
-            result[--j] = stack.pop();
+            result[--n] = stack.pop();
         }
 
-
         return result;
+    }
     
 }
 
