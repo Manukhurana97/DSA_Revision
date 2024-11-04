@@ -17,10 +17,9 @@ def deleteClassFilesRecursively(directory):
 
 	return count;
 
-
+total = 0
 for directory in os.listdir(path):
 	dir = os.path.join(path, directory)
-	total = 0
 	
 	if os.path.isdir(dir):
 		count = deleteClassFilesRecursively(dir)
