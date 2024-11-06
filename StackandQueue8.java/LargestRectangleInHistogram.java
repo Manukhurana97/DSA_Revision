@@ -109,7 +109,7 @@ public class LargestRectangleInHistogram{
 
         for(int i=0; i<=n; i++){
             int currentHeight = (i == n) ? 0 : heights[i]; // we are going till n to remove all the builing thatswhy make n = 0
-            while(!stack.isEmpty() && currentHeight < heights[stack.peek()]){
+            while(!stack.isEmpty() && currentHeight <= heights[stack.peek()]){
                 int height = heights[stack.pop()];
                 int width = stack.isEmpty() ? i : i - 1 - stack.peek(); // currentIndex - prevIndex - 1
                 maxArea = Math.max(maxArea,  width * height);

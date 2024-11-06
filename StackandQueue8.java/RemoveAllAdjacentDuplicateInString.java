@@ -105,4 +105,35 @@ public class RemoveAllAdjacentDuplicateInString{
             s = builder.toString();
         }
     }
+
+    // ------------------------------------------------------------------------------------------------
+    public String removeDuplicates(String s, int k) {
+        StringBuilder builder = new StringBuilder();
+        Stack<Integer> stackCount = new Stack<>();
+
+        while(true){
+            boolean flag = false;
+            var charArr = s.toCharArray();
+            
+            for(char ch: charArr){
+                int count = (!builder.isEmpty() && builder.charAt(builder.length()-1) == ch) ? stackCount.pop()+1 : 1;
+                
+                stackCount.push(count);
+                builder.append(ch);
+
+                if(stackCount.peek() == k){
+                    builder.delete(builder.length() - k, builder.length());
+                    stackCount.pop();
+                    flag = true;
+                }
+            }
+            
+            if(!flag) return s;
+            s = builder.toString();
+
+            builder.setLength(0); // Clear the builder for the next iteration
+            stackCount.clear(); // Clear the stack for the next iteration
+            
+        }
+    }
 }

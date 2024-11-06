@@ -22,45 +22,50 @@ public class MaximumSubarrayMinProduct{
     }
 
 
-    public int maxSumMinProduct(int[] nums){
-        int n =  nums.length();
-        int[] prefixSum = new int[n+1];
-        
-        for(int i = 0; i < n; i++)
-            prefixSum[i+1] = prefixSum[i] + nums[i];
-        
+    // ---------------------------------------------------------------------------------
 
+
+    public int maxSumMinProduct(int[] nums) {
+        int n = nums.length;
+        int[] prefixSum = new int[n + 1];
+        
+        for (int i = 0; i < n; i++) {
+            prefixSum[i + 1] = prefixSum[i] + nums[i];
+        }
         
         int[] left = new int[n];
         int[] right = new int[n];
         Deque<Integer> stack = new ArrayDeque<>();
-
-        for(int i=0; i<n; i++){
-            while(!stack.isEmpty() && nums[stack.peek()] >= nums[i]){
+        
+        // Calculate left boundaries
+        for (int i = 0; i < n; i++) {
+            while (!stack.isEmpty() && nums[stack.peek()] >= nums[i]) {
                 stack.pop();
             }
-            left[i] = stack.isEmpty() ? 0 : stack.peek();
+            left[i] = stack.isEmpty() ? 0 : stack.peek() + 1;
             stack.push(i);
         }
-
+        
         stack.clear();
-
-        for(int i=n; i<=0; i--){
-            while(!stack.isEmpty() && nums[stack.peek()] >= nums[i]){
+        
+        // Calculate right boundaries
+        for (int i = n - 1; i >= 0; i--) {
+            while (!stack.isEmpty() && nums[stack.peek()] >= nums[i]) {
                 stack.pop();
             }
             right[i] = stack.isEmpty() ? n : stack.peek();
             stack.push(i);
         }
-
-        long sum = 0;
-        for(int i = 0; i < n; i++){
-            sum = Math.max(sum, (prefixSum[right[i]] - prefixSum[left[i]] + 1))
+        
+        // Find maximum sum of minimum products
+        long maxSum = 0;
+        for (int i = 0; i < n; i++) {
+            long sum = (long) nums[i] * (prefixSum[right[i]] - prefixSum[left[i]]);
+            maxSum = Math.max(maxSum, sum);
         }
-
-
-        return (int) sum % 1_000_000_007;
-
-
+        
+        return (int) (maxSum % 1_000_000_007);
     }
+
+
 }
