@@ -1,5 +1,24 @@
 class LongestSubstringWithoutRepeatingCharacter:
 
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        longestSubStringLength = 0;
+
+        for i in range(0, len(s)):
+            map = set()
+            for j in range(i, len(s)):
+                val = s[j]
+                if val in map:
+                    longestSubStringLength = max(longestSubStringLength, j - i )
+                    break
+                
+                map.add(val)
+
+                
+        
+        return longestSubStringLength
+
+    # --------------------------------------------------------------------
+
 	def lengthOfLongestSubstring(self, s: str) -> int:
 
         if s == "": return 0
@@ -35,7 +54,7 @@ class LongestSubstringWithoutRepeatingCharacter:
         map = {}
 
         for j in range(n):
-            if s[j] in map and map[s[j]]>=i:
+            if s[j] in map and map[s[j]]>=i: # abba
                 i = map[s[j]] +1
             map[s[j]] = j
 

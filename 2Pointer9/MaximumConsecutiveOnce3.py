@@ -17,8 +17,9 @@ class MaximumConsecutiveOnce3:
                 if nums[i] == 0: k+=1
                 i+=1
             
+            
+            maxOnes = max(maxOnes, j - i + 1)
             j+=1
-            maxOnes = max(maxOnes, j - i)
 
         return maxOnes
             
