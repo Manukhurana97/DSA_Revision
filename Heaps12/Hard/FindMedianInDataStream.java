@@ -1,6 +1,6 @@
 public class FindMedianInDataStream{
-	PriorityQueue<Integer> maxHeap;
-    PriorityQueue<Integer> minHeap;
+	PriorityQueue<Integer> maxHeap; // Max-heap for the smaller half of numbers
+    PriorityQueue<Integer> minHeap; // Min-heap for the larger half of numbers
 
     public MedianFinder() {
         maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
@@ -11,6 +11,7 @@ public class FindMedianInDataStream{
     public void addNum(int num) {
         maxHeap.add(num);
 
+        // Balance: Ensure maxQueue only has the smaller half of numbers
         if (!maxHeap.isEmpty() && !minHeap.isEmpty() && maxHeap.peek() > minHeap.peek()) {
             minHeap.add(maxHeap.poll());
         }
