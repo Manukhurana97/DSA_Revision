@@ -42,28 +42,33 @@ public class TaskScheduler{
 
 
     public int leastInterval(char[] tasks, int n) {
+        // Frequency count of each task
         Map<Character, Integer> countMap = new HashMap<>();
         for (char task : tasks) countMap.put(task, countMap.getOrDefault(task, 0) + 1);
 
+        // Max heap (priority queue) to process the most frequent task first
         PriorityQueue<Integer> task = new PriorityQueue(Comparator.reverseOrder());
         for(int value:  countMap.values()) task.add(value);
 
+        int interval = 0;
         Deque<Node> coolDownPeriod = new LinkedList<>();
-        int index = 0;
 
         while(!task.isEmpty() || !coolDownPeriod.isEmpty()) {
-            index += 1;
+            interval += 1;
 
+            // Process the next task if available
             if(!task.isEmpty()){
                 int remainingCount = task.poll() - 1;
-                if (remainingCount > 0) coolDownPeriod.add(new Node(remainingCount, index + n));
+                if (remainingCount > 0) coolDownPeriod.add(new Node(remainingCount, interval + n));
             }
 
-            if(!coolDownPeriod.isEmpty() && coolDownPeriod.peekFirst().time <= index)
+            // Move tasks from cooldownQueue back to priority queue if cooldown is over
+            if(!coolDownPeriod.isEmpty() && coolDownPeriod.peekFirst().time <= interval)
                 task.add(coolDownPeriod.pollFirst().val);
         }
 
-        return index;
+        // Return total intervals needed to execute all tasks
+        return interval;
     }
 
 }
