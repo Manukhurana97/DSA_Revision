@@ -70,4 +70,39 @@ public class VerticalOrderTriversal {
 
         return result;
     }
+
+
+    // ---------------------------------------------------------------------------------------------------
+
+
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+        List<List<Integer>> result = new ArrayList<>();
+        if(root == null) return result;
+
+        TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map = new TreeMap<>();
+
+        dfs(root, 0, 0, map);
+
+        for(var value: map.values()){
+            List<Integer> vals = new ArrayList<>();
+            for (var pq : value.values()) {
+                while(!pq.isEmpty()){
+                    vals.add(pq.poll());
+                }
+            }
+            result.add(vals);
+        }
+
+        return result;
+    
+    }
+
+    public void dfs(TreeNode root, int order, int level, TreeMap<Integer, TreeMap<Integer, PriorityQueue<Integer>>> map ){
+        if(root == null) return;
+
+        map.computeIfAbsent(order, k -> new TreeMap<>()).computeIfAbsent(level, k-> new PriorityQueue<>()).add(root.val);
+
+        dfs(root.left, order-1, level + 1, map);
+        dfs(root.right, order+1, level+1, map);
+    }
 }

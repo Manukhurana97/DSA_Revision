@@ -28,8 +28,8 @@ class PostOrderTraversal:
             if current.left: stack1.append(current.left)
             if current.right: stack1.append(current.right)
 
-        # while stack2:
-        #     result.append(stack2.pop().val)
+        while stack2:
+            result.append(stack2.pop().val)
 
 
         return result[::-1]
@@ -54,3 +54,25 @@ class PostOrderTraversal:
     				lastVisited = stack.pop();
     				
     	return result;
+
+
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+	    if not root:
+	        return []
+
+	    stack = [root]
+	    result = []
+
+	    while stack:
+	        current = stack.pop()
+	        result.append(current.val)  # Add root to result first
+	        
+	        # Push left child first, so the right child is processed first in the reversed output
+	        if current.left:
+	            stack.append(current.left)
+	        if current.right:
+	            stack.append(current.right)
+
+	    # Reverse the result list to get the correct postorder sequence
+	    return result[::-1]
+

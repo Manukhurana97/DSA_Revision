@@ -52,7 +52,8 @@ public class RightSideView{
 
 		List<Integer> result = new LinkedList();
 		for(var values: map.values()){
-			result.add(values.get(values.size()-1));
+            // result.add(values.get(0)); // for left view
+			result.add(values.get(values.size()-1)); // for right view
 		}
 
 
