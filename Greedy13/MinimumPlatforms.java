@@ -46,16 +46,16 @@ public class MinimumPlatforms{
     	}
 
     	int maxPlatformRequired = 1;
-    	int currentTrains = 0;
+    	int platformOccupied = 0;
 
     	while(!queue.isEmpty()){
     		var currentNode = queue.poll();
 
     		if(currentNode.isArrived){ 
-    			currentTrains++;
-    			maxPlatformRequired = Math.max(maxPlatformRequired, currentTrains);
+    			platformOccupied++;
+    			maxPlatformRequired = Math.max(maxPlatformRequired, platformOccupied);
     		}
-    		else currentTrains--;
+    		else platformOccupied--;
     	}
 
     	return maxPlatformRequired;
@@ -66,7 +66,7 @@ public class MinimumPlatforms{
 // [0900, 0940, 0950, 1100, 1500, 1800], 
 // [0910, 1200, 1120, 1130, 1900, 2000]
 
-// 1:0900, 1:0910, 2:0940, 3:0950, 4:1100, 3:1120 4:1130 2:1200 5:1500 6:1800 5:1900 6:2000
+// 1:0900:T, 1:0910:F, 2:0940:T, 3:0950:T, 4:1100:T, 3:1120:F, 4:1130:F, 2:1200:F 5:1500:T 6:1800:T 5:1900:F 6:2000:F
 // 1:0900, 1:0910
 //  2:0940, 3:0950, 4:1100,
 

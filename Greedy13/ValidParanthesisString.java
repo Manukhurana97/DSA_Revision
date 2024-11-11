@@ -1,8 +1,26 @@
-// https://leetcode.com/problems/valid-parenthesis-string/
+ // https://leetcode.com/problems/valid-parenthesis-string/
 
 public class ValidParanthesisString{
 
-	public boolean checkValidString(String s) {
+    // brute force, use recursion 
+    public boolean checkValidString(String s, int i, int count){
+        if(count < 0) return false; // closing is greater the opening
+        if(i == s.length()){
+            if(count == 0) return true;
+        }
+
+        if(s.charAt(i) == '('){
+            return checkValidString(s, i + 1, count + 1);
+        }
+
+    }
+
+
+    // ()*)*()
+    // (**(
+    // ((()
+
+	public boolean checkValidString1(String s) {
         int min = 0;
         int max = 0;
 

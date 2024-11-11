@@ -29,4 +29,25 @@ public class HandsOfStraights{
         }
         return true;
     }
+
+
+    // ----------------------------------------------------------------------------------------------
+
+    public boolean isNStraightHand(int[] hand, int groupSize) {
+        if(hand.length % groupSize != 0) return false;
+
+        TreeMap<Integer, Integer> map = new TreeMap<>();
+        for(int i=0;i<hand.length;i++) map.put(hand[i], map.getOrDefault(hand[i], 0) + 1);
+
+        while(!map.isEmpty()){
+            int smallestElement = map.firstKey();
+
+            for(int i = smallestElement; i < groupSize + smallestElement; i++){
+                if(!map.containsKey(i)) return false;
+                map.put(i, map.get(i) - 1);
+                if(map.get(i) == 0) map.remove(i);
+            }
+        }
+        return true;
+    }
 }

@@ -34,7 +34,7 @@ public class ShortedJobFirst{
         
         while(!queue.isEmpty() || !aux.isEmpty()){
             while (!queue.isEmpty() && queue.peek().data <= time) 
-            aux.add(queue.poll());
+                aux.add(queue.poll());
         
             
             if (!aux.isEmpty()) {

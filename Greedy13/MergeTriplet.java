@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/merge-triplets-to-form-target-triplet/description/
+
 public class MergeTriplet{
 	public boolean mergeTriplets(int[][] triplets, int[] target) {
         int[] result = new int[3];

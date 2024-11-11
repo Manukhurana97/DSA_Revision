@@ -38,7 +38,7 @@ public class NMeetingInOneRoom{
 		NMeetingInOneRoom obj = new NMeetingInOneRoom();
 		int[] start = {0, 3, 1, 5, 5, 8};
 		int[] end = {5, 4, 2, 9, 7, 9};
-		System.out.println(obj.maxMeetings(start, end));
+		System.out.println(obj.maxMeetings(start, end)); // [1:2, 3:4,0:5, ]
 
 
 		int[] start1 = {1, 3, 0, 5, 8, 5};
