@@ -1,6 +1,5 @@
 public class ChildSumParent{
 	public static int isSumProperty(Node root){
-        
         if(root == null) return 1;
         
         Queue<Node> queue = new LinkedList<>();
@@ -12,8 +11,7 @@ public class ChildSumParent{
             for(int i=0;i<size;i++){
                 var currentNode = queue.remove();
                 
-                int left = 0;
-                int right = 0;
+                int left = 0, right = 0;
                 if(currentNode.left != null){
                     left = currentNode.left.data;
                     queue.add(currentNode.left);
@@ -31,6 +29,5 @@ public class ChildSumParent{
         
         
         return 1;
-        
     }
 }

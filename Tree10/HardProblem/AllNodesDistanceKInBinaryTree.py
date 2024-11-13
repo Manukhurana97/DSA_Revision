@@ -122,13 +122,10 @@ class AllNodesDistanceKInBinaryTree:
 
 
     def getBottomNodes(self, root, k, result, visited):
-        if not root or k < 0: return
-        if k == 0: 
-            result.append(root.val)
-            return
+        if not root or k < 0 or root in visited: return 
+        if k == 0: result.append(root.val)
+        
         visited.add(root)
 
-        if root and root.left not in visited:
-            self.getBottomNodes(root.left, k-1, result, visited)
-        if root and root.right not in visited:
-            self.getBottomNodes(root.right, k-1, result, visited)
+        self.getBottomNodes(root.left, k-1, result, visited)
+        self.getBottomNodes(root.right, k-1, result, visited)
