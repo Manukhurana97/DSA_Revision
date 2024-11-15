@@ -45,6 +45,9 @@ public class Trie4{
 
 		int count = 0; 
 
+		// abab : bab : ab : b
+		// 4    + 3   +  0 (not new ) + 0 (not new)
+
 		for(int i = 0; i<s.length(); i++){
 			var current = root;
 			

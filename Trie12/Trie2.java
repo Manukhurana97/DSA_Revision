@@ -24,8 +24,15 @@ class TrieNode{
 		return get(ch) != null;
 	}
 
-	public void reducePrefix(ch){
-		var node = get(ch);
+	public void incrementCountPair(TrieNode node){
+		node.countPair += 1;
+	}
+
+	public void decrementCountPair(TrieNode node){
+		node.countPair -= 1;
+	}
+
+	public void reducePrefix(TrieNode node){
 		if(node != null){
 			node.endWith -=1;
 		}
@@ -43,7 +50,7 @@ public class Trie2{
 			if(!current.containsKey(ch)) 
 				current.put(ch, new TrieNode());
 			current = current.get(ch);
-			current.countPair += 1;
+			current.incrementCountPair(current);
 		}
 		current.endWith += 1;
 	}
@@ -55,8 +62,7 @@ public class Trie2{
 			current = current.get(ch);
 		}
 
-		if(current == null) return 0;
-		return current.endWith;
+		return (current == null) ? 0 : current.endWith;
 	}
 
 	public static int countWordStartWith(String word){
@@ -66,8 +72,7 @@ public class Trie2{
 			current = current.get(ch);
 		}
 
-		if(current == null) return 0;
-		return current.countPair;
+		return (current == null) ? 0 : current.countPair;
 	}
 
 
@@ -76,9 +81,9 @@ public class Trie2{
 		for(char ch: word.toCharArray()){
 			if(!current.containsKey(ch)) return;
 			current = current.get(ch);
-			current.countPair-=1;
+			current.decrementCountPair(current);
 		}
-		if (current.endWith > 0) current.reducePrefix();
+		if (current.endWith > 0) current.reducePrefix(current);
 		
 	}
 

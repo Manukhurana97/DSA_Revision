@@ -45,12 +45,18 @@ public class MaximumXor{
 
 		for(int i=31; i>=0; i--){
 			int bit = (num >> i) & 1;
+			// because of xor property, if the bit is differnt then the value will increase 
+			// thats why we took opps every time 
+			// 1 * 0 : 1
+			// 0 * 1 : 1
+			// 0 * 0 : 0
+			// 1 * 0 : 0
 			if(current.containsKey(1-bit)){
 				maxXor |= 1<<i;
 				current = current.get(1-bit);
 			}else current = current.get(bit);
 		}
-		return 	;
+		return 	maxXor;
 	}
 
 	public int getMaxXOR(List<Integer> nums){
