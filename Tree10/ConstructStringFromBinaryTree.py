@@ -1,6 +1,6 @@
 # https://leetcode.com/problems/construct-string-from-binary-tree/description/
 
-class ConvertBinaryStreeFromString:
+class ConstructStringFromBinaryTree:
 	def tree2str(self, root: Optional[TreeNode]) -> str:
         result = []
 

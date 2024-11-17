@@ -26,8 +26,8 @@ class FindBottomLeftFirstValue:
 
 
 	def findBottomLeftValue(self, root: Optional[TreeNode]) -> int:
-        result = []
 
+        self.bottomLeftvalue = root.val
         queue = deque([root])
 
         while queue: 
@@ -35,10 +35,9 @@ class FindBottomLeftFirstValue:
             list =  []
             for _ in range(size):
                 currentNode = queue.popleft()
-                list.append(currentNode.val)
 
                 if currentNode.left: queue.append(currentNode.left)
                 if currentNode.right: queue.append(currentNode.right)
             
-            result = list
-        return result[0]
+            if queue: self.bottomLeftvalue = queue[0].val  
+        return self.bottomLeftvalue
