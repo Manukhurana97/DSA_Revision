@@ -46,4 +46,4 @@ def isBalanced(self, root: Optional[TreeNode]) -> bool:
         if abs(left - right) > 1:
             return -1
 
-            return 1+ max(left, right)
+            return 1 + max(left, right)

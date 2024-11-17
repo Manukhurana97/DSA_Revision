@@ -14,3 +14,21 @@ class ConvertSortedArrayToBST:
         root.left = self.createTree(nums, start, mid - 1)
         root.right = self.createTree(nums, mid + 1, end)
         return root
+
+
+# --------------------------------------------------------------
+
+def sortedArrayToBST(self, nums: List[int]) -> Optional[TreeNode]:
+    def dfs(nums, start, end):
+        if start > end: return None
+        
+        mid = (start + end) // 2
+        root = TreeNode(nums[mid])
+
+        root.left = dfs(nums, start, mid-1)
+        root.right = dfs(nums, mid+1, end)
+
+
+        return root
+    
+    return dfs(nums, 0, len(nums)-1)        
