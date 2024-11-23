@@ -1,4 +1,4 @@
-public class DetectCycleInDirectedGraph{
+public class DetectCycleInUnDirectedGraph{
 	// Time: O(n+2e), Space: O(1)
 	public boolean isCycle(ArrayList<ArrayList<Integer>> adj){
 		int n = adj.size();
