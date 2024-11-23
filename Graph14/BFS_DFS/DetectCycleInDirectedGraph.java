@@ -25,7 +25,6 @@ public class DetectCycleInDirectedGraph{
     		}
     		else if(pathVisited[neighbour] == 1){
     			return true;
-    		    
     		}
     	}
     	
