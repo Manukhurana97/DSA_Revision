@@ -1,16 +1,17 @@
+// 
 public class NumberOfProvinces{
 
 	public int findCircleNum(int[][] isConnected) {
         List<List<Integer>> adjList = new ArrayList<>();
 
-        // create n nodes for adjancy list [1: 2,3,4, 2: 4,5]
         for(int i=0;i<isConnected.length;i++){
             adjList.add(new ArrayList());
         }
 
+        // create n nodes for adjancy list [1: 2,3,4, 2: 4,5]
         for(int i = 0; i < isConnected.length; i++){
             for(int j = 0; j<isConnected[i].length;j++){
-                if(i !=j &&  isConnected[i][j] == 1){
+                if(i != j &&  isConnected[i][j] == 1){
                     adjList.get(i).add(j);
                     adjList.get(j).add(i);
                 }
@@ -22,6 +23,7 @@ public class NumberOfProvinces{
         int provinces = 0;
         boolean[] visited = new boolean[isConnected.length];
 
+        // since there can be multiple graph / disconnected graphs we use for loop on each node
         for(int i = 0; i < isConnected.length; i++){
             if(!visited[i]){
                 provinces += 1;

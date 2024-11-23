@@ -7,9 +7,10 @@ public class FloodFills{
         return image;
     }
 
+   
+    // BFS: Time : O(n), Space : O(m)
     public void dfs(int[][] image, int r, int c, int startColor, int endColor){
         if(r < 0 || c < 0 || r >= image.length || c >= image[r].length || image[r][c] != startColor) return ;
-
 
         image[r][c] = endColor;
 
@@ -19,6 +20,7 @@ public class FloodFills{
         dfs(image, r, c + 1, startColor, endColor);
     }
 
+     // BFS: Time : O(n), Space : O(n)
     public void bfs(int[][] image, int r, int c, int startColor, int endColor){
 
         Queue<int[]> queue = new LinkedList<>();

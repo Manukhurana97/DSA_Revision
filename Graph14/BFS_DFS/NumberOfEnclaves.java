@@ -5,7 +5,6 @@ public class NumberOfEnclaves{
         int rows = grid.length;
         int cols = grid[0].length;
         boolean[][] visited = new boolean[rows][cols];
-        int biggestEnclave = 0;
 
         // mark visited to all the nodes on or adjacent to boundry .
         for(int r = 0; r < rows; r++)

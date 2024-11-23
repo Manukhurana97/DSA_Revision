@@ -7,6 +7,7 @@ class BFS:
 			current = queue.popleft()
 			result.append(current)
 
+			# all the neighbour of current node and storing them in queue
 			for neighbors in adj[current]:
 				if neighbors not in visited:
 					queue.append(neighbors)

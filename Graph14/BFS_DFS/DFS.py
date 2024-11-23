@@ -7,6 +7,7 @@ class DFS:
 			result.append(current)
 			visited.add(current)
 
+			# visiting all the neighbours
 			for neighbors in adj[current]:
 				if neighbors not in visited:
 					dfs(neighbors, adj)

@@ -15,7 +15,6 @@ public class BiPartiteGraph{
         
         for(int i=0;i<adj.size();i++){
         	// if (!BFS(i, adj, color)) return false;
-
         	if (!DFS(i, adj, color)) return false;
         }
        

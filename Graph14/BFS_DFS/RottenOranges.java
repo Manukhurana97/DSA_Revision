@@ -3,17 +3,23 @@ public class RottenOranges{
 
         int oneCount = 0;
         Queue<int[]> queue = new LinkedList<>();
+
+
         for(int r = 0; r < grid.length; r++){
             for(int c = 0; c < grid[r].length; c++){
+                // get all the initially rotten orranges 
                 if(grid[r][c] == 2){
                     queue.add(new int[]{r, c});
                 }
+                // to keep the track if all the oranges are rotten of not
                 if(grid[r][c] == 1){
                     oneCount += 1;
                 }
             }
         }
 
+
+        // perform BFS
         int time = 0;
         while(!queue.isEmpty()){
 
