@@ -39,6 +39,7 @@ public class FindEventialSafeState{
     		}
     	}
 
+    	// if there is not loop that mean its leading to end node / safe node
     	pathVisited[current] = 0;
     	check[current] = 1;
     	return false;
