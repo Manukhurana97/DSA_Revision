@@ -8,7 +8,7 @@ class iPair {
 }
 
 
-
+// Time Cmplexity: O(ElognV) , E: edges, v: nodes
 public class DijkstraAlgo{
 
 	/*
@@ -20,6 +20,7 @@ public class DijkstraAlgo{
 	ArrayList<Integer> dijkstra(ArrayList<ArrayList<iPair>> adj, int src) {
 		int n = adj.size();
 
+		// O(logV)
 		PriorityQueue<iPair> queue = new PriorityQueue<>((a, b) -> a.second == b.second ? a.first - b.first : a.second - b.second);
         queue.add(new iPair(src, 0));
 
@@ -29,7 +30,7 @@ public class DijkstraAlgo{
 
         // BFS // dijkstra
 
-        while(!queue.isEmpty()){
+        while(!queue.isEmpty()){ // O(V)
         	iPair currentNode = queue.remove();
 
         	for(iPair neighbours: adj.get(currentNode.first)){

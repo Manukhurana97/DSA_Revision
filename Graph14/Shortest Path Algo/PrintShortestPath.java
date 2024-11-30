@@ -11,6 +11,7 @@ public class PrintShortestPath{
             adj.get(edge[1]).add(new int[]{edge[0], edge[2]});
         }
         
+
         PriorityQueue<int[]> queue = new PriorityQueue<>((a, b) -> a[1] == b[1] ? a[0] - b[0] : a[1] - b[1]);
         queue.add(new int[]{1, 0});
 
@@ -40,7 +41,6 @@ public class PrintShortestPath{
         if(distance[n] == Integer.MAX_VALUE){
             result.add(-1);
             return result;
-            
         }
         
         // O(n)
