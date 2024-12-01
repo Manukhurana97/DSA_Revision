@@ -4,6 +4,7 @@ public class MaximumMultiplicationToReachEnd{
 	int minimumMultiplications(int[] arr, int start, int end) {
 
         Set<Integer> visited = new HashSet<>();
+        visited.add(start);
 
         Queue<int[]> queue = new LinkedList<>();
         queue.add(new int[]{start, 0});
