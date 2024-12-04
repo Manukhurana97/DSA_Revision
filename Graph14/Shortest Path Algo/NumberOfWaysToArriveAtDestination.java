@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/number-of-ways-to-arrive-at-destination/
+
 public class NumberOfWaysToArriveAtDestination{
 	static int countPaths(int n, List<List<Integer>> roads) {
         final int MOD = 1_000_000_007;
