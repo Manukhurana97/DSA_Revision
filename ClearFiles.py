@@ -25,7 +25,7 @@ for directory in os.listdir(path):
 		count = deleteClassFilesRecursively(dir)
 		total += count
 		
-		print(count, "files removed from",dir)
+		print(count, "files removed from",dir)2462
 print()
 print(total, " total class file deleted")
 

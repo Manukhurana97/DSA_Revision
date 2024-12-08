@@ -9,6 +9,7 @@ import java.util.*;
 public class DisjointSet{
 
 	List<Integer> rank = new ArrayList<>();
+	List<Integer> size = new ArrayList<>();
 	List<Integer> parent = new ArrayList<>();
 
 	DisjointSet(int n){
@@ -17,6 +18,7 @@ public class DisjointSet{
 		for(int i = 0; i < n; i++){
 			parent.add(i);
 			rank.add(0);
+			size.add(1);
 		}
 	}
 
@@ -66,17 +68,36 @@ public class DisjointSet{
 		}
 	}
 
+	/*
+	 * Union(u, v)
+	 * find the ultimate parent of u and v
+	 * if the size of parentU is greater the parentV, them add v to u
+	 * else add u to v
+	*/ 
+	public void unionBySize(int u, int v){
+		int uParent = findParents(u);
+		int vParent = findParents(v);
+
+		if(size.get(uParent) > size.get(vParent)){
+			parent.set(vParent, uParent);
+			size.set(uParent, size.get(vParent));
+		}else{
+			parent.set(uParent, vParent);
+			size.set(vParent, size.get(uParent));
+		}
+	}
+
 	public static void main(String[] args) {
         DisjointSet set = new DisjointSet(8);
-        set.unionByRank(1, 2);
-        set.unionByRank(2, 3);
-        set.unionByRank(4, 5);
-        set.unionByRank(6, 7);
-        set.unionByRank(5, 6);
+        set.unionBySize(1, 2);
+        set.unionBySize(2, 3);
+        set.unionBySize(4, 5);
+        set.unionBySize(6, 7);
+        set.unionBySize(5, 6);
 
         // find parent of 1 and 4
         System.out.println((set.findParents(1) == set.findParents(4)) ? "same" : "not same");
-        set.unionByRank(3, 4);
+        set.unionBySize(3, 4);
         System.out.println((set.findParents(1) == set.findParents(4)) ? "same" : "not same");
     }
 
