@@ -54,6 +54,46 @@ public class Course1And2{
     // --------------------------------------------------------------------------------------------
     // Course schedule  1: https://leetcode.com/problems/course-schedule/
 
+    //can be done using cycle detection
+    // DFS
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        List<List<Integer>> adjList = new ArrayList<>();
+        
+        for(int i=0;i< numCourses; i++) adjList.add(new ArrayList<>());
+        for(int[] node: prerequisites) adjList.get(node[0]).add(node[1]);
+        
+        int[] visited = new int[numCourses];
+        int[] parent = new int[numCourses];
+        
+        for(int i=0;i<numCourses; i++){
+            if(visited[i] == 0 && dfs(i, adjList, visited, parent)){
+                return false;
+            }
+        }
+
+       return true;
+    }
+
+    public boolean dfs(int i, List<List<Integer>> adjList, int[] visited, int[] pathVisited){
+        visited[i] = 1;
+    	pathVisited[i] = 1;
+
+        for (int neighbour : adjList.get(i)) {
+            if(visited[neighbour] == 0){
+                if(dfs(neighbour, adjList, visited, pathVisited)) return true;
+            }else if(pathVisited[neighbour] == 1){
+                return true;
+            }
+        }
+        
+        pathVisited[i] = 0;
+        return false;
+
+    }
+
+    // --------------------------------------------------------------------
+    // toposort
 
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int n = prerequisites.length;
@@ -98,6 +138,53 @@ public class Course1And2{
 
     // --------------------------------------------------------------------------------------------
     // Course schedule 2 : https://leetcode.com/problems/course-schedule-ii/
+    // DFS
+
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+
+        List<List<Integer>> adjList = new ArrayList<>();
+		for(int i = 0; i < numCourses; i++) adjList.add(new ArrayList());
+
+        for (int[] edge : prerequisites) {
+            adjList.get(edge[0]).add(edge[1]);
+        }
+
+        int[] visited = new int[numCourses];
+        int[] pathVisited = new int[numCourses];
+        List<Integer> result = new ArrayList<>();
+
+        for(int i=0; i<numCourses; i++){
+            if(visited[i] == 0 &&  dfs(i, adjList, visited, pathVisited, result)){
+                return new int[0];
+            }
+        }
+
+        
+        return result.stream().mapToInt(i -> i).toArray();
+    }
+
+
+    public boolean dfs(int current, List<List<Integer>> adjList, int[] visited, int[] pathVisited, List<Integer> result){
+        visited[current] = 1;
+        pathVisited[current] = 1;
+
+        for(var neighbour: adjList.get(current)){
+            if(visited[neighbour] == 0){
+                if(dfs(neighbour, adjList, visited,pathVisited,  result)){
+                    return true;
+                }
+            }else if(pathVisited[neighbour] == 1){
+                return true;
+            }
+        }
+        
+        result.add(current);
+        pathVisited[current] = 0;
+        return false;
+    }
+
+    // -----------------------------------------------------------------------------------
+    // toposort
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
 
