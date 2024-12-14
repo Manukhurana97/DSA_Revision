@@ -5,6 +5,7 @@
 
 	we do, Relexation of all edges N-1 times sequentially
 	Relexation: if(dist[u] + wt < dist[v]) dist[v] = dist[u] + wt;
+    check if the edges are not Infinite then update the value else skip
 */ 
 public class BellmanFordAlgorithm{
 	static int[] bellmanFord(int V, int[][] edges, int src) {

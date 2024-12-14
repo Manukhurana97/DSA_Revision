@@ -6,7 +6,7 @@ public class SurroundedRegion{
         int cols = a[0].length;
         int[][] visited = new int[rows][cols];
 
-        // get all boundry and adjacent node in row
+        // get all the row and adjancet to boundry notes
         for(int r=0;r<rows;r++){
         	if(a[r][0] == 'O' && visited[r][0] == 0){
         		dfs(r, 0, a, visited);
@@ -17,7 +17,7 @@ public class SurroundedRegion{
         	}
         }	
 
-        // get all boundry and adjacent node in row
+        // get all the cols and adjancet to boundry notes
         for(int c=0;c<cols;c++){
         	if(a[0][c] == 'O' && visited[0][c] == 0){
         		dfs(0, c, a, visited);
