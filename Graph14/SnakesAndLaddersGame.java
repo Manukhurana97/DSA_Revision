@@ -13,9 +13,11 @@ public class SnakesAndLaddersGame{
             int currentPosition = currentNode[0];
             int steps = currentNode[1];
 
+            // roll dice
             for (int i = 1; i <= 6; i++) {
                 int nextPosition = currentPosition + i;
 
+                // move outside the box    
                 if (nextPosition > len * len)  continue;
                 
                 int[] coord = getCoord(len, nextPosition);
