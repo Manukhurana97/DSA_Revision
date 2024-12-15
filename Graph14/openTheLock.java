@@ -1,5 +1,5 @@
 // https://leetcode.com/problems/open-the-lock/
-// for any source and destination, we use bfs
+// for any source and destination, or finding the path/shortes path, we use bfs
 class Node{
     char[] charArr;
     int step;
