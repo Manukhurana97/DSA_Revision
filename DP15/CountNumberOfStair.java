@@ -4,7 +4,7 @@ count the ways, find way with min/max output :: recursion can be applied
 1. try to represent everything in terms of index
 2. do all possible stuff on that index, acc to prob statement
 3. sum all the stuff: if question ask for sum, 
-   count all the stuff: if question ask for stuff	
+   count all the stuff: if question ask for count
 
 */
 
@@ -20,7 +20,6 @@ public class CountNumberOfStair{
 		// return dpMemoization(n, dp);
 
 		// return dpTabulation(n, dp);
-
 		return spaceOptimization(n);
 	}
 
