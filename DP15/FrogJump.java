@@ -79,11 +79,80 @@ public class FrogJump{
 		return prev1;
 	}
 
+	// -----------------------------------------------------------------------------------------------------------------------------
+	// followup, k distance
+
+	public int findMinJumpWithKDistance(int n, int k, int[] heights){
+
+		// return dfs1(n-1, k, heights);
+		int[] visited = new int[n+1];
+		Arrays.fill(visited, -1);
+
+		// return memoization1(n-1, k, heights, visited);
+
+		return tabulation1(n-1, k, heights, visited);
+	}
+
+	// Time: O(n^2) , Space O(n)
+	public int dfs1(int n, int k, int[] heights){
+		if(n<0) return Integer.MAX_VALUE;
+		if(n == 0) return 0;
+
+		int minValue = Integer.MAX_VALUE;
+		for(int i=1; i<=k; i++){
+			if(n-i >=0){
+				int cost = dfs1(n-i, k, heights) +  Math.abs(heights[n-i] - heights[n]);
+				 minValue = Math.min(minValue, cost);
+			}
+		}
+		return minValue;
+
+	}
+
+	// Time: O(n^2) , Space O(n)
+	public int memoization1(int n, int k, int[] heights, int[] visited){
+		if(n<0) return Integer.MAX_VALUE;
+		if(n == 0) return 0;
+
+		if(visited[n] !=-1) return visited[n];
+
+		int minValue = Integer.MAX_VALUE;
+		for(int i=1; i<=k; i++){
+			if(n-i >=0){
+				int cost = memoization1(n-i, k, heights, visited) +  Math.abs(heights[n-i] - heights[n]);
+				 minValue = Math.min(minValue, cost);
+			}
+		}
+		visited[n] = minValue;
+		return minValue;
+	}
+
+
+	public int tabulation1(int n, int k, int[] heights, int[] visited){
+		if(n==0) return 0;
+		visited[0] = 0;
+
+		for(int j=1; j<=n; j++){
+			int minValue = Integer.MAX_VALUE;
+			for(int i=1; i<=k; i++){
+				if(j-i >=0){
+					int cost = visited[j-i] + Math.abs(heights[j-i] - heights[j]);
+					 minValue = Math.min(minValue, cost);
+				}
+			}
+			visited[j] = minValue;
+		}
+
+		return visited[n];
+	}
+
+
 	public static void main(String[] args) {
 		FrogJump obj = new FrogJump();
 
 		int[] arr = {30, 10, 60, 10, 60, 50};
 		System.out.println(obj.findMinJump(arr.length, arr));
+		System.out.println(obj.findMinJumpWithKDistance(arr.length, 3, arr));
 	}
 
 
