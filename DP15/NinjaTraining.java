@@ -10,13 +10,13 @@ public class NinjaTraining{
 
 		int[][] dp = new int[n][m + 1];
 		for(int[] i: dp){
-			Arrays.fill(i, -1);
+			Arrays.fill(i, -1); 
 		}
 		// return memoization(n-1, m, grid, dp);
 
-		// return tabulation(n-1, m, grid, dp);
+		return tabulation(n-1, m, grid, dp);
 
-		return spaceOptimization(n, m, grid);
+		// return spaceOptimization(n, m, grid);
 	}
 
 	private int dfs(int day, int prev, int[][] grid){
@@ -60,11 +60,11 @@ public class NinjaTraining{
 	    }
 
 		for(int day=1; day<=n; day++){
-			for(int prev = 0; prev<m; prev++){
-				dp[day][prev] = 0;
-				for(int tasks=0; tasks<m; tasks++){
-					if(tasks != prev){ // no two consecutive days have the same task
-						dp[day][prev] = Math.max(dp[day][tasks], grid[day][tasks] + dp[day - 1][prev]);
+			for(int task = 0; task<m; task++){
+				dp[day][task] = 0;
+				for (int prevTask = 0; prevTask < m; prevTask++){
+					if(task != prevTask){ // no two consecutive days have the same task
+						dp[day][task] = Math.max(dp[day][task], grid[day][task] + dp[day - 1][prevTask]);
 					}
 				}
 
