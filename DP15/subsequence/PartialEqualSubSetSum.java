@@ -49,7 +49,7 @@ public class PartialEqualSubSetSum{
 		}
 
 		if(arr[0] <= target){
-			dp[0][0] = true;
+			dp[0][arr[0]] = true;
 		}
 
 		for(int index=1; index<n; index++){
@@ -75,7 +75,7 @@ public class PartialEqualSubSetSum{
 		}
 
 		if(arr[0] <= target){
-			curr[0] = true;
+			curr[arr[0]] = true;
 		}
 
 		for(int index=1; index<n; index++){
