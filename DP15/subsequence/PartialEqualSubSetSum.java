@@ -17,8 +17,8 @@ public class PartialEqualSubSetSum{
 
 
 	public boolean recursion(int index, int[] arr, int target){
-		if(index == 0)
-			return (target == 0) ? true : false;
+		if(target == 0) return  true;
+		if(index == 0) return target == arr[0];
 
 		boolean notTake = recursion(index-1, arr, target);
 		boolean take = target < arr[index] ? false : recursion(index-1, arr, target-arr[index]);
@@ -28,9 +28,8 @@ public class PartialEqualSubSetSum{
 
 
 	public boolean memoization(int index, int[] arr, int target, Boolean[][] dp){
-		
-		if(index == 0)
-			return (target == 0) ? true : false;
+		if(target == 0) return  true;
+		if(index == 0) return target == arr[0];
 
 		if(dp[index][target] != null) return dp[index][target];
 
