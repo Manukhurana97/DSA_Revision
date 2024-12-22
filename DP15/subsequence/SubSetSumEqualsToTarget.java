@@ -14,8 +14,8 @@ public class SubSetSumEqualsToTarget{
 
 
 	private boolean recursion(int index, int target, int[] arr){
-		if(index < 0) return false;
-		if(target == 0) return true;
+		f(target == 0) return  true;
+		if(index == 0) return target == arr[0];
 
 
 		boolean nottake = recursion(index-1, target, arr);
@@ -26,8 +26,8 @@ public class SubSetSumEqualsToTarget{
 
 
 	private boolean memoization(int index, int target, int[] arr, Boolean[][] dp){
-		if(index < 0) return false;
-		if(target == 0) return true;
+		f(target == 0) return  true;
+		if(index == 0) return target == arr[0];
 
 		if (dp[index][target] != null) return dp[index][target];
 
