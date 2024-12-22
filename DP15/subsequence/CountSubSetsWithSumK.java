@@ -86,6 +86,27 @@ public class CountSubSetsWithSumK{
 	}
 
 
+	// for input containing 0
+	public int tabulation1(int target, int[] arr, int[][] memo){
+		int n = arr.length;
+
+		if(arr[0] == 0) memo[0][0] = 2;
+		else memo[0][0] = 1;
+
+		if(arr[0] != 0) memo[0][arr[0]] = 1;
+
+		for(int index = 1; index<n; index++){
+			for(int t = 0; t<=target; t++){
+				int notTake = memo[index-1][t];
+				int take = t < arr[index] ? 0 : memo[index-1][t-arr[index]];
+
+				memo[index][t] = take + notTake;
+			}
+		}
+
+		return memo[n-1][target];
+	}
+
 	public int spaceOptimization(int target, int[] arr){
 		int n = arr.length;
 
