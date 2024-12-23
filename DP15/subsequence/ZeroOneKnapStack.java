@@ -9,7 +9,9 @@ public class ZeroOneKnapStack{
 
 		// return tabulation(w, arr, dp);
 
-		return spaceOptimization(w, arr);
+		// return spaceOptimization(w, arr);
+		
+		return spaceOptimization1(w, arr);
 	}
 
 	private int recursion(int index, int wt, int[][] arr){
@@ -76,6 +78,29 @@ public class ZeroOneKnapStack{
 				curr[w] = Math.max(notTake, take);
 			}
 			prev = curr;
+		}
+
+		return prev[wt];
+	}
+
+
+	private int spaceOptimization1(int wt, int[][] arr){
+
+		int[] prev = new int[wt+1];
+
+		for(int w=0; w<=wt; w++){
+			if(w>=arr[0][0])
+				prev[w] = arr[0][1]; // Assign profit of the first item
+		}
+
+		for(int index=1; index<arr.length; index++){
+			for(int w=wt; w>=0; w--){
+				int notTake = prev[w];
+				int take = w >= arr[index][0] ? arr[index][1] + prev[w-arr[index][0]] : Integer.MIN_VALUE;
+
+				prev[w] = Math.max(notTake, take);
+			}
+			prev = prev;
 		}
 
 		return prev[wt];
