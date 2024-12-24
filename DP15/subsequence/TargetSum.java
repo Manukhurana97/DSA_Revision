@@ -1,23 +1,21 @@
-// use of CountSubSetsWithSumK : tabution
-
-public class CountPartitionWithGivenDifference{
 
 
-	/** s1 - s2 = d :: s1 + s2 = totalSum
-	* s1 + totalsum + s1 = d
-	* s1 = (totalSum - d) / 2 
-	* */
-	
-	public boolean countParitions(int[] arr, int d){
+public class TargetSum{
+
+	// s1 - s2 = d :: s1 + s2 = totalSum
+	// s1 + totalsum + s1 = d
+	// s1 = (totalSum - d) / 2 
+
+	public int countParitions(int[] arr, int d){
 		int sum = 0;
 		for(int i: arr) sum+=i;
 
 	    // If (sum - d) is negative or not even, partition is not possible
-		if (sum - d < 0 || (sum - d) % 2 != 0) return false;
+		if (sum - d < 0 || (sum - d) % 2 != 0) return 0;
 
 		int target = (sum - d)/2;
 
-		int[] dp = numberOfSubsetWithSumK(arr, target);
+		return numberOfSubsetWithSumK(arr, target);
 
 	}
 
@@ -42,4 +40,12 @@ public class CountPartitionWithGivenDifference{
 		return take + notTake;
 	}
 
+
+	public int targetSum(int n, int target, int[] arr){
+		return countParitions(arr, target);	
+	}
+
+	public static void main(String[] args) {
+		
+	}
 }
