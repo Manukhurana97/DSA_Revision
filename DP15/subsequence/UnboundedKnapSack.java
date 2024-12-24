@@ -9,7 +9,9 @@ public class UnboundedKnapSack{
 
 		// return tabulation(wt, grid, dp);
 
-		return spaceOptimization(wt, grid);
+		// return spaceOptimization(wt, grid);
+		
+		return spaceOptimization1(wt, grid);
 	}
 
 	// Time : O(almost exponential), Space O(>>n)
@@ -80,6 +82,26 @@ public class UnboundedKnapSack{
 		return prev[wt];
 	}
 
+
+	// Time : O(n), Space O(2wt)
+	private int spaceOptimization1(int wt, int[][] grid){
+		int[] prev = new int[wt+1];
+
+		for(int t=0; t<=wt; t++){
+			prev[t] = (wt >= grid[0][0]) ? (t / grid[0][0]) * grid[0][1] : Integer.MIN_VALUE;
+		}
+
+		for(int index=1; index<grid.length; index++){
+			for(int t=0; t<=wt; t++){
+				int notTake = prev[t];
+				int take = t >= grid[index][0] ? grid[index][1] + prev[t-grid[index][0]] : Integer.MIN_VALUE;
+	
+				prev[t] = Math.max(take, notTake);
+			}
+		}
+
+		return prev[wt];
+	}
 
 	public static void main(String[] args) {
 		UnboundedKnapSack obj = new UnboundedKnapSack();
