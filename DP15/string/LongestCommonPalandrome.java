@@ -27,6 +27,13 @@ public class LongestCommonPalandrome{
 			}
 		}
 
+		for(int i=0; i<=n1; i++){
+			for(int j=0; j<=n1; j++){
+				System.out.print(memo[i][j]+" ");
+			}
+			System.out.println();
+		}
+
 		StringBuilder builder = new StringBuilder();
 		int i = n1, j = n1;
 
@@ -52,6 +59,7 @@ public class LongestCommonPalandrome{
 	public static void main(String[] args) {
 		LongestCommonPalandrome obj = new LongestCommonPalandrome();
 
-		System.out.println(obj.longestPalandrome("bbabcbcab"));
+		// System.out.println(obj.longestPalandrome("bbabcbcab"));
+		System.out.println(obj.longestPalandrome("abcaa"));
 	}
 }
