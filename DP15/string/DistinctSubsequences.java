@@ -9,7 +9,9 @@ public class DistinctSubsequences{
 
 		// return tabulation(s1, s2, dp);
 
-		return spaceOptimization(s1, s2);
+		// return spaceOptimization(s1, s2);
+
+		return spaceOptimization1(s1, s2);
 	}
 
 	/**
@@ -77,6 +79,24 @@ public class DistinctSubsequences{
 				else curr[index2] = prev[index2];
 			}
 			prev = curr;
+		}
+
+		return prev[s2.length()];
+	}
+
+
+	private int spaceOptimization1( String s1, String s2){
+		
+		int[] prev = new int[s2.length()+1];
+
+		prev[0] = 1;
+		
+		for(int index1=1; index1<=s1.length(); index1++){
+			for(int index2=1; index2<=s2.length(); index2++){
+				if(s1.charAt(index1-1) == s2.charAt(index2-1))
+					prev[index2] = prev[index2-1] + prev[index2];
+				else prev[index2] = prev[index2];
+			}
 		}
 
 		return prev[s2.length()];
