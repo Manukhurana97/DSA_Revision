@@ -1,3 +1,4 @@
+// can buy and sell only one.
 public class BestTimeToBuyAndSellStock{
 	private int maxProfit(int[] arr){
 		int minIndex = 0, maxIndex = 0;
