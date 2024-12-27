@@ -86,8 +86,8 @@ public class BestTimeToBuyAndSellStock3{
 	private int spaceOptimization(int[] arr, int k){
 		int n = arr.length;
 
-		int[][] next = new int[n+1][k+1];
-		int[][] curr = new int[n+1][k+1];
+		int[][] next = new int[2][k+1];
+		int[][] curr = new int[2][k+1];
 
 		for(int index=n-1; index>=0; index--){
 			for(int canBuy = 0; canBuy<2; canBuy++){
@@ -109,6 +109,9 @@ public class BestTimeToBuyAndSellStock3{
 	}
 
 
+	
+
+ 
 	public static void main(String[] args) {
 		BestTimeToBuyAndSellStock3 obj =new BestTimeToBuyAndSellStock3();
 		int[] arr = {7,1,5,3,60,4,10,10,30};
