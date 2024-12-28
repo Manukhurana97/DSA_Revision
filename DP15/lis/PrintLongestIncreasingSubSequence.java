@@ -90,7 +90,7 @@ public class PrintLongestIncreasingSubSequence{
 
 		for(int i=0; i<n; i++){
 			hash[i] = i;
-		}
+		}	
 
 		for(int i=0; i<n; i++){
 			for(int prev = 0; prev<i; prev++){
