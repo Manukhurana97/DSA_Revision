@@ -1,5 +1,5 @@
 public class reconstructItinerary{
-	public List<String> findItinerary(List<List<String>> tickets) {
+    	public List<String> findItinerary(List<List<String>> tickets) {
         // using priority queue in order to sort in lexical graphical order <a,b, c...>
         Map<String, PriorityQueue<String>> map = new HashMap<>();
         for(List<String> tiicket: tickets){
