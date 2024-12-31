@@ -1,6 +1,6 @@
 /**
  * input give, if we cut the rod of size n, we are give profit per piece size & n : total rod size
- * Instead of taking is this way assume we have give rods  of size ith and profit per rod of ith, 
+ * Instead of taking this way, assume we have give rods  of size ith and profit per rod of ith, 
  * we have to find max profit but taking a rod (we have infinit quantity)
  * it will be same as unboundKnapSack
  * */

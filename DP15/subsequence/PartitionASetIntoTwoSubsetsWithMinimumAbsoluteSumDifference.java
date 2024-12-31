@@ -1,8 +1,9 @@
 /**
  * 
- * Tabulation: its give the data from 1 to k for each index
- * if we check for a target k, we can derive if every possible target b/w (1 - k) is possible
+ * Tabulation: it coontains the data from 0 to k , 
+ * for each index  Tabulation DP data contain, if we can create a subset of target (i) 
  * 
+ * we can derivies if every possible target b/w 1 to k is true/false
  * */ 
 
 public class PartitionASetIntoTwoSubsetsWithMinimumAbsoluteSumDifference{
@@ -12,12 +13,17 @@ public class PartitionASetIntoTwoSubsetsWithMinimumAbsoluteSumDifference{
 		int sum = 0;
 		for(int i: arr) sum += i;
 
-		boolean dp[] = tabulation(arr, sum);
+		boolean dp[] = tabulation(arr, sum);  
+
+		// s1 - s2 = min(values)
 
 		int minDiff = Integer.MAX_VALUE;
+		// for all the values of s1
 		for(int i=0; i<=sum/2; i++){
 			if(dp[i]){
-				minDiff = Math.min(minDiff, Math.abs(sum - 2*i));
+				int s1 = i;
+				int s2 = sum-i;
+				minDiff = Math.min(minDiff, Math.abs(s2 - s1));
 			}
 		}
 
