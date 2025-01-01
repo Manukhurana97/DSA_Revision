@@ -97,8 +97,6 @@ public class LongestIncreasingSubSequence{
 			}
 			next = curr;
 		}
-		
-		
 
 		return next[-0];
 	} 

@@ -19,6 +19,8 @@ public class DistinctSubsequences{
 	 * 2. Explore all possibilities
 	 * 3. Return sum/max/min/count
 	 * 4. Base case
+	 * 
+	 * eg : babgbag, bag
 	 * */ 
 	private int recursion(int index1, int index2, String s1, String s2){
 		if(index2 == -1) return 1;

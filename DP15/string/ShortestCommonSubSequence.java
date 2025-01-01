@@ -1,3 +1,4 @@
+// using longest commons substring approach
 public class ShortestCommonSubSequence{
 
 	public String shortestCommonSubSequence(String s1, String s2){

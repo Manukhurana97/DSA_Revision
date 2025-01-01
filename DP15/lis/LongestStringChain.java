@@ -31,7 +31,7 @@ public class LongestStringChain{
 
 		int i=0, j=0;
 
-		while(i<a.length() && i<b.length()){
+		while(i<a.length() && j<b.length()){
 			if(a.charAt(i) != b.charAt(j)){
 				j+=1;
 			}

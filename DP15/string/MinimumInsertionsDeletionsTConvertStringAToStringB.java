@@ -12,6 +12,7 @@ public class MinimumInsertionsDeletionsTConvertStringAToStringB{
 
 		int commonElement = spaceOptimization(s1, s2);
 
+				// no of insertions    no of deletions
 		return (n1 - commonElement) + (n2 - commonElement);
 	}
 

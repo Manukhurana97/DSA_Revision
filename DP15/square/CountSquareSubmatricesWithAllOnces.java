@@ -1,5 +1,11 @@
 public class CountSquareSubmatricesWithAllOnces{
 
+	/**
+	 * crete a table  : input {{1,1,1,1,1}, {1,1,1,1,0}, {1,1,1,1,1}}
+	 * 1 1 1 1 1
+	 * 1 2 2 2 0 
+	 * 1 2 3 3 1 
+	 * */ 
 	int countSquares(int[][] arr){
 		int rows = arr.length, cols = arr[0].length, count = 0;
 		int[][] dp = new int[rows][cols];
