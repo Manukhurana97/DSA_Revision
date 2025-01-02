@@ -1,4 +1,4 @@
-public class LongestCommonSubstring {
+public class LongestCommonSubstringPalandrome {
     public String longestPalindrome(String s) {
         int n = s.length();
         StringBuilder builder = new StringBuilder(s);
