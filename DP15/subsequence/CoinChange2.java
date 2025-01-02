@@ -5,12 +5,12 @@ public class CoinChange2{
 	public int numberOfWays(int[] arr, int target){
 		// return recursion(arr.length-1, arr, target);
 
-		// int[][] dp = new int[arr.length][target+1];
+		int[][] dp = new int[arr.length][target+1];
 		// return memoization(arr.length-1, arr, target, dp);
 
-		// return tabulation(arr, target, dp);
+		return tabulation(arr, target, dp);
 
-		return spaceOptimization(arr, target);
+		// return spaceOptimization(arr, target);
 	}
 
 	// Time: O(exponnential), Space: O(>>>n)
@@ -48,6 +48,7 @@ public class CoinChange2{
 	private int tabulation(int[] arr, int target, int[][] dp){
 		for(int t=0; t<=target; t++){
 			dp[0][t] = t % arr[0] == 0? 1 : 0;
+			System.out.print(dp[0][t]+" ");
 		}
 
 		for(int index=1; index<arr.length; index++){
@@ -89,8 +90,8 @@ public class CoinChange2{
 	public static void main(String[] args) {
 		CoinChange2 obj = new CoinChange2();
 
-		int[] arr = {1,2,5,10};
-		System.out.println(obj.numberOfWays(arr, 18));
+		int[] arr = {1,2,5};
+		System.out.println(obj.numberOfWays(arr, 5));
 
 	}
 }
