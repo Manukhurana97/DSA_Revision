@@ -2,121 +2,93 @@ import java.util.*;
 
 public class LongestIncreasingSubSequence{
 
-	public int longestIncSubSequence(int[] arr){
+	public int longestIncSubSequence(int[] nums) {
+        int n = nums.length;
+        // return recursion(0, -1, nums);
 
-		// return recurssion(0, -1, arr);
+        int[][] memo = new int[n+1][n+1];
+        for(int[] dp: memo)
+            Arrays.fill(dp, 0);
+        // return memoization(0, -1, nums, memo);
 
-		// int[][] dp = new int[arr.length+1][arr.length+1];
-		// for(int[] row: dp){
-		// 	Arrays.fill(row, -1);
-		// }
+        // return tabulation(nums, memo);
 
-		// return memoization(0, -1, arr, dp);
+        return spaceOptimization(nums);
+    }
 
-		// return tabulation(arr, dp);
+    private int recursion(int i, int prev, int[] nums){
+        if(i == nums.length) return 0;
 
-		// return spaceOptimization(arr);
+        int notTake = recursion(i+1, prev, nums);
+        int take = (prev == -1 || nums[prev] < nums[i]) ? 1 + recursion(i+1, i, nums) : 0;
 
-		return tabulation1(arr);
-	}
-
-
-	private int recurssion(int index, int prev, int[] arr){
-		if(index == arr.length) return 0;
-
-		int  nottake = recurssion(index+1, prev, arr);
-
-		int take = 0;
-		if(prev == -1 || arr[index]>arr[prev]){
-			take =  1 + recurssion(index+1, index, arr);
-		}
-		
-
-		return Math.max(take, nottake);
-	}
+        return Math.max(take , notTake);
+    }
 
 
-	private int memoization(int index, int prev, int[] arr, int[][] dp){
-		if(index == arr.length) return 0;
+    private int memoization(int i, int prev, int[] nums, int[][] dp){
+        if(i == nums.length) return 0;
 
-		if(dp[index][prev+1] != -1) return dp[index][prev+1];
+        if(dp[i][prev+1] != 0) return dp[i][prev+1];
 
-		int  nottake = memoization(index+1, prev, arr, dp);
+        int notTake = memoization(i+1, prev, nums, dp);
+        int take = (prev == -1 || nums[prev] < nums[i]) ? 1 + memoization(i+1, i, nums, dp) : 0;
 
-		int take = 0;
-		if(prev == -1 || arr[index]>arr[prev]){
-			take =  1 + memoization(index+1, index, arr, dp);
-		}
-		
+        return dp[i][prev+1] = Math.max(take , notTake);
+    }
 
-		return dp[index][prev+1] = Math.max(take, nottake);
-	} 
+    private int tabulation(int[] nums, int[][] dp){
+        int n = nums.length;
+        
+        for(int i=n-1; i>=0; i--){
+            for(int prev = i; prev>=-1; prev--){
+                int notTake = dp[i+1][prev+1];
+                int take = (prev == -1 || nums[prev] < nums[i]) ? 1 + dp[i+1][i+1] : 0;
 
+                dp[i][prev+1] = Math.max(take , notTake);
+            }
+        }
 
-	private int tabulation(int[] arr, int[][] dp){
-		int n = arr.length;
-
-		for(int index = n-1; index>=0; index--){
-			// since prev is till -1, we will increment + 1 for prev field
-			for(int prev = index-1; prev>=-1; prev--){
-				int  notTake = dp[index+1][prev+1];
-
-				int take = 0;
-				if(prev == -1 || arr[index]>arr[prev]){
-					take =  1 + dp[index+1][index+1];
-				}
-
-				dp[index][prev + 1] = Math.max(take, notTake);
-			}
-		}
-		
-		
-
-		return dp[0][-0];
-	} 
+        return dp[0][0];
+    }
 
 
-	// Time : O(n^2), space: O(2n)
-	private int spaceOptimization(int[] arr){
-		int n = arr.length;
+    private int spaceOptimization(int[] nums){
+        int n = nums.length;
 
-		int[] curr = new int[n+1];
-		int[] next = new int[n+1];
+        int[] ahread = new int[n+1];
+        
+        for(int i=n-1; i>=0; i--){
+            int[] curr = new int[n+1];
+            for(int prev = i; prev>=-1; prev--){
+                int notTake = ahread[prev+1];
+                int take = (prev == -1 || nums[prev] < nums[i]) ? 1 + ahread[i+1] : 0;
 
-		for(int index = n-1; index>=0; index--){
-			// since prev is till -1, we will increment + 1 for prev field
-			for(int prev = index-1; prev>=-1; prev--){
-				int  notTake = next[prev+1];
+                curr[prev+1] = Math.max(take , notTake);
+            }
+            ahread = curr;
+        }
 
-				int take = 0;
-				if(prev == -1 || arr[index]>arr[prev]){
-					take =  1 + next[index+1];
-				}
-
-				curr[prev + 1] = Math.max(take, notTake);
-			}
-			next = curr;
-		}
-
-		return next[-0];
-	} 
+        return ahread[0];
+    }
 
 
-	private int tabulation1(int[] arr){
-		int max = 1;
-		int[] dp = new int[arr.length]; 
+    private int spaceOptimization1(int[] nums){
+        int n = nums.length;
 
-		for(int i=0; i<arr.length; i++){
-			for(int prev = 0; prev<i; prev++){
-				if(arr[prev] < arr[i]){
-					dp[i] = Math.max(dp[i], dp[prev] + 1);
-				}
-			}
-			max = Math.max(max, dp[i]+1);
-		}
+        int[] ahread = new int[n+1];
+        
+        for(int i=n-1; i>=0; i--){
+            for(int prev = i; prev>=-1; prev--){
+                int notTake = ahread[prev+1];
+                int take = (prev == -1 || nums[prev] < nums[i]) ? 1 + ahread[i+1] : 0;
 
-		return max;
-	}
+                ahread[prev+1] = Math.max(take , notTake);
+            }
+        }
+
+        return ahread[0];
+    }
 
 
 
