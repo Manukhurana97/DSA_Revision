@@ -1,106 +1,76 @@
 public class LongestCommonSubSequence{
-	public int longestCommonSubSeq(String a, String b){
+	public int longestCommonSubSeq(String text1, String text2) {
+        int n1 = text1.length(), n2 = text2.length();
 
-		// return recursion(a.length()-1, b.length()-1, a, b);
+        // return recursion(n1-1, n2-1, text1, text2);
 
-		// int[][] dp = new int[a.length()][b.length()];
-		// return memoization(a.length()-1, b.length()-1, a, b, dp);
+        // int[][] dp = new int[n1+1][n2+1];
+        // return memoization(n1-1, n2-1, text1, text2, dp);
 
-		// int[][] dp = new int[a.length()+1][b.length()+1];
-		// return memoization1(a.length(), b.length(), a, b, dp);
+        // return tabulation(text1, text2, dp);
 
-		// return tabulation(a, b, dp);
+        return spaceOptimization(text1, text2);
+    }
 
-		return spaceOptimize(a, b);
-	}
+    private int recursion(int n1, int n2, String s1, String s2){
+        if(n1<0 || n2<0) return 0;
 
-	/**
-	 * Rules:
-	 * 1. express everything in tearms of index
-	 * 2. explore all possibilities on that index
-	 * 3. take the best amongst them
-	 * */ 
-	public int recursion(int index1, int index2, String a, String b){
-
-		if(index1<0 || index2<0) return 0;
-
-		if(a.charAt(index1) == b.charAt(index2))
-			return 1 + recursion(index1-1, index2-1, a, b);
-
-		return Math.max(recursion(index1-1, index2, a, b), recursion(index1, index2-1, a, b));
-	}	
+        if(s1.charAt(n1) == s2.charAt(n2)){
+            return 1 + recursion(n1-1, n2-1, s1, s2);
+        }
+        return Math.max(recursion(n1-1, n2, s1, s2), recursion(n1, n2-1, s1, s2));
+    }
 
 
-	public int memoization(int index1, int index2, String a, String b, int[][] dp){
+    private int memoization(int n1, int n2, String s1, String s2, int[][] dp){
+        if(n1<0 || n2<0) return 0;
 
-		if(index1<0 || index2<0) return 0;
+        if(dp[n1][n2] != 0) return dp[n1][n2];
 
-		if(dp[index1][index2] != 0) return dp[index1][index2];
-
-		if(a.charAt(index1) == b.charAt(index2))
-			return dp[index1][index2] = 1 + memoization(index1-1, index2-1, a, b, dp);
-
-		return dp[index1][index2] =  Math.max(memoization(index1-1, index2, a, b, dp), memoization(index1, index2-1, a, b, dp));
-	}	
-
-
-	// after shifting of index
-	public int memoization1(int index1, int index2, String a, String b, int[][] dp){
-
-		if(index1==0 || index2==0) return 0;
-
-		if(dp[index1][index2] != 0) return dp[index1][index2];
-
-		if(a.charAt(index1-1) == b.charAt(index2-1))
-			return dp[index1][index2] = 1 + memoization1(index1-1, index2-1, a, b, dp);
-
-		return dp[index1][index2] =  Math.max(memoization1(index1-1, index2, a, b, dp), memoization1(index1, index2-1, a, b, dp));
-	}	
+        if(s1.charAt(n1) == s2.charAt(n2)){
+            return 1 + memoization(n1-1, n2-1, s1, s2, dp);
+        }
+        
+        return dp[n1][n2] = Math.max(memoization(n1-1, n2, s1, s2, dp), memoization(n1, n2-1, s1, s2, dp));
+    }
 
 
-	public int tabulation(String a, String b, int[][] dp){
-		int n1 = a.length(), n2 = b.length();
+    private int tabulation(String s1, String s2, int[][] dp){
+        int l1 = s1.length(), l2 = s2.length();
+        dp[0][0] = 0;
 
-		for(int index1=0; index1<=n1; index1++){
-			dp[index1][0] = 0; 
-		}
-		for(int index2=0; index2<=n2; index2++){
-			dp[0][index2] = 0; 
-		}
+        for(int n1=1; n1<=l1; n1++){
+            for(int n2=1; n2<=l2; n2++){
+                if(s1.charAt(n1-1) == s2.charAt(n2-1)){
+                    dp[n1][n2] = 1 + dp[n1-1][n2-1];
+                }else{
+                    dp[n1][n2] = Math.max(dp[n1-1][n2], dp[n1][n2-1]);
+                }
+            }
+        }
 
-		for(int index1=1; index1<=n1; index1++){
-			for(int index2=1; index2<=n2; index2++){
-				if(a.charAt(index1-1) == b.charAt(index2-1))
-					dp[index1][index2] = 1 + dp[index1-1][index2-1];
-				else 
-					dp[index1][index2] =  Math.max(dp[index1-1][index2], dp[index1][index2-1]);
-			}
-		}
-		return dp[a.length()][b.length()];
-	}	
+        return dp[l1][l2];
+    }
 
 
-	public int spaceOptimize(String a, String b){
-		int n1 = a.length(), n2 = b.length();
+    private int spaceOptimization(String s1, String s2){
+        int l1 = s1.length(), l2 = s2.length();
+        int[] prev = new int[l2+1];
 
-		int[] prev = new int[n2+1];
-		int[] curr = new int[n2+1];
+        for(int n1=1; n1<=l1; n1++){
+            int[] curr = new int[l2+1];
+            for(int n2=1; n2<=l2; n2++){
+                if(s1.charAt(n1-1) == s2.charAt(n2-1)){
+                    curr[n2] = 1 + prev[n2-1];
+                }else{
+                    curr[n2] = Math.max(prev[n2], curr[n2-1]);
+                }
+            }
+            prev = curr;
+        }
 
-		for(int index1=0; index1<=n1; index1++){
-			prev[0] = 0; 
-		}	
-
-		for(int index1=1; index1<=n1; index1++){
-			for(int index2=1; index2<=n2; index2++){
-				if(a.charAt(index1-1) == b.charAt(index2-1))
-					curr[index2] = 1 + prev[index2-1];
-				else 
-					curr[index2] =  Math.max(prev[index2], curr[index2-1]);
-			}
-			prev = curr;
-		}
-		return prev[b.length()];
-	}	
+        return prev[l2];
+    }
 
 	public static void main(String[] args) {
 		LongestCommonSubSequence obj = new LongestCommonSubSequence();
