@@ -1,0 +1,22 @@
+// https://leetcode.com/problems/unique-binary-search-trees/description/
+
+public class UniqueNumberOfBinaryTrees{
+    public int numTrees(int n) {
+        int[] dp = new int[n+1];
+        Arrays.fill(dp, 1);
+
+        //  root node
+        for(int i=2; i<=n; i++){
+            int total = 0;
+            for(int j=1; j<=i; j++){
+                int left = j-1; // no of nodes on left
+                int right = i-j; // no of nodes on right
+                total += dp[left] * dp[right];
+            }
+
+            dp[i] = total;
+        }
+
+        return dp[n];
+    }
+}
