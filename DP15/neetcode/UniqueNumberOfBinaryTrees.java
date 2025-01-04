@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/unique-binary-search-trees/description/
 
 public class UniqueNumberOfBinaryTrees{
+    // n = 4 : (left : 0, right : 3 + left : 1, right : 2, left : 2: 1 ... )
     public int numTrees(int n) {
         int[] dp = new int[n+1];
         Arrays.fill(dp, 1);
