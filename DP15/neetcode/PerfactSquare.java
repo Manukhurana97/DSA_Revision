@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/perfect-squares/
+
 public class PerfactSquare{
 	public int numSquares(int n) {
         if(n==1) return 1;
