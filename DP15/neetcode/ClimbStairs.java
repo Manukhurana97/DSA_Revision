@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/climbing-stairs/
+
 public class ClimbStairs {
     public int climbStairs(int n) {
         
@@ -14,7 +16,7 @@ public class ClimbStairs {
 
     
     private int recursion(int n){
-        if(n < 0) return 1;
+        if(n < 0) return 0;
         if(n == 0) return 1;
 
         return recursion(n-1) + recursion(n-2);

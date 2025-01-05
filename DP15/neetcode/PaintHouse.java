@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/paint-house/description/ 
+// https://www.lintcode.com/problem/515/
+
 public class PaintHouse{
 
 	private int minCost(int[][] costs) {

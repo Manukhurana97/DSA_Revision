@@ -2,12 +2,12 @@ public class WildcardMatching{
 	private boolean wildCard(String a, String b){
 		int n1 = a.length(), n2 = b.length();
 
-		// return recursion(n1-1, n2-1, a, b);
+		return recursion(n1-1, n2-1, a, b);
 
 		// int[][] dp = new int[n1+1][n2+1];
 		// return memoization(n1-1, n2-1, a, b, dp);
 
-		return tabulation(a, b);
+		// return tabulation(a, b);
 
 		// return spaceOptimize(a, b);
 	}

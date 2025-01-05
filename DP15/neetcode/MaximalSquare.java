@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/maximal-square/description/
+
 public class MaximalSquare{
     public int maximalSquare(char[][] matrix) {
         int rows = matrix.length, cols = matrix[0].length;

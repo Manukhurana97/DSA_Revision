@@ -9,7 +9,7 @@ public class targetSum {
         for(int i: arr) sum+=i;
         if(Math.abs(d) > sum) return 0;
 
-        int[][] dp = new int[arr.length][2*sum+1];
+        int[][] dp = new int[arr.length][2*sum+1]; // to avoid the negative value
         for(int[] i: dp) Arrays.fill(i, 0);
         
         // return memoiztion(arr.length-1, d, arr, sum, dp);
@@ -36,9 +36,9 @@ public class targetSum {
             return target == 0 ? 1 : 0;
 
         int index = sum + target;
-        if(index<0 || index>=2*sum+1) return 0;
+        if(index<0 || index>=2*sum+1) return 0; 
 
-        if(dp[i][sum+target] != 0) return dp[i][sum+target];
+        if(dp[i][sum+target] != 0) return dp[i][sum+target]; // sum + target : inorder to avoid the negative indexes thats why we sum with target
 
         int pos = memoiztion(i-1, target+arr[i], arr, sum, dp);
         int neg = memoiztion(i-1, target-arr[i], arr, sum, dp);
