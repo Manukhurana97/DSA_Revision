@@ -25,6 +25,9 @@ public class BurstBallons{
 
 		int maxProfit = 0;
 		for(int ind = i; ind<=j; ind++){
+			// coins=list[i-1]×list[ind]×list[j+1]+left part+right part
+			// we will start from last and move till 0 , inorder to make it independent, after solveing current
+			// solve current + left + right
 			int cost = arr.get(i-1) * arr.get(ind) * arr.get(j+1) + recursion(i, ind-1, arr) + recursion(ind+1, j, arr);
 			maxProfit = Math.max(maxProfit, cost);
 		}
