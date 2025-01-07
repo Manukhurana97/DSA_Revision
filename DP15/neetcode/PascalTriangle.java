@@ -23,14 +23,15 @@ public class PascalTriangle {
         return list;
     }
 
+    // r! / r-c! * c!
     private int createPascalElement(int r, int c) {
-    int row = 1;
+	    int row = 1;
 
-    for (int i = 0; i < c; i++) {
-        row *= (r - i); 
-        row /= (i + 1);
-    }
+	    for (int i = 0; i < c; i++) {
+	        row *= (r - i); 
+	        row /= (i + 1);
+	    }
 
-    return row;
-}
+	    return row;
+	}
 }
