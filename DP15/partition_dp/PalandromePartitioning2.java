@@ -8,9 +8,8 @@ public class PalandromePartitioning2{
 		int[] dp = new int[n+1];
 		// return memoization(0,str, dp);
 
-		// return tabulation(str, dp);
+		return tabulation(str, dp);
 
-		return spaceOptimization(str);
 	}
 
 
