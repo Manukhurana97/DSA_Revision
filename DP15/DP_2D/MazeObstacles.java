@@ -1,3 +1,6 @@
+// similar to unique path 2 
+// https://leetcode.com/problems/unique-paths/description/
+
 public class MazeObstacles{
 
 	public int uniquePath(int[][] grid){
