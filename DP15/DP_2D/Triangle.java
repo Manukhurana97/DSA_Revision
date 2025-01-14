@@ -1,4 +1,5 @@
 // fix starting point and variable ending point
+// https://leetcode.com/problems/triangle/description/
 public class Triangle{
 
 	public int minPathSum(int[][] grid){
@@ -19,7 +20,7 @@ public class Triangle{
 		if(r==grid.length-1) return grid[r][c];
 
 		int down = dfs(r+1, c, grid);
-		int downRight = dfs(r + 1, c+1, grid);
+		int downRight = dfs(r+1, c+1, grid);
 
 		return grid[r][c] + Math.min(down, downRight);
 	}
@@ -36,6 +37,7 @@ public class Triangle{
 
 		return dp[r][c] =  grid[r][c] + Math.min(down, downRight);
 	}
+	
 
 	public int tabulation(int[][] grid, int[][] dp){
 		int rows = grid.length;

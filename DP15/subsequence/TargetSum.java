@@ -3,8 +3,8 @@
 public class TargetSum{
 
 	// s1 - s2 = d :: s1 + s2 = totalSum
-	// s1 + totalsum + s1 = d
-	// s1 = (totalSum - d) / 2 
+	// d + s2 + s1 = totalSum
+	// s2 = (totalSum - d) / 2 
 
 	public int countParitions(int[] arr, int d){
 		int sum = 0;

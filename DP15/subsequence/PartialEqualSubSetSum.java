@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/partition-equal-subset-sum/description/
+
 public class PartialEqualSubSetSum{
 	private boolean canPartition(int[] arr){
 		int sum = 0;
