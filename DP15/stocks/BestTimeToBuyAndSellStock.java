@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+
 // can buy and sell only one.
 public class BestTimeToBuyAndSellStock{
 	private int maxProfit(int[] arr){

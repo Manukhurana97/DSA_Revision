@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/wildcard-matching/description/
+
 public class WildcardMatching{
 	private boolean wildCard(String a, String b){
 		int n1 = a.length(), n2 = b.length();
