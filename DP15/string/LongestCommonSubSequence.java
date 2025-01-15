@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/longest-common-subsequence/
+
 public class LongestCommonSubSequence{
 	public int longestCommonSubSeq(String text1, String text2) {
         int n1 = text1.length(), n2 = text2.length();
