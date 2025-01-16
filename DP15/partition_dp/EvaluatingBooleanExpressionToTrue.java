@@ -1,4 +1,4 @@
-public class EvaluatingBooleanExpressionToTrue{
+ public class EvaluatingBooleanExpressionToTrue{
 	private int evaluateExpression(String exp){
 		int n = exp.length();
 
@@ -26,16 +26,19 @@ public class EvaluatingBooleanExpressionToTrue{
 
 		int ways = 0;
 		for(int ind = i+1; ind<=j-1; ind+=2){
-			int lt = recursion(i, ind - 1, true, ch);
-            int lf = recursion(i, ind - 1, false, ch);
-            int rt = recursion(ind + 1, j, true, ch);
-            int rf = recursion(ind + 1, j, false, ch);
+			int lt = recursion(i, ind - 1, true, ch); // looking for left partion to be true
+            int lf = recursion(i, ind - 1, false, ch); // looking for left partion to be false
+            int rt = recursion(ind + 1, j, true, ch); // looking for right partion to be true
+            int rf = recursion(ind + 1, j, false, ch); // looking for right partion to be false
 
 			if(ch[ind] == '&'){
+							// if we wan true : if we want false 
 				ways +=  isTrue ? (lt * rt) : (lf * rt + lt * rf + lf * rf); 
 			}else if(ch[ind] == '^'){
+							// if we wan true : if we want false 
 				ways += isTrue ? (lt * rf | lf * rt) : (lt * rt + lf * rf);
 			}else {
+							// if we wan true : if we want false 
 				ways += isTrue ? (lt * rt + lt* rf + lf * rt) : (lf * rf);
 			}
 		}

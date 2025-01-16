@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/longest-string-chain/
+
 import java.util.*;
 
 /*similar to PrintLongestIncreasingSubSequence*/

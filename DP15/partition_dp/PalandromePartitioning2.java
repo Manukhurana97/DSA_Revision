@@ -1,14 +1,16 @@
+// https://leetcode.com/problems/palindrome-partitioning-ii/
+
 public class PalandromePartitioning2{
 
 	/*min cuts required to make all string palandrome*/
 	private int getMinPartitions(String str){
 		int n = str.length();
-		// return recursion(0, str);
+		// return recursion(0, str)-1;
 
 		int[] dp = new int[n+1];
-		// return memoization(0,str, dp);
+		// return memoization(0,str, dp)-1;
 
-		return tabulation(str, dp);
+		return tabulation(str, dp)-1;
 
 	}
 
@@ -34,9 +36,9 @@ public class PalandromePartitioning2{
 		if(i==str.length()) return 0;
 
 		int minPartitions = Integer.MAX_VALUE;
-		for(int ind=i; ind<str.length(); ind++){
-			if(isPalandrome(i, ind, str)){
-				int partitions = 1 + recursion(ind+1, str);
+		for(int ind=i; ind<str.length(); ind++){ // will create partition at each element 
+			if(isPalandrome(i, ind, str)){ // check if element is palandrome 
+				int partitions = 1 + recursion(ind+1, str); // add one to partition count
 				minPartitions =Math.min(minPartitions, partitions);
 			}
 		}

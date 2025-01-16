@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/partition-array-for-maximum-sum/submissions/1510345582/
+
 public class PartitionArrayForMaxSum{
 	
 	private int maxSum(int[] arr, int k){
@@ -13,9 +15,9 @@ public class PartitionArrayForMaxSum{
 		if(i>=arr.length) return 0;
 
 		int len = 0, maxVal = 0, maxAns = 0;
-		for(int ind = i; ind<Math.min(arr.length, i+k); ind++){
-			len+=1;
-			maxVal = Math.max(maxVal, arr[ind]);
+		for(int ind = i; ind<Math.min(arr.length, i+k); ind++){ // will create partition at each element , max element in partition is k
+			len+=1; // len of partition
+			maxVal = Math.max(maxVal, arr[ind]); // max Element in partition
 
 			int sum = (len * maxVal) + recursion(ind+1, k, arr);
 			maxAns = Math.max(maxAns, sum);
