@@ -25,7 +25,7 @@ public class PartitionArrayIntoTowarrayMinimizeDifference {
         for(int i=0; i<res.length; i++){
             if(res[i]){
                 int s1 = i-offset;
-                int s2 = totalSum-i;
+                int s2 = totalSum-i-offset;
 
                 int diff = Math.abs(s2-s1);
                 minDiff = Math.min(minDiff, diff);

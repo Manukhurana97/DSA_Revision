@@ -23,7 +23,7 @@ public class PaintHouse{
 		int minCost = Integer.MAX_VALUE;
 		for(int c=0; c<costs[r].length; c++){
 			if(c!=prev){
-				int cost = costs[r][c] + recursion(r-1,  c, costs);
+				int cost = costs[r][c] + recursion(r-1, c, costs);
 				minCost = Math.min(minCost, cost);
 			}
 		}

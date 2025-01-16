@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/count-vowels-permutation/description/ 
+
 public class CountVowelsPermutations{
 	public int countVowelPermutation(int n) {
         int[][] dp = new int[n+1][5];

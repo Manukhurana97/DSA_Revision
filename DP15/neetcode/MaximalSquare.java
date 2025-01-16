@@ -8,19 +8,19 @@ public class MaximalSquare{
         Integer[][] memo = new Integer[rows+1][cols+1];
 
         int maxValue = 0;
-        // for(int r=0; r<rows; r++){
-        //     for(int c=0; c<cols; c++){
-        //         // maxValue = Math.max(maxValue, recursion(r, c, matrix));
+        for(int r=0; r<rows; r++){
+            for(int c=0; c<cols; c++){
+                // maxValue = Math.max(maxValue, recursion(r, c, matrix));
 
-        //         maxValue = Math.max(maxValue, memoization(r, c, matrix, memo));
-        //     }
-        // } 
+                maxValue = Math.max(maxValue, memoization(r, c, matrix, memo));
+            }
+        } 
          
-        // return maxValue * maxValue;
+        return maxValue * maxValue;
 
         // return tabulation(matrix);
 
-        return spaceOptimization(matrix);
+        // return spaceOptimization(matrix);
     }
 
     private int recursion(int r, int c, char[][] matrix){
@@ -30,6 +30,7 @@ public class MaximalSquare{
         int left = recursion(r-1, c, matrix);
         int top = recursion(r, c-1, matrix);
         int topleft = recursion(r-1, c-1, matrix);
+
 
         return 1 + Math.min(Math.min(left, top), topleft);
 
@@ -44,6 +45,7 @@ public class MaximalSquare{
         int left = memoization(r-1, c, matrix, dp);
         int top = memoization(r, c-1, matrix, dp);
         int topleft = memoization(r-1, c-1, matrix, dp);
+
 
         return dp[r][c] = 1 + Math.min(Math.min(left, top), topleft);
 
@@ -104,5 +106,12 @@ public class MaximalSquare{
         }
 
         return maxValue * maxValue;
+    }
+
+    public static void main(String[] args) {
+        char[][] arr = {{'1','1','1','1'}, {'1', '1','1','1'},{'1','1','1','1'}, {'1', '1','1','1'}};
+
+        MaximalSquare obj = new MaximalSquare();
+        System.out.println(obj.maximalSquare(arr));
     }
 }

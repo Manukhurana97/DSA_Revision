@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/minimum-cost-for-tickets/description/
+
 public class MinimumCostForTickets {
     public int mincostTickets(int[] days, int[] costs) {
         int n = days.length;

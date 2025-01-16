@@ -24,6 +24,7 @@ public class CoinChange{
         if(i == 0) return amount%coins[i] == 0 ? amount/coins[i] : Integer.MAX_VALUE;
 
         int notTake = recursion(i-1, coins, amount);
+
         int take = Integer.MAX_VALUE;
         if(amount >= coins[i]){
             int result = recursion(i, coins, amount-coins[i]);
@@ -43,6 +44,7 @@ public class CoinChange{
         if(dp[i][amount] != 0) return dp[i][amount];
 
         int notTake = memoization(i-1, coins, amount, dp);
+
         int take = Integer.MAX_VALUE;
         if(amount >= coins[i]){
             int result = memoization(i, coins, amount-coins[i], dp);
@@ -67,6 +69,7 @@ public class CoinChange{
             for(int amount = 0;amount<=target; amount++){
                 
                 int notTake = dp[i-1][amount];
+                
                 int take = Integer.MAX_VALUE;
                 if(amount >= coins[i]){
                     int result = dp[i][amount-coins[i]];

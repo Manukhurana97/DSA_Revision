@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/decode-ways/
+
 public class DecodeWay {
     public int numDecodings(String s) {
         // return recursion(0, s);

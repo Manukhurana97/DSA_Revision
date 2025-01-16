@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/cherry-pickup-ii/
+
 import java.util.*;
 
 public class cherryPickup{
@@ -112,57 +114,94 @@ public class cherryPickup{
 
 
 	public int spaceOptimization(int rows, int cols, int[][] grid) {
-    int[][] dp = new int[cols][cols];
-    int[][] curr = new int[cols][cols];
+	    int[][] dp = new int[cols][cols];
+	    int[][] curr = new int[cols][cols];
 
-    // Initialize dp for the last row
-    for (int c1 = 0; c1 < cols; c1++) {
-        for (int c2 = 0; c2 < cols; c2++) {
-            dp[c1][c2] = grid[rows - 1][c1] + (c1 == c2 ? 0 : grid[rows - 1][c2]);
+	    // Initialize dp for the last row
+	    for (int c1 = 0; c1 < cols; c1++) {
+	        for (int c2 = 0; c2 < cols; c2++) {
+	            dp[c1][c2] = grid[rows - 1][c1] + (c1 == c2 ? 0 : grid[rows - 1][c2]);
+	        }
+	    }
+
+	    // Fill dp bottom-up
+	    for (int r = rows - 2; r >= 0; r--) {
+	        for (int c1 = 0; c1 < cols; c1++) {
+	            for (int c2 = 0; c2 < cols; c2++) {
+	                int maxValue = Integer.MIN_VALUE;
+
+	                for (int move1 = -1; move1 <= 1; move1++) {
+	                    for (int move2 = -1; move2 <= 1; move2++) {
+	                        int newC1 = c1 + move1;
+	                        int newC2 = c2 + move2;
+
+	                        if (newC1 >= 0 && newC1 < cols && newC2 >= 0 && newC2 < cols) {
+	                            int value = grid[r][c1] + (c1 == c2 ? 0 : grid[r][c2]) + dp[newC1][newC2];
+	                            maxValue = Math.max(maxValue, value);
+	                        }
+	                    }
+	                }
+	                curr[c1][c2] = maxValue;
+	            }
+	        }
+
+	        // Copy curr to dp for the next iteration
+	        for (int c1 = 0; c1 < cols; c1++) {
+	            for (int c2 = 0; c2 < cols; c2++) {
+	                dp[c1][c2] = curr[c1][c2];
+	            }
+	        }
+	    }
+
+	    // Get the result from the first row
+	    int result = Integer.MIN_VALUE;
+	    for (int c1 = 0; c1 < cols; c1++) {
+	        for (int c2 = 0; c2 < cols; c2++) {
+	            result = Math.max(result, dp[c1][c2]);
+	        }
+	    }
+
+	    return result;
+	}
+
+
+	// not space optimize, but optimized from above
+	private int spaceOptimization(int[][] grid){
+        int rows = grid.length, cols = grid[0].length;
+        int[][] prev = new int[cols][cols];
+
+        for(int c1=cols-1; c1>=0; c1--){
+            for(int c2 = 0; c2<cols; c2++){
+                prev[c1][c2] = grid[rows-1][c1] + (c1 == c2 ? 0 :grid[rows-1][c2]);
+            }
         }
-    }
 
-    // Fill dp bottom-up
-    for (int r = rows - 2; r >= 0; r--) {
-        for (int c1 = 0; c1 < cols; c1++) {
-            for (int c2 = 0; c2 < cols; c2++) {
-                int maxValue = Integer.MIN_VALUE;
+        for(int r=rows-2; r>=0; r--){
+            int[][] curr = new int[cols][cols];
+            for(int c1=cols-1; c1>=0; c1--){
+                for(int c2 = 0; c2<cols; c2++){
+                    
+                    int maxValue = 0;
 
-                for (int move1 = -1; move1 <= 1; move1++) {
-                    for (int move2 = -1; move2 <= 1; move2++) {
-                        int newC1 = c1 + move1;
-                        int newC2 = c2 + move2;
+                    for(int i=-1; i<=1; i++){
+                        for(int j=-1; j<=1; j++){
 
-                        if (newC1 >= 0 && newC1 < cols && newC2 >= 0 && newC2 < cols) {
-                            int value = grid[r][c1] + (c1 == c2 ? 0 : grid[r][c2]) + dp[newC1][newC2];
+                            int value = grid[r][c1] + (c1 == c2 ? 0 : grid[r][c2]);
+
+                            value += (c1+i>=0 && c2+j>=0 &&  c1+i < grid[r].length && c2+j < grid[r].length) ? prev[c1+i][c2+j] : Integer.MIN_VALUE;
+
                             maxValue = Math.max(maxValue, value);
                         }
                     }
+
+                    curr[c1][c2] = maxValue;
                 }
-                curr[c1][c2] = maxValue;
             }
+            prev = curr;
         }
 
-        // Copy curr to dp for the next iteration
-        for (int c1 = 0; c1 < cols; c1++) {
-            for (int c2 = 0; c2 < cols; c2++) {
-                dp[c1][c2] = curr[c1][c2];
-            }
-        }
+        return prev[0][cols-1];
     }
-
-    // Get the result from the first row
-    int result = Integer.MIN_VALUE;
-    for (int c1 = 0; c1 < cols; c1++) {
-        for (int c2 = 0; c2 < cols; c2++) {
-            result = Math.max(result, dp[c1][c2]);
-        }
-    }
-
-    return result;
-}
-
-
 
 
 	public static void main(String[] args) {

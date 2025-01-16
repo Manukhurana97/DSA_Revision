@@ -1,4 +1,6 @@
-PalandromicSubString{
+// https://leetcode.com/problems/palindromic-substrings/description/
+
+public class PalandromicSubString{
 
     public int countSubstrings(String s) {
         int n = s.length(), count = 0;
@@ -34,10 +36,10 @@ PalandromicSubString{
     public int countSubstrings(String s) {
         int count = 0;
         
-        // consider each element as center and check for its left and right
+        // consider each element as center and check for its left-- and right++
         for(int i=0; i<s.length(); i++){
             count += palandromeCount(i, i, s); // for odd
-            count += palandromeCount(i, i+1, s); // for odd
+            count += palandromeCount(i, i+1, s); // for even
         }
 
         return count;

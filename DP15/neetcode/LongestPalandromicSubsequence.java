@@ -13,7 +13,7 @@ public class LongestPalandromicSubsequence {
 
         // return tabulation(s, builder.reverse().toString(), dp);
 
-        return spaceOptimization1(s, builder.reverse().toString());
+        return spaceOptimization(s, builder.reverse().toString());
     }
 
 

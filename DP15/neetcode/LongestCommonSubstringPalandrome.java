@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/longest-palindromic-substring/description/
+
 public class LongestCommonSubstringPalandrome {
     public String longestPalindrome(String s) {
         int n = s.length();
@@ -134,7 +136,7 @@ public class LongestCommonSubstringPalandrome {
 
 
     public static void main(String[] args) {
-        LongestCommonSubstring solution = new LongestCommonSubstring();
+        LongestCommonSubstringPalandrome solution = new LongestCommonSubstringPalandrome();
         System.out.println(solution.longestPalindrome("babad"));  // Output: "bab" or "aba"
         System.out.println(solution.longestPalindrome("cbbd"));   // Output: "bb"
     }

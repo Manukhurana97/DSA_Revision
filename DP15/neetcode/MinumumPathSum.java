@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/minimum-path-sum/
+
 public class MinumumPathSum{
 	public int minPathSum(int[][] grid) {
         int rows = grid.length, cols = grid[0].length;

@@ -7,7 +7,7 @@ public class UniqueNumberOfBinaryTrees{
         Arrays.fill(dp, 1);
 
         //  root node
-        for(int i=2; i<=n; i++){
+        for(int i=1; i<=n; i++){
             int total = 0;
             for(int j=1; j<=i; j++){
                 int left = j-1; // no of nodes on left

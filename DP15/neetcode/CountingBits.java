@@ -5,8 +5,9 @@ public class CountingBits{
         int[] result = new int[n+1];
 
         for(int i=1; i<=n; i++){
-            int count = 0 ;
-            int j = i;
+            
+            int count=0, j=i;
+            
             while(j>0){
                 count += j&1;
                 j>>>=1;

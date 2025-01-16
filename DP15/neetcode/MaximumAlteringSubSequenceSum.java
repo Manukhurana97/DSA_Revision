@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/maximum-alternating-subsequence-sum/
 
+// its similar to stock to stock buy and sell (jus opposite, sell and buy)
 public class MaximumAlteringSubSequenceSum {
     public long maxAlternatingSum(int[] nums) {
         int n = nums.length;
@@ -20,9 +21,9 @@ public class MaximumAlteringSubSequenceSum {
 
         long profit = 0;
         if(canAdd){
-            profit = Math.max(nums[i] + recursion(i-1, false, nums, dp), recursion(i-1, true, nums, dp));
+            profit = Math.max(nums[i] + recursion(i-1, false, nums, dp), recursion(i-1, true, nums, dp)); // sell 
         }else{
-            profit = Math.max(-nums[i] + recursion(i-1, true, nums, dp), recursion(i-1, false, nums, dp));
+            profit = Math.max(-nums[i] + recursion(i-1, true, nums, dp), recursion(i-1, false, nums, dp)); // buy
         }
 
         return dp[i][canAdd ? 1: 0] = profit;

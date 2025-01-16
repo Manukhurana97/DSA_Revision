@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/combination-sum-iv/description/
+
+
 public class CombinationSum4 {
     public int combinationSum4(int[] nums, int target) {
         int n = nums.length;
@@ -19,8 +22,8 @@ public class CombinationSum4 {
         if(dp[target] != 0) return dp[target];
 
         int count = 0;
-        for(int i : nums)
-            count += recursion(target - i, nums, dp);
+        for(int i : nums) // every time it start from 0 as nums didnt change, we first call the element and during (auto) bactrack we skip the element
+            count += recursion(target - i, nums, dp); 
                 
         return dp[target] = count;
     }

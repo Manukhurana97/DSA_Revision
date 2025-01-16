@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/jump-game/
+
 public class JumpGame{
 	public boolean canJump(int[] nums) {
         if(nums.length == 1) return true;

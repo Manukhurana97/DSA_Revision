@@ -78,10 +78,11 @@ public class PerfactSquare{
             prev[t] = t;
         }
         
-        for(int i=2; i<=n; i++){
-            for(int t=1; t<=target; t++){
+        for(int i=1; i*i<=n; i++){
+            int square = i*i;
+            for(int t=square; t<=target; t++){
                 int notTake = prev[t];
-                int take = (t - i*i >= 0) ? 1 + prev[t-i*i] : Integer.MAX_VALUE;
+                int take = (t - i*i >= 0) ? 1 + prev[t-square] : Integer.MAX_VALUE;
         
                 prev[t] = Math.min(take, notTake);
             }
@@ -89,4 +90,45 @@ public class PerfactSquare{
 
         return prev[target];
     }
+}
+
+
+
+// -----------------------------------------------------------------
+
+public int numSquares(int n) {
+    if (n <= 0) return 0;
+
+    // Queue for BFS
+    Queue<Integer> queue = new LinkedList<>();
+    queue.add(n);
+    int level = 0;
+
+    // Set to track visited numbers
+    Set<Integer> visited = new HashSet<>();
+
+    while (!queue.isEmpty()) {
+        int size = queue.size();
+        level++;
+
+        for (int i = 0; i < size; i++) {
+            int curr = queue.poll();
+
+            // Iterate through all possible perfect squares
+            for (int j = 1; j * j <= curr; j++) {
+                int next = curr - j * j;
+
+                // If we reach zero, return the level
+                if (next == 0) return level;
+
+                // If not visited, add to the queue
+                if (!visited.contains(next)) {
+                    visited.add(next);
+                    queue.add(next);
+                }
+            }
+        }
+    }
+
+    return level;
 }
