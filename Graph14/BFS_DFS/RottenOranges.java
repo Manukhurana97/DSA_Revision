@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/rotting-oranges/
+
 public class RottenOranges{
 	public int orangesRotting(int[][] grid) {
 
@@ -5,6 +7,7 @@ public class RottenOranges{
         Queue<int[]> queue = new LinkedList<>();
 
 
+        // to collect initial rotten oranges
         for(int r = 0; r < grid.length; r++){
             for(int c = 0; c < grid[r].length; c++){
                 // get all the initially rotten orranges 
@@ -19,7 +22,7 @@ public class RottenOranges{
         }
 
 
-        // perform BFS
+        // pop current rotten and make neighbours rotten
         int time = 0;
         while(!queue.isEmpty()){
 

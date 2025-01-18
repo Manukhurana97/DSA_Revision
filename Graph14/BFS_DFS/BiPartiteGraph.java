@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/is-graph-bipartite/
+
 public class BiPartiteGraph{
 	/* 
  * a graph is said to be a bipartite graph if parent and child dont have same color 
@@ -8,49 +10,53 @@ public class BiPartiteGraph{
 */
 
 
-	public boolean isBipartite(ArrayList<ArrayList<Integer>> adj) {
-        int[] color = new int[adj.size()];
-       
-        for(int i=0;i<adj.size();i++) color[i] = -1;
+	public boolean isBipartite(int[][] graph) {
         
-        for(int i=0;i<adj.size();i++){
-        	// if (!BFS(i, adj, color)) return false;
-        	if (!DFS(i, adj, color)) return false;
+        int[] color = new int[graph.length];
+        Arrays.fill(color, -1);
+
+        for(int i=0; i<graph.length; i++)
+            if(color[i] ==-1){
+                color[i] = 0;
+                if(!bfs(i, color, graph))
+                    return false;
+            }
+        return true;
+    }
+
+    private boolean dfs(int current, int[] color, int[][] adjList){
+        
+        for(int neighbour: adjList[current]){
+            if(color[neighbour] == -1){
+                color[neighbour] = 1 - color[current];
+                if(!dfs(neighbour, color, adjList)){
+                    return false;
+                }
+            }else if(color[neighbour] == color[current]){
+                    return false;
+                }
         }
-       
 
         return true;
     }
 
-    public boolean BFS(int i, ArrayList<ArrayList<Integer>> adj, int[] color){
-    	Queue<Integer> queue = new LinkedList<>();
-        queue.add(i); 
+
+    private boolean bfs(int current, int[] color, int[][] adjList){
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(current);
 
         while(!queue.isEmpty()){
-        	int current = queue.poll();
-
-        	for(int neighbour: adj.get(current)){
-        		if(color[neighbour] == -1){
-        			color[neighbour] = 1 - color[current];
-        		}else if(color[neighbour] == color[current]){
-        			return false;
-        		}
-        	}
+            current = queue.poll();
+            for(int neighbour: adjList[current]){
+                if(color[neighbour] == -1){
+                    color[neighbour] = 1 - color[current];
+                    queue.add(neighbour);
+                }else if(color[neighbour] == color[current]){
+                    return false;
+                }
+            }
         }
 
         return true;
-    }
-
-    public boolean DFS(int current, ArrayList<ArrayList<Integer>> adj, int[] color){
-    	for(int neighbour: adj.get(current)){
-    		if(color[neighbour] == -1){
-    			color[neighbour] = 1 - color[current];
-    			if(!DFS(neighbour, adj, color)) return false;
-    		}else if(color[neighbour] == color[current]){
-    			return false;
-    		}
-    	}
-
-    	return true;
     }
 }
