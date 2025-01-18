@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/course-schedule-ii/description/
+
 public class Course1And2{
 
 	public boolean isPossible(int n,int P, int[][] prerequisites){

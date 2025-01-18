@@ -4,7 +4,7 @@ import java.util.*;
 /*for linear ordering of vertices, such that if there is an edge b/w u&v, u appears before v in the ordering extension of a topo sort (BFS)
 
 	1. get the indegree (no of incoming nodes) of all the nodes
-	2. get all the element with indegree 0 (there will be my initial nodes, and put them in queue)
+	2. get all the element with indegree 0 (there will be n initial nodes, and put them in queue)
 	3. get all the initial element from queue (add it in result) and reduce the outdegree (remove connection)
 	4. if the neighbours element is 0, add it in a queue 
 */ 

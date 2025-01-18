@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/find-eventual-safe-states/description/
+
 public class FindEventualSafeStates{
 
 	public List<Integer> eventualSafeNodes(int[][] graph) {
@@ -56,6 +58,7 @@ public class FindEventualSafeStates{
     }
 
 
+// ----------------------------------------------------------------------------------
 
 
     public List<Integer> eventualSafeNodes(int[][] graph) {

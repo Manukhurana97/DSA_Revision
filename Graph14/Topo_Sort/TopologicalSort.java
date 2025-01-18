@@ -37,4 +37,3 @@ public class TopologicalSort{
         stack.add(current);
     }
 }
-}

@@ -24,7 +24,6 @@ public class DetectCycleindirectedGraph{
 			}
 		}
 
-
 		// remove all the connection with adjacent nodes
 		int count = 0;
 		while(!queue.isEmpty()){
