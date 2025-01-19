@@ -1,4 +1,6 @@
-publoc class FindTheCityWithTheSmallestNumberOfneighbourThenTrashold{
+// https://leetcode.com/problems/find-the-city-with-the-smallest-number-of-neighbors-at-a-threshold-distance/
+
+public class FindTheCityWithTheSmallestNumberOfneighbourThenTrashold{
 
     // can be done by dijastra also, perform digstra on all the nodes
     int findCity(int n, int m, int[][] edges,int distanceThreshold)
@@ -51,4 +53,59 @@ publoc class FindTheCityWithTheSmallestNumberOfneighbourThenTrashold{
             
             return city;
       }
+
+
+// ----------------------------------------------------------------------------
+
+
+    public int findTheCity(int n, int[][] edges, int distanceThreshold) {
+        int[][] distance = new int[n][n];
+
+        for(int i=0; i<n; i++){
+            Arrays.fill(distance[i], Integer.MAX_VALUE);
+            distance[i][i] = 0;
+        }
+
+        for (int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            int wt = edge[2];
+
+            distance[u][v] = wt;
+            distance[v][u] = wt;
+        }
+
+
+        for(int k=0; k<n; k++){
+            for(int i=0; i<n; i++){
+                for(int j=0; j<n; j++){
+                    if(distance[i][k] != Integer.MAX_VALUE && distance[k][j] != Integer.MAX_VALUE) {
+                        distance[i][j] = Math.min(distance[i][j], distance[i][k] + distance[k][j]);
+                    }
+                }
+            }
+        }
+
+
+        int city = -1;
+        int minCount = n;
+        for(int i=0; i<n; i++){
+            int count = 0;
+            for(int j=0; j<n; j++){
+                if(distance[i][j] <= distanceThreshold){
+                    count+=1;
+                }
+            }
+
+            if(minCount>=count){
+                minCount = count;
+                city = i;
+            }
+
+        }
+
+        return city;
+        
+    }
+
 }

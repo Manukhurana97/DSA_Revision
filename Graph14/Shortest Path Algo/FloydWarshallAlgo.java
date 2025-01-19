@@ -12,7 +12,7 @@ public class FloydWarshallAlgo{
         }
          
         // Floyd-Warshall algorithm
-        // its a find of brute force, from a to b , it will go via a->0  and then 0 -> b
+        // its a kind of brute force, from a to b , it will go via a->0  and then 0 -> b
         for(int via = 0; via < n; via++){
             for(int r = 0; r < n; r++){
                 for(int c = 0; c < n; c++){

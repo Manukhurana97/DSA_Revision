@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=shortest-path-in-undirected-graph-having-unit-distance
+
 public ShortestPathInUGWithUnitWeight{
 	
 	public int[] shortestPath(int[][] edges,int n,int m ,int src) {
@@ -11,6 +13,7 @@ public ShortestPathInUGWithUnitWeight{
             adjList.add(new ArrayList<>());
         }
         
+        // weight we will store in distance matrix (unit weight for all nodes is 1)
         for (int[] edge : edges) {
             adjList.get(edge[0]).add(edge[1]);
             adjList.get(edge[1]).add(edge[0]);

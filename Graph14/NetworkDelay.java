@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/network-delay-time/
+
 public class NetworkDelay{
 	public int networkDelayTime(int[][] times, int n, int k) {
 

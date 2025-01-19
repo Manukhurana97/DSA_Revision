@@ -1,3 +1,15 @@
+// https://leetcode.com/problems/path-with-minimum-effort/
+
+class Node{
+    int[] coord;
+    int dist;
+
+    Node(int[] coord, int dist){
+        this.coord = coord;
+        this.dist = dist;
+    }
+}
+
 public class PathWithMinimumEffort{
 	// djastra algo
 	public static int MinimumEffort(int rows, int cols, int[][] heights) {
@@ -58,5 +70,52 @@ public class PathWithMinimumEffort{
         
         
         return distance[rows - 1][cols - 1];
+    }
+
+
+    // -------------------------------------------------------------------------------
+
+
+    public int minimumEffortPath(int[][] heights) {
+        int rows = heights.length, cols = heights[0].length;
+        
+        PriorityQueue<Node> queue = new PriorityQueue<>((a, b) -> a.dist - b.dist);
+        queue.add(new Node(new int[]{0, 0}, 0));
+
+        int[][] distance = new int[rows][cols];
+        for(int[] d: distance) Arrays.fill(d, Integer.MAX_VALUE);
+        distance[0][0] = 0;
+
+        int[] rCoord = {-1, 0, 1, 0};
+        int[] cCoord = {0, -1, 0, 1};
+
+        while(!queue.isEmpty()){
+            Node currentNode = queue.poll();
+            int currentDist = currentNode.dist;
+            int r = currentNode.coord[0], c = currentNode.coord[1];
+
+            if(r == rows-1 && c == cols-1) return distance[r][c];
+
+            for(int i=0; i<4; i++){
+                int dr = r+rCoord[i];
+                int dc = c+cCoord[i];
+
+                if(validCoord(dr, dc, heights)){
+                    int diff = Math.max(currentDist, Math.abs(heights[dr][dc] - heights[r][c]));
+                    if(distance[dr][dc] > diff){
+                        distance[dr][dc] = diff;
+                        queue.add(new Node(new int[]{dr, dc}, distance[dr][dc]));
+                    }
+                }
+                
+            }
+        }
+
+        return distance[rows-1][cols-1];
+    }
+
+
+    private boolean validCoord(int r, int c, int[][] heights){
+        return r>=0 && c>=0 && r<heights.length && c<heights[0].length;
     }
 }

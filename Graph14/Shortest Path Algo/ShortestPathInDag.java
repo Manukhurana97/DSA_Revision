@@ -34,17 +34,17 @@ public class ShortestPathInDag{
 
         while(!stack.isEmpty()){
         	int current = stack.pop();
-
+            // if current i s not visited
         	if (dist[current] == Integer.MAX_VALUE) continue;
 
-        for (int[] neighbour : adjList.get(current)) {
-            int v = neighbour[0]; // destination
-            int wt = neighbour[1]; // weight
+            for (int[] neighbour : adjList.get(current)) {
+                int v = neighbour[0]; // destination
+                int wt = neighbour[1]; // weight
 
-            if (dist[v] > dist[current] + wt) {
-                dist[v] = dist[current] + wt;
+                if (dist[v] > dist[current] + wt) {
+                    dist[v] = dist[current] + wt;
+                }
             }
-        }
         }
 
         // Replace any remaining Integer.MAX_VALUE with -1 to indicate unreachable nodes

@@ -12,7 +12,7 @@ class iPair {
 public class DijkstraAlgo{
 
 	/*
-		PriorityQueue: Reason of using priority queue : we will get the smortest algo first
+		PriorityQueue: Reason of using priority queue : we will get the sortest algo first
 		Set: we can also user set , advantage is if we have the distance smaller the exiting and also availabe in q, we can delete old (with greater distance)
 		Queue: we can also use (but we dont prefer), but the problem is , if we get to a node from 2 direction and got weight in decending order. In that case we will process first with bigger distance and then with smaller distance, thats why.
 
