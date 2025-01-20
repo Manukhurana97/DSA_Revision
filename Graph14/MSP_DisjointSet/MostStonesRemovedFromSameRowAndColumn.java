@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/description/
+
 class DisJointSet{
     
     List<Integer> parent = new ArrayList<>();
@@ -40,7 +42,7 @@ public class MostStonesRemovedFromSameRowAndColumn {
     int maxRemove(int[][] stones, int n) {
         int maxRow = 0;
         int maxCol = 0;
-
+        // find row and col length
         for (int[] stone : stones) {
             maxRow = Math.max(stone[0], maxRow);
             maxCol = Math.max(stone[1], maxCol);
@@ -49,7 +51,7 @@ public class MostStonesRemovedFromSameRowAndColumn {
         // create a connected component 
          // Initialize DisJointSet with enough capacity
         DisJointSet set = new DisJointSet(maxRow + maxCol + 2);
-        Map<Integer, Integer> stoneNodes = new HashMap<>();
+        Set<Integer> stoneNodes = new HashSet<>();
         
         for(int[] stone: stones){
             int r = stone[0];

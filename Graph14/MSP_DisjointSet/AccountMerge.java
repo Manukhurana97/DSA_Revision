@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/accounts-merge/description/
+
 class DisjointSet{
     List<Integer> parent = new ArrayList<>();
     List<Integer> size = new ArrayList<>();

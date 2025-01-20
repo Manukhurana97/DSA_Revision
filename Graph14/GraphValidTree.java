@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/graph-valid-tree/description/
+
 class DisJointSet{
 
     List<Integer> parent = new ArrayList<>();

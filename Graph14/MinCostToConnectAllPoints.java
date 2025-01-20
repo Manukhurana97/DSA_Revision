@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/min-cost-to-connect-all-points/
 
 public class MinCostToConnectAllPoints{
     public int minCostConnectPoints(int[][] points) {
@@ -18,9 +19,10 @@ public class MinCostToConnectAllPoints{
             visited[point] = true;
             count += cost;
 
+            // check each point from current point 
             for(int i=0; i<n; i++){
-                if(!visited[i]){
-                    int dist = Math.abs(points[point][0] - points[i][0]) + Math.abs(points[point][1] - points[i][1]);
+                if(!visited[i]){ // if neightbour is not visited
+                    int dist = Math.abs(points[point][0] - points[i][0]) + Math.abs(points[point][1] - points[i][1]); // calculate manhatten distance
                     queue.add(new int[]{dist, i});
                 }
             }
