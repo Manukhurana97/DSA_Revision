@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/distinct-subsequences/description/
+
 public class DistinctSubsequences{
 
 	private int distinctSubsequences(String s1, String s2){

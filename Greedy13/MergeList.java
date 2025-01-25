@@ -1,7 +1,9 @@
+// https://leetcode.com/problems/merge-intervals/
+
 public class MergeList{
 	public int[][] merge(int[][] intervals) {
 
-        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0])); // there are some test case bcz of which we need to do sorting
 
         int[] prev = intervals[0];
         List<int[]> mergeList = new ArrayList<>();

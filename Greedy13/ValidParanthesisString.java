@@ -42,4 +42,36 @@ public class ValidParanthesisString{
 
         return min == 0;
     }
+
+
+
+    // -------------------------------------------------------------------------------------
+
+
+    public boolean checkValidString(String s) {
+        Boolean[][] dp = new Boolean[s.length()+1][s.length()+1];
+        return dfs(0, 0, s, dp);
+    }
+
+    public boolean dfs(int i, int count, String s, Boolean[][] dp){
+        if (i == s.length()) {
+            return count == 0;
+        }
+
+        if (count < 0) {
+            return false;
+        }
+
+        if(dp[i][count]!=null) return dp[i][count];
+
+
+        if(s.charAt(i) == '(') 
+            return dp[i][count] = (dfs(i+1, count+1, s, dp)) ;
+        else if(s.charAt(i) == ')')
+            return dp[i][count] =  (dfs(i+1, count-1, s, dp));
+        else if(s.charAt(i) == '*')
+            return dp[i][count] =  (dfs(i+1, count+1, s, dp) || dfs(i+1, count-1, s, dp) || dfs(i+1, count, s, dp));
+
+        return dp[i][count] =  false;      
+    }
 }
