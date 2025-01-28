@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/invert-binary-tree/
+
 class InvertTree:
 
 	def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:

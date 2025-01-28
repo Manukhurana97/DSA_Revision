@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
+
 class PathSum:
 	def hasPathSum(self, root: Optional[TreeNode], targetSum: int) -> bool:
         if not root: return False

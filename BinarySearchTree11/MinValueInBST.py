@@ -20,8 +20,6 @@ class MinValueInBST:
 	def getMaxVal(self, root, maxVal):
 		if not root: return maxVal
 
-		print(maxVal, root.data)
-
 		return self.getMaxVal(root.right if root.right else root.left, max(maxVal, root.data))
 
 

@@ -16,3 +16,25 @@ class ConstructStringFromBinaryTree:
 
         preorder(root)
         return "".join(result)[1:-1]
+
+# -------------------------------------------------------------------------
+
+# public String tree2str(TreeNode root) {
+#         StringBuilder builder = new StringBuilder();
+#         dfs(root, builder);
+
+#         return builder.toString().substring(1, builder.length()-1);
+#     }
+
+#     public void dfs(TreeNode root, StringBuilder builder){
+#         if(root == null) return;
+
+#         builder.append("(").append(root.val);
+
+#         if(root.left==null && root.right!=null) builder.append("()");
+
+#         dfs(root.left, builder);
+#         dfs(root.right, builder);
+
+#         builder.append(")");
+#     }

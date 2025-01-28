@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/kth-smallest-element-in-a-bst/description/  
+
 class kthSmallestElement:
 
 	# get the inorder triversal of tree and return inorder[k-1]

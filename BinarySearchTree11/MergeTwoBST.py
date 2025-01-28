@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/binary-search-tree-iterator/description/
+# https://leetcode.com/problems/merge-two-binary-trees/
 
 class MergeTwoBST:   
 

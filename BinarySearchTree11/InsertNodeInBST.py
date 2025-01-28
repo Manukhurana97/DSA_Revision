@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/insert-into-a-binary-search-tree/description/
+
 class InsertNodeInBST:
 	def insertIntoBST(self, root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
         if not root: return TreeNode(val)
