@@ -45,7 +45,7 @@ public class Trie4{
 
 		int count = 0; 
 
-		// abab : bab : ab : b
+		// abab : bab : ab : b // check if char is not present the count+=1
 		// 4    + 3   +  0 (not new ) + 0 (not new)
 
 		for(int i = 0; i<s.length(); i++){
@@ -54,7 +54,7 @@ public class Trie4{
 			for(int j=i; j<s.length(); j++){
 				var ch = s.charAt(j);
 				
-				if(!current.containsKey(ch)){
+				if(!current.containsKey(ch)){ // if char didnt exists increment count;
 					current.put(ch, new TrieNode());
 					count += 1;
 				}
