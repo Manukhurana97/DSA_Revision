@@ -1,7 +1,9 @@
-https://leetcode.com/problems/merge-k-sorted-lists/description/
+// https://leetcode.com/problems/merge-k-sorted-lists/description/
 
 // // Time : O(nlogk) , space (n+k)
 public class MergeKSortedLists(){
+
+    // store all the element in priority queue and empty the queue and create tge result;
 	public ListNode mergeKLists(ListNode[] lists) {
         PriorityQueue<Integer> queue = new PriorityQueue<>();
         for(var list: lists){
@@ -23,12 +25,13 @@ public class MergeKSortedLists(){
 
 
     // Time : O(nlogk) , space (k)
+    // store all the head node of list in queue, which ever is smallest will come first and the move next
     public ListNode mergeKLists(ListNode[] lists) {
         PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(node -> node.val));
 
         for (ListNode list : lists) {
             if (list != null) {
-                queue.add(list);
+                queue.add(list); // store only the head of all the list
             }
         }
 

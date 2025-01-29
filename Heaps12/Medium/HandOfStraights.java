@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/hand-of-straights/
+
 public class HandOfStraights{
 	public boolean isNStraightHand(int[] hand, int groupSize) {
 

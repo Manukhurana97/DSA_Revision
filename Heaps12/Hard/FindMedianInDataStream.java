@@ -3,8 +3,8 @@ public class FindMedianInDataStream{
     PriorityQueue<Integer> minHeap; // Min-heap for the larger half of numbers
 
     public MedianFinder() {
-        maxHeap = new PriorityQueue<>(Comparator.reverseOrder());
-        minHeap = new PriorityQueue<>();
+        maxHeap = new PriorityQueue<>(Comparator.reverseOrder()); // val store 1 2 3 4
+        minHeap = new PriorityQueue<>(); // val store : 5 6 7 8 9
 
     }
     

@@ -19,8 +19,8 @@ public class ReplaceElementsByItsRankInArray{
         for(int i=0;i<N;i++) 
             queue.add(new Node(i, arr[i]));
      
-        int index = 1;
-        int prev = -1;
+        int index = 1; // need to take extra to udpate the index in output
+        int prev = -1; // edge case if existing value just decrement the count as we have increased already
         int[] result = new int[N];
         
         while(!queue.isEmpty()){

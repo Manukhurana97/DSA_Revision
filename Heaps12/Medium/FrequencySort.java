@@ -6,7 +6,7 @@ public class FrequencySort{
 
 		for(int i: arr) map.put(i, map.getOrDefault(i, 0) + 1);
 
-		PriorityQueue<Integer> queue = new PriorityQueue<>((a , b) -> map.get(a) - map.get(b));
+		PriorityQueue<Integer> queue = new PriorityQueue<>((a , b) -> map.get(a) == map.get(b) ? a-b : map.get(a) - map.get(b));
 
 		for(int i: map.keySet()) queue.add(i);
 

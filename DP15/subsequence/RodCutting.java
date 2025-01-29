@@ -22,12 +22,12 @@ public class RodCutting{
 	}
 
 	private int recursion(int index, int target, int[] price){
-		if(index == 0){
+		if(index == 0){ // it means if i'm at index 0 (first index) to target/index & price[0] , eg. 5/1 * 10 = 50
 			return target * price[0];
 		}
 
 		int notTake = recursion(index-1, target, price);
-		int rodLen = index+1;
+		int rodLen = index+1; // to make one based indexing , eg index = 0, target-0 will remain same 
 		int take = target >= rodLen ? price[index] + recursion(index, target-rodLen, price) : Integer.MIN_VALUE;
 
 		return Math.max(take, notTake); 

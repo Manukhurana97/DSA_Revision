@@ -18,21 +18,22 @@ public KthLargestElementInArray{
 
     // ---------------------------------------------------
 
-    /*
+    /* quick sort
 
 		def findKthLargest(self, nums: List[int], k: int) -> int:
-        if not nums:
-            return 
+        if not nums: return None
 
         pivot = random.choice(nums)
 
-        greaterThenPivot = [i for i in nums if i>pivot]
-        equalsThenPivot = [i for i in nums if i==pivot]
+        greaterThanPivot = [i for i in nums if i>pivot]
+        equalsToPivot = [i for i in nums if i==pivot]
         lessThenPivot = [i for i in nums if i<pivot]
 
-        if k <= len(greaterThenPivot): return self.findKthLargest(greaterThenPivot, k);
-        if k > len(equalsThenPivot)+len(greaterThenPivot): return self.findKthLargest(lessThenPivot, k - len(equalsThenPivot) - len(greaterThenPivot));
-        return equalsThenPivot[0]
+        if k <= len(greaterThanPivot): 
+            return self.findKthLargest(greaterThanPivot, k)
+        elif k > len(greaterThanPivot) + len(equalsToPivot):  
+            return self.findKthLargest(lessThenPivot, k - len(equalsToPivot) - len(greaterThanPivot))
+        return pivot
 
     */ 
 
