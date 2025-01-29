@@ -12,7 +12,7 @@ public class FindMedianInDataStream{
         maxHeap.add(num);
 
         // Balance: Ensure maxQueue only has the smaller half of numbers
-        if (!maxHeap.isEmpty() && !minHeap.isEmpty() && maxHeap.peek() > minHeap.peek()) {
+        if (!maxHeap.isEmpty() && !minHeap.isEmpty() && maxHeap.peek() > minHeap.peek()) { // max queue store min element , min queue store largest elemt
             minHeap.add(maxHeap.poll());
         }
 
