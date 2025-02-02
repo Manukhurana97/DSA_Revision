@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/coin-change-ii/
+
 public class CoinChange2{
 
 	// n = arrlenngth * target
@@ -48,7 +50,6 @@ public class CoinChange2{
 	private int tabulation(int[] arr, int target, int[][] dp){
 		for(int t=0; t<=target; t++){
 			dp[0][t] = t % arr[0] == 0? 1 : 0;
-			System.out.print(dp[0][t]+" ");
 		}
 
 		for(int index=1; index<arr.length; index++){

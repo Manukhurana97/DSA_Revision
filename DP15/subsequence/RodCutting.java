@@ -22,7 +22,7 @@ public class RodCutting{
 	}
 
 	private int recursion(int index, int target, int[] price){
-		if(index == 0){ // it means if i'm at index 0 (first index) to target/index & price[0] , eg. 5/1 * 10 = 50
+		if(index == 0){ // it means if i'm at index 0 (first index) to target/index & price[0] , eg. 5/0 * 10 = 0
 			return target * price[0];
 		}
 

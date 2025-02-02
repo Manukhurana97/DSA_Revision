@@ -1,7 +1,7 @@
 /**
  * 
- * Tabulation: it coontains the data from 0 to k , 
- * for each index  Tabulation DP data contain, if we can create a subset of target (i) 
+ * Tabulation: it contains the data from 0 to k , 
+ * for each index Tabulation DP data contain, if we can create a subset of target (i) 
  * 
  * we can derivies if every possible target b/w 1 to k is true/false
  * */ 
