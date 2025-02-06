@@ -53,18 +53,12 @@ public class GraphValidTree {
             int uParent = dSet.findParent(edge[0]);
             int vParent = dSet.findParent(edge[1]);
 
-            if(vParent == uParent) return false;
+            if(vParent == uParent) return false; // Cycle detected
 
             dSet.union(edge[0], edge[1]);
         }
 
-        int count = 0;
-        for (int i = 0; i < n; i++) {
-            if (i == dSet.findParent(i)) {
-                count++;
-            }
-        }
 
-        return count == 1;
+        return true;
     }
 }

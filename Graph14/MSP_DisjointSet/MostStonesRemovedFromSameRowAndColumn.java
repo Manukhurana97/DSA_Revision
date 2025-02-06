@@ -51,7 +51,7 @@ public class MostStonesRemovedFromSameRowAndColumn {
         // create a connected component 
          // Initialize DisJointSet with enough capacity
         DisJointSet set = new DisJointSet(maxRow + maxCol + 2);
-        Set<Integer> stoneNodes = new HashSet<>();
+        HashMap<Integer, Integer> stoneNodes = new HashMap<>();
         
         for(int[] stone: stones){
             int r = stone[0];

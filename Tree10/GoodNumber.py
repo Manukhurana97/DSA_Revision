@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/
+
 class GoodNumber:
 	def goodNodes(self, root: TreeNode) -> int:
         if not root: return 0

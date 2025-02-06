@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/walls-and-gates/description/
+// https://leetcode.ca/all/286.html
+
 import java.util.*;
 
 public class WallsAndGates{

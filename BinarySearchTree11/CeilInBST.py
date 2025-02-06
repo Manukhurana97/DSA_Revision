@@ -31,5 +31,5 @@ root.right.left = Node(6)
 root.right.right = Node(9)
 
 obj = CeilInBST()
-print("ceil ", obj.findCeil(root, 4))
+print("ceil ", obj.findCeil(root, 9))
 
