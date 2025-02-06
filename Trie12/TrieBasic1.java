@@ -8,7 +8,7 @@ public class TrieBasic1{
 		for(String word : words){
 			var current = root;
 			for(var ch: word.toCharArray()){
-				if(!current.containKey(ch)) current.put(ch, new TrieNode());
+				if(!current.containsKey(ch)) current.put(ch, new TrieNode());
 				current = current.get(ch);
 			}
 
@@ -21,7 +21,7 @@ public class TrieBasic1{
 	public static boolean search(String word){
 		var current = root;
 		for(var ch: word.toCharArray()){
-			if(!current.containKey(ch)) return false;
+			if(!current.contains(ch)) return false;
 			current = current.get(ch);
 		}
 
@@ -31,7 +31,7 @@ public class TrieBasic1{
 	public static boolean startWith(String prefix){
 		var current = root;
 		for(var ch: prefix.toCharArray()){
-			if(!current.containKey(ch)) return false;
+			if(!current.contains(ch)) return false;
 			current = current.get(ch);
 		}
 

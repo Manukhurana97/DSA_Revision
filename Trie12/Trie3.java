@@ -58,7 +58,7 @@ public class Trie3{
 			boolean isValid = true;
 
 			for(var ch: word.toCharArray()){
-				if (!current.containsKey(ch) || !current.get(ch).isEnd()){ // if prefix is not a word
+				if (!current.containsKey(ch) || !current.get(ch).isEnd()){ // if it didn't contain the char or it its not an end
 					isValid = false;
 					break;
 				}	
