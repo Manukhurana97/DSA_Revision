@@ -35,17 +35,15 @@ public class MergeKSortedLists(){
             }
         }
 
-
         ListNode result = new ListNode();
         ListNode current = result;
 
         while(!queue.isEmpty()){
-            ListNode node = queue.poll();
-            current.next = node;
+            current.next = queue.poll();
             current = current.next;
 
-            if(node.next != null){
-                queue.add(node.next);
+            if(current.next != null){
+                queue.add(current.next);
             }
         }
 

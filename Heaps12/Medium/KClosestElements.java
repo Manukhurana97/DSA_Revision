@@ -50,9 +50,29 @@ public class KClosestElements{
 		return result;
 	}
 
+	public List<Integer> findClosestElements2(int[] arr, int k, int x) {
+       int left = 0, right = arr.length-1;
+
+        while(right - left >= k){
+            if(Math.abs(arr[left] - x)  > Math.abs(arr[right] - x)){
+                left +=1;
+            }else{
+                right-=1;
+            }
+        }
+
+        List<Integer> result = new ArrayList<>();
+        for(int i=left; i<=right; i++){
+            result.add(arr[i]);
+        }
+
+        return result;
+    }
+
+
 	public static void main(String[] args) {
 		int[] arr = {5,6,7,8,9};
-		arr = getKNearestElement1(arr, 7, 3);
+		arr = getKNearestElement(arr, 7, 3);
 		for(int i: arr) System.out.print(i+" ");
 	}
 }

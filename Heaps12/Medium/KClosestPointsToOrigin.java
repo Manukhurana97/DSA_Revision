@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/k-closest-points-to-origin/description/
+
 import java.util.*;
 
 public class KClosestPointsToOrigin{

@@ -1,4 +1,4 @@
-// https://www.geeksforgeeks.org/problems/replace-elements-by-its-rank-in-the-array/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=replace-elements-by-its-rank-in-the-array
+// https://www.geeksforgeeks.org/problems/replace-elements-by-its-rank-in-the-array/1
 
 class Node{
     int index;

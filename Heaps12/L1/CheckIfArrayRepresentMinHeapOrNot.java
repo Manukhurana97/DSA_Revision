@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/does-array-represent-heap4345/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=does-array-represent-heap
+
 public class CheckIfArrayRepresentMinHeapOrNot{
     public boolean countSub(long arr[], long n)
     {
