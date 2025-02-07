@@ -55,6 +55,13 @@ public class Candy{
     // ------------------------------------Slope approach---------------------------------------
 
 
+//  1 2 3 0 0 5 4 3 2 1 
+//  1 2 3 1 1 5 1 1 1 1 left  
+//  1 1 2 1 1 5 4 3 2 1 right
+//  1+2+3+1+1+5+4+3+2+1: 23
+
+// 1 2 3 4 1 2 3 4: 20
+
 
     public int candy(int[] arr) {
         int i=1;
@@ -67,12 +74,14 @@ public class Candy{
                 continue;
             }
 
+            // fact: last element is smaller then current then only downwords starts
             int up = 1;
             while(i<arr.length && arr[i-1]<arr[i]){
                 sum+=++up;
                 i++;
             }
 
+            // fact: last element is bigger then current then only downwords starts
             int down=1;
             while(i<arr.length && arr[i-1]>arr[i]){
                sum+=down++;

@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/job-sequencing-problem-1587115620/1
+
 import java.util.*;
 
 class Job {
@@ -23,7 +25,7 @@ public class JobSequencingProblem{
 
 		boolean[] visited = new boolean[maxDeadline+1];
 
-		// for each job , put the job in cpu be before its deadline, like deadline : 2 , we can pleace it in 0-1-2 , wherever we find space.
+		// for each job , put the job in cpu on or before its deadline, like deadline : 2 , we can pleace it in 0-1-2 , wherever we find space.
 		for(var job: arr){
 			for (int ind = job.deadline; ind > 0; ind--) {
 				if(!visited[ind]){
