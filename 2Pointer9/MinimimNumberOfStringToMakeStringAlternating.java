@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/minimum-number-of-flips-to-make-the-binary-string-alternating/
+
 public class MinimimNumberOfStringToMakeStringAlternating{
 	public int minFlips(String s) {
        int  slen = s.length();

@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/subarrays-with-k-different-integers/
+
 public class SubArraysWithKDifferentIntegers{
 	 public int subarraysWithKDistinct(int[] nums, int k) {
         return atMostKDistinct(nums, k) - atMostKDistinct(nums, k - 1);

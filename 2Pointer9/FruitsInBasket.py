@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/problems/fruit-into-baskets-1663137462/1
+
 class FruitsInBasket:
 	def totalFruits(self,arr):
 		# 2 bucket : each holds a unique fruits with inf quantity
@@ -28,6 +30,37 @@ class FruitsInBasket:
 			maxFruitCount = max(maxFruitCount, fruitCount)
 		
 		return maxFruitCount
+
+
+
+
+# public static int totalElements(Integer[] arr) {
+#        Map<Integer, Integer> map = new HashMap<>();
+        
+#        int n = arr.length, count = 0, maxLen = 0;
+#        int current = 0, last = 0;
+#        
+#        while(current<n){
+#            map.put(arr[current], map.getOrDefault(arr[current], 0)+1);
+#            count +=1;
+#            
+#            while(map.size()>2 && last<current){
+#                if(map.get(arr[last]) > 1){
+#                    map.put(arr[last], map.get(arr[last])-1);
+#                }else{
+#                    map.remove(arr[last]);
+#                }
+#                last++;
+#                count-=1;
+#            }
+#            
+#            maxLen = Math.max(maxLen, count);
+#            current++;
+#        }
+#        
+#        return maxLen;
+#    }
+# 
 
 
 

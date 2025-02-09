@@ -1,4 +1,10 @@
+// https://leetcode.com/problems/find-the-celebrity/description/
+
 public class CelebrityProblem{
+
+	// 2 things : iknow, knowMe
+	// min number of celebrities: 0, max number of celebrity: 1
+
 
 	public static int findCelebrity(int n, int[][] matrix){
 		int[] knowMeCount = new int[n];
@@ -47,7 +53,11 @@ public class CelebrityProblem{
 
 
 	public static void main(String[] args) {
-		int[][] arr = {{0,1,1,0}, {0,0,0,0}, {0,1,0,0}, {1,1,0,0}};
+		int[][] arr = {
+			{0,1,1,0}, 
+			{0,0,0,0}, 
+			{0,1,0,0}, 
+			{1,1,0,0}};
 
 		System.out.println("celebrity is "+ findCelebrity(arr.length, arr));
 		System.out.println("celebrity is "+ findCelebrity1(arr.length, arr));

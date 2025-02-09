@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/longest-substring-without-repeating-characters/
+
 class LongestSubstringWithoutRepeatingCharacter:
 
     def lengthOfLongestSubstring(self, s: str) -> int:
@@ -62,3 +64,28 @@ class LongestSubstringWithoutRepeatingCharacter:
             
         
         return largestSubString
+
+
+# --------------------------------------------------------------------
+
+#    public int lengthOfLongestSubstring(String s) {
+#        Map<Character, Integer> map = new HashMap<>();
+
+#       if(s.length() <=1) return s.length();
+#
+#        int current = 0, start = 0, n = s.length(), longestsubString = 0;
+
+#        while(current < n){
+#            char val = s.charAt(current);
+#            
+#            if(map.containsKey(val) && map.get(val) >= start){
+#                start = map.get(val)+1;
+#            }
+            
+#            longestsubString = Math.max(longestsubString, current - start+1);
+#            map.put(val, current++);
+           
+#        }
+
+#        return longestsubString;
+#    }

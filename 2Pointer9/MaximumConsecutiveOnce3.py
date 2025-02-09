@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/max-consecutive-ones/description/
+
 from typing import List
 
 class MaximumConsecutiveOnce3:
@@ -23,6 +25,20 @@ class MaximumConsecutiveOnce3:
 
         return maxOnes
             
+
+    def findMaxConsecutiveOnes1(self, nums: List[int]) -> int:
+        once = maxOnce = 0;
+        
+
+        for i in nums:
+            if i == 1:
+                once+=1;
+                maxOnce = max(once, maxOnce)
+            else:
+                once = 0;
+        return maxOnce
+
+
 
 nums = [1, 1, 0, 0, 1, 1, 0, 1, 1, 1]
 k = 2

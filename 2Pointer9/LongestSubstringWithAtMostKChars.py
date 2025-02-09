@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/description/
+
 from collections import Counter
 
 class LongestSubstringWithAtMostKChars:

@@ -23,24 +23,23 @@ public class BinarySubarraysWithSum{
 
     // find (subarray of goals) - (subarray of goals - 1)
 	public int numSubarraysWithSum1(int[] nums, int goal) {
-        return atMost(nums, goal) - atMost(nums, (goal - 1));        
+
+        int result = atMostkElement(nums, goal);
+        if(goal == 0) return result; 
+       
+        return result - atMostkElement(nums, goal-1);
     }
 
+    private int atMostkElement(int[] nums, int goal){
+        int count = 0, left = 0, current = 0, n = nums.length, sum = 0;
 
-    public int atMost(int[] nums, int goal){
-
-        if(goal < 0 ) return 0;
-
-        int left = 0, current = 0, n = nums.length, sum = 0, count = 0;
-
-        while(current<n){
+        while(current < n) {
             sum += nums[current];
 
             while(left <= current && sum > goal) sum -= nums[left++];
 
-            count += current - left + 1;
+            count += current - left + 1; 
             current++;
-            
         }
 
         return count;
@@ -49,7 +48,7 @@ public class BinarySubarraysWithSum{
     public static void main(String[] args) {
         BinarySubarraysWithSum obj = new BinarySubarraysWithSum();
         int[] arr = {1,0,1,0,1};
-        System.out.println(obj.numSubarraysWithSum(arr, 2));
+        System.out.println(obj.numSubarraysWithSum(arr, 2) == obj.numSubarraysWithSum1(arr, 2));
 
     }
 }
