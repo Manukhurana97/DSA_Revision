@@ -1,70 +1,63 @@
+// https://leetcode.com/problems/maximum-subarray-min-product/
+
 public class MaximumSubarrayMinProduct{
 
 	public int maxSumMinProduct(int[] nums) {
-        int n = nums.length;
+        int n=nums.length, maxProduct = 0;
 
-        long maxSum = 0;
-        final int MOD = 1_000_000_007;
+        for(int i=0; i<n; i++){
+            int minValue = nums[i], sum = 0;
+            for(int j=i; j<n; j++){
+                sum += nums[j];
+                minValue = Math.min(minValue, nums[j]);
 
-        for(int i = 0; i < n; i++){
-            long min = Integer.MAX_VALUE;
-            long sum = 0;
-            
-            for(int j = i; j < n; j++){
-                min = Math.min(min, nums[j]);
-                sum += nums[j]; 
-
-                maxSum = Math.max(maxSum, (sum*min) % MOD);
+                maxProduct = Math.max(maxProduct, sum*minValue);
             }
-            
         }
-        return (int)(maxSum);
+
+        return maxProduct;
     }
 
 
-    // ---------------------------------------------------------------------------------
-
-
-    public int maxSumMinProduct(int[] nums) {
+    public int maxSumMinProduct1(int[] nums) {
         int n = nums.length;
-        int[] prefixSum = new int[n + 1];
+        long mod = 1_000_000_007;
+        long[] prefixSum = new long[n+1];
         
-        for (int i = 0; i < n; i++) {
-            prefixSum[i + 1] = prefixSum[i] + nums[i];
+        for(int i=0; i<n; i++){
+            prefixSum[i+1] = prefixSum[i] + nums[i];
         }
-        
+
         int[] left = new int[n];
         int[] right = new int[n];
-        Deque<Integer> stack = new ArrayDeque<>();
-        
-        // Calculate left boundaries
-        for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && nums[stack.peek()] >= nums[i]) {
-                stack.pop();
-            }
-            left[i] = stack.isEmpty() ? 0 : stack.peek() + 1;
+        Arrays.fill(right, n);
+
+        Stack<Integer> stack = new Stack<>();
+
+        for(int i=0; i<n; i++){
+            while(!stack.isEmpty() && nums[stack.peek()]>=nums[i])  stack.pop();
+            
+            left[i] = stack.isEmpty() ? -1 : stack.peek();
             stack.push(i);
         }
-        
+
         stack.clear();
-        
-        // Calculate right boundaries
-        for (int i = n - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && nums[stack.peek()] >= nums[i]) {
-                stack.pop();
-            }
+
+        for(int i=n-1; i>=0; i--){
+            while(!stack.isEmpty() && nums[stack.peek()]>nums[i])  stack.pop();
+            
             right[i] = stack.isEmpty() ? n : stack.peek();
             stack.push(i);
         }
-        
-        // Find maximum sum of minimum products
-        long maxSum = 0;
-        for (int i = 0; i < n; i++) {
-            long sum = (long) nums[i] * (prefixSum[right[i]] - prefixSum[left[i]]);
-            maxSum = Math.max(maxSum, sum);
+
+
+        long maxProduct = 0;
+        for(int i=0; i<n; i++){
+            long sum = prefixSum[right[i]] - prefixSum[left[i]+1];
+            maxProduct = Math.max(maxProduct, (sum * nums[i]));
         }
-        
-        return (int) (maxSum % 1_000_000_007);
+
+        return (int) (maxProduct % mod);
     }
 
 

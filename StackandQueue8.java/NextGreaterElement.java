@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/next-greater-element-i/description/
+
 import java.util.*;
 
 public class NextGreaterElement{

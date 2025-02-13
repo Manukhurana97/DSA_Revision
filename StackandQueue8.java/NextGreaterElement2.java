@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/next-greater-element-ii/
+
 public class NextGreaterElement2{
 	public int[] nextGreaterElements(int[] nums) {
         // double the list and get next greater element

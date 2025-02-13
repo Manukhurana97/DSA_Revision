@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/maximum-frequency-stack/
+
 public class FreqStack {
 
     // to store, level/order and values

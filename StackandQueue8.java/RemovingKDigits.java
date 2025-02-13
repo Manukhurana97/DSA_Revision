@@ -41,37 +41,43 @@ public class RemovingKDigits{
 
     }
 
-    // ----------------------------------------------------------------------------------------
 
+// ------------------------------------------------------------------------------------
 
-	public static String removeKdigits(String num, int k) {
-        if(num.length() <= k) return "0";
+    public String removeKdigits(String num, int k) {
+        int n  = num.length();
 
-        Stack<Integer> stack = new Stack<>(); // use monotonically increasing stack
-        char[] CharArr = num.toCharArray();
+        Deque<Character> stack = new LinkedList<>();
 
-        for(var ch: CharArr){
-            int val = ch - '0';
-            while(!stack.isEmpty() && stack.peek() >= val && k >= 0){
-                k--;
-                stack.pop();
+        for(int i=0; i<n; i++){
+            char val = num.charAt(i);
+            while(k>0 && !stack.isEmpty() && stack.getLast() > val){
+                k-=1;
+                stack.pollLast();
             }
-            stack.push(val);
+
+            stack.addLast(val);
         }
 
-        // if still k > 0, remove from last
-        while(!stack.isEmpty() && k>0){
-            stack.pop();
-            k--;
+        while(k-->0 && !stack.isEmpty()){
+            stack.pollLast();
         }
 
-        StringBuilder builder = new StringBuilder();
-        while(!stack.isEmpty()) builder.insert(0, stack.pop());
+        /*Because of stack overflow we cant use Integer or long or double*/
+
+        StringBuilder result = new StringBuilder();
+        while (!stack.isEmpty()) {
+            result.append(stack.pollFirst());
+        }
         
-        while(builder.length()>0 && builder.charAt(0) == '0') builder.deleteCharAt(0);
-    
-        return builder.toString().equals("") ? "0" : builder.toString() ;
+        while (result.length() > 1 && result.charAt(0) == '0') {
+            result.deleteCharAt(0);
+        }
+
+        return result.length() == 0 ? "0" :  result.toString();
     }
+
+
 
     public static void main(String[] args) {
         System.out.println(removeKdigits("1432219", 2));

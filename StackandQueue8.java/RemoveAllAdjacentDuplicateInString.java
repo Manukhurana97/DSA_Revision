@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string/description/
+
 import java.util.*;
 
 public class RemoveAllAdjacentDuplicateInString{
@@ -135,5 +136,29 @@ public class RemoveAllAdjacentDuplicateInString{
             stackCount.clear(); // Clear the stack for the next iteration
             
         }
+    }
+
+
+    // ------------------------------------------------------------------------------------------------
+
+    public String removeDuplicates(String s) {
+        Stack<Character> stack = new Stack<>();
+
+        for(char ch: s.toCharArray()) {
+            boolean flag = false;
+            while(!stack.isEmpty() && stack.peek() == ch){
+                flag = true;
+                stack.pop();
+            }
+
+            if(!flag) stack.push(ch);
+        }
+
+        StringBuilder builder  = new StringBuilder();
+        while(!stack.isEmpty()) {
+            builder.append(stack.pop());
+        }
+
+        return builder.reverse().toString();
     }
 }

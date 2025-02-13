@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/132-pattern/
+
 class Node{
     int min;
     int val;
@@ -37,6 +39,28 @@ public class Pattern123 {
             
             minTillNow = Math.min(minTillNow, i);
             stack.push(new Node(minTillNow, i));
+        }
+
+        return false;
+    }
+
+
+
+    public boolean find132pattern(int[] nums) {
+        int n = nums.length;
+        int two = Integer.MIN_VALUE;
+        Stack<Integer> stack = new Stack<>();
+
+        for(int i=n-1; i>=0; i--) {
+            if(nums[i] < two) return true; // after 3-2, we are satisfying 1-2
+
+
+            while(!stack.isEmpty() && stack.peek()<nums[i]){
+                two = stack.pop(); // we here we are satisfying 3-2 comdition
+            }
+
+            stack.push(nums[i]);
+           
         }
 
         return false;
