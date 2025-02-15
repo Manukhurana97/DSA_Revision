@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/sum-of-subarray-ranges
+
 public class SumOfSubArrayRange{
 
 	public long subArrayRanges(int[] nums) {

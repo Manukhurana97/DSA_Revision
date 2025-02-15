@@ -1,28 +1,30 @@
+// https://leetcode.com/problems/trapping-rain-water/
+
 public class TrappingRainWater{
 	// Time :O(2N) -> O(N)
     // Space : O(N)
 
     // approach 1: total +=  min(leftmax, rightmax) - currentHeight
     // 3 0 0 2 0 4 :: lm : 3 3 3 3 3 4, rm: 4 : 4 4 4 4 4  : 
-    public int trap(int[] height) {
-        
-        int n = height.length;
-        Stack<Integer> leftStack = new Stack<>();t leftmax = 0;
+    public int trap(int[] nums) {
+        int n = nums.length;
+
+        int leftMax = 0;        
+        int[] leftval = new int[n];
 
         for(int i=0; i<n; i++){
-            leftmax = Math.max(leftmax, height[i]);
-            leftStack.push(leftmax);
+            leftMax = Math.max(leftMax, nums[i]);
+            leftval[i] = leftMax;
         }
-        
-        int rightmax = 0;
-        int trappedWater = 0;
 
-        for(int i=0; i<n; i++){
-            rightmax = Math.max(rightmax, height[n-i-1]);
-            trappedWater += Math.min(stack.pop(), rightMax) - height[n-i-1];
+        int total = 0;
+        int rightMax = 0;
+        for(int i=n-1; i>=0; i--){
+           rightMax = Math.max(rightMax, nums[i]);
+           total += Math.min(leftval[i], rightMax) - nums[i];
         }
-            
-        return trappedWater;
+
+        return total;
     }
 
 

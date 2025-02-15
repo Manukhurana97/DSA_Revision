@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/simplify-path/
+
 public class SimplifiedPath{
 	public String simplifyPath(String path) {
         

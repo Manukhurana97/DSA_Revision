@@ -1,30 +1,40 @@
+// https://leetcode.com/problems/online-stock-span/description/
+
 import java.util.*;
 
-class Node{
-    int price;
+class Node {
+    int val;
     int index;
 
-    Node(int price, int index){
-        this.price = price;
+    Node(int val, int index){
+        this.val = val;
         this.index = index;
     }
 }
-
 public class StockSpanner{
 
-    Stack<Node> stack = new Stack<>();
+    int index;
+    Stack<Node> stack;
 
-    public StockSpanner() {}
+    public StockSpanner() {
+        index = 0;
+        stack = new Stack<>();
+    }
     
     public int next(int price) {
-        int index = 1;
-        while(!stack.isEmpty() && stack.peek().price<=price){
-            Node node = stack.pop();
-            index += node.index;
-        }
-        stack.push(new Node(price, index));
 
-        return index;
+        while(!stack.isEmpty() && stack.peek().val <= price){
+            stack.pop();
+        }
+
+        if(!stack.isEmpty()){
+            int result = index - stack.peek().index;
+            stack.add(new Node(price, index++));
+            return result;
+        }else{
+            stack.add(new Node(price, index++));
+            return index;
+        }
     }
 
     public static void main(String[] args){
