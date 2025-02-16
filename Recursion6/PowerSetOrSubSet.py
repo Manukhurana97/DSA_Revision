@@ -1,4 +1,5 @@
-# power set
+# power set 
+# https://leetcode.com/problems/subsets/description/
 
 class PowerSetOrSubSet:
 

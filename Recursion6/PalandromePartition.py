@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/palindrome-partitioning/description/
+
 class createPartition:
     def ispalandrome(self, arr, start, end):
         if len(arr) == 0: return False

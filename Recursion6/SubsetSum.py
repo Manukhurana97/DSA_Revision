@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/problems/subset-sums2234/1
+
 def SubsetSumHelper(arr, index, sum, result):
 	if index == len(arr):
 		result.append(sum)

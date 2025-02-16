@@ -1,3 +1,4 @@
+# https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
 
 def graphColoringProblem(graph, m, n):
 	colors = [0] * n

@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/powx-n/
+
 class POW:
 	def myPow(self, x: float, n: int) -> float:
         if n >=0: return self.getPower(x, n, 1)

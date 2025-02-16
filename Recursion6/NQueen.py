@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/n-queens/
+
 def canPlaceQueen(r, c, board, size):
 
 	# check row column

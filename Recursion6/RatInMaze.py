@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/problems/rat-in-a-maze-problem/1
+
 def RatInMazeHelper(maze, r, c, s, result, visited):
 	if r == len(maze)-1 and c == len(maze[0])-1 :
 		result.append(s)

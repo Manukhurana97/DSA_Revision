@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/sudoku-solver/
+
 def canPlace(r, c, no, board):
 	for i in range(0, 9):
 		if board[r][i] == no or board[i][c] == no: return False
