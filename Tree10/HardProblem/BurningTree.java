@@ -71,7 +71,7 @@ public class BurningTree {
 
     	parentMap.put(root, parent);
 
-    	if(target == root.data) targetNode = root;
+    	// if(target == root.data) targetNode = root;
 
     	getParents(root.left, root, target, parentMap);
     	getParents(root.right, root, target, parentMap);
