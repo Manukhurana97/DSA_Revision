@@ -1,4 +1,4 @@
-// https://www.geeksforgeeks.org/problems/does-array-represent-heap4345/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=does-array-represent-heap
+// https://www.geeksforgeeks.org/problems/does-array-represent-heap4345/1
 
 public class CheckIfArrayRepresentMinHeapOrNot{
     public boolean countSub(long arr[], long n)
@@ -30,6 +30,26 @@ public class CheckIfArrayRepresentMinHeapOrNot{
                 index++;
             }
         }
+        
+        return true;
+    }
+
+    // --------------------------------------------------------------------------
+
+
+    public boolean countSub(long arr[], long n)
+    {
+        if(n==1) return true;
+        
+       
+       for(int i=0; i<n/2; i++){
+           int left = 2*i+1;
+           int right = 2*i+2;
+           
+           if(left<n && arr[left] > arr[i]) return false;
+           if(right<n && arr[right] > arr[i]) return false;
+           
+       }
         
         return true;
     }
