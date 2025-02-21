@@ -19,7 +19,7 @@ public class PacificAndAtlantic{
         }
 
 
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<>();   
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
                 if (pac[r][c] && atl[r][c]) {

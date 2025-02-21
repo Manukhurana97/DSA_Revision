@@ -42,7 +42,7 @@ public class CriticalConnectionsInANetwork {
         // crete visited, tin, low input
         int[] visited = new int[n];
         int[] tin = new int[n]; // time of insertion of node
-        int[] low = new int[n];
+        int[] low = new int[n]; // lowest insertion time of all the adjacernt node apart from parent
         List<List<Integer>> result = new ArrayList<>();
 
         // perform dfs

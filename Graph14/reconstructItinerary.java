@@ -8,6 +8,7 @@ public class reconstructItinerary{
 
         List<String> result = new ArrayList<>();        
         dfs("JFK", map, result); // JFK is the starting point (all the time)
+        Collections.reverse(result);
         return result;
     }
 
@@ -16,7 +17,7 @@ public class reconstructItinerary{
             String neighbour = map.get(currentPoint).poll();
             dfs(neighbour, map, result);
         }
-        result.add(0, currentPoint);  
+        result.add(currentPoint);  
         
     }
 }

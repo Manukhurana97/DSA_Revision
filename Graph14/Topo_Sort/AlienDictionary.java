@@ -1,4 +1,5 @@
-/* 
+/*  https://leetcode.com/problems/alien-dictionary/editorial/
+
     compare input, and find the different character with each string (from i to n)
     once's difference element is found, break the comparing loop, and create a graph from char[i]->char[i+1]
     also calculate in inbound notes

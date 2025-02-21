@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph/1
+
 public class ShortestPathInDag{
 	public int[] shortestPath(int V, int E, int[][] edges) {
         // Step 1 : perform toposort
@@ -34,7 +36,7 @@ public class ShortestPathInDag{
 
         while(!stack.isEmpty()){
         	int current = stack.pop();
-            // if current i s not visited
+            // if current is not visited
         	if (dist[current] == Integer.MAX_VALUE) continue;
 
             for (int[] neighbour : adjList.get(current)) {

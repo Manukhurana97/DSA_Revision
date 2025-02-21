@@ -79,6 +79,8 @@ public class ShortestPathInBinaryMatrix {
             int[] currentPos = queue.poll();
             int r = currentPos[0];
             int c = currentPos[1];
+
+            if(r == n-1 && c == n-1) return distances[dr][dc];
             
             for(int i=0; i<8; i++){
             int dr = r+rCoord[i];
@@ -87,8 +89,6 @@ public class ShortestPathInBinaryMatrix {
                 if(validateCoord(dr, dc, n) && grid[dr][dc] == 0){
                     if(distances[dr][dc]>distances[r][c]+1){
                         distances[dr][dc] = distances[r][c]+1;
-                        
-                        if(dr == n-1 && dc == n-1) return distances[dr][dc];
 
                         queue.add(new int[]{dr, dc});
                     }
