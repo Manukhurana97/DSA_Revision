@@ -1,4 +1,5 @@
-/* 
+/*  https://leetcode.com/problems/climbing-stairs/
+
 count the ways, find way with min/max output :: recursion can be applied
 
 1. try to represent everything in terms of index

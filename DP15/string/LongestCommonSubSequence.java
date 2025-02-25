@@ -30,7 +30,7 @@ public class LongestCommonSubSequence{
         if(dp[n1][n2] != 0) return dp[n1][n2];
 
         if(s1.charAt(n1) == s2.charAt(n2)){
-            return 1 + memoization(n1-1, n2-1, s1, s2, dp);
+            return dp[n1][n2] = 1 + memoization(n1-1, n2-1, s1, s2, dp);
         }
         
         return dp[n1][n2] = Math.max(memoization(n1-1, n2, s1, s2, dp), memoization(n1, n2-1, s1, s2, dp));

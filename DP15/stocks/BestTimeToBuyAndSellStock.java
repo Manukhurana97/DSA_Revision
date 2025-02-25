@@ -2,23 +2,27 @@
 
 // can buy and sell only one.
 public class BestTimeToBuyAndSellStock{
-	private int maxProfit(int[] arr){
-		int minIndex = 0, maxIndex = 0;
 
-		for(int i=1; i<arr.length; i++){
-			if(arr[maxIndex] < arr[i]){
-				maxIndex = i;
-			}
-			if(arr[minIndex]>arr[i]){
-				minIndex = i;
-				if(maxIndex<minIndex){
-					maxIndex = minIndex;
-				}
-			}
-		}
+	public int maxProfit(int[] prices) {
+        int minIndex = 0, maxIndex = 0, n = prices.length;
+        int result = 0;
 
-		return arr[maxIndex] - arr[minIndex];
-	}
+        for(int i=1; i<n; i++){
+            if(prices[maxIndex] < prices[i]){
+                maxIndex = i;
+            }
+            if(prices[minIndex] > prices[i]){
+                minIndex = i;
+                if(maxIndex < minIndex){
+                    maxIndex = minIndex;
+                }
+            }
+
+            result = Math.max(result, prices[maxIndex] - prices[minIndex]);
+        }
+
+        return result;
+    }
 
 	private int maxProfit1(int[] arr){
 		int profit = 0, min = arr[0];

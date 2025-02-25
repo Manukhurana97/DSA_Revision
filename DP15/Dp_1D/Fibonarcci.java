@@ -8,9 +8,9 @@ public class Fibonarcci{
 		List<Integer> result = new ArrayList<>();
 
 		for(int i=0; i<n; i++){
-			// result.add(memoization(i, dp));
+			result.add(memoization(i, dp));
 			// result.add(tabulation(i, dp));
-			result.add(spaceOptimization(i));
+			// result.add(spaceOptimization(i));
 		}
 
 		System.out.println(result);
@@ -18,11 +18,9 @@ public class Fibonarcci{
 
 
 	private int memoization(int n, int[] dp){
-		if (n == 0) return 0;
-        if (n == 1) return 1;
+		if (n <= 1) return n;
 
 		if (dp[n] != 0) return dp[n];
-
 
 		dp[n] = memoization(n-1, dp) + memoization(n-2, dp);
 		return dp[n];

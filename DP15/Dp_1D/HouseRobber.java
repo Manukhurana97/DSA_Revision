@@ -1,75 +1,75 @@
+// https://leetcode.com/problems/house-robber/description/
+
 import java.util.*;
 
 public class HouseRobber{
 
-	public int houseRober(int n, int[] valueInHouse){
+	public int houseRober(int n, int[] nums) {
+        // return recursion(n-1, nums);
 
-		// return dfs(n - 1, valueInHouse);
-		
-		int[] dp = new int[n+1];
-		Arrays.fill(dp, -1);
+        int[] dp = new int[n+1];
+        // return memoization(n-1, nums, dp);
 
-		// return memorization(n - 1, valueInHouse, dp);
+        // return tabulation(nums, dp);
 
-		// return tabulation(n - 1, valueInHouse, dp);
+        return spaceOptimization(nums);
+    }
 
-		return spaceOptimization(n-1, valueInHouse);
-	}
+    private int recursion(int i, int[] nums){
+        if(i<0) return 0;
 
-	private int dfs(int n, int[] valueInHouse){
-		if(n < 0) return 0;
+        int rob = nums[i] + recursion(i-2, nums);
+        int notRob  = recursion(i-1, nums);
 
-		int take = valueInHouse[n] +  dfs(n-2, valueInHouse) ;
-		int notTake = dfs(n-1, valueInHouse);
-
-		return Math.max(take, notTake);
-	}
+        return Math.max(rob, notRob);
+    }
 
 
-	private int memorization(int n, int[] valueInHouse, int[] dp){
-		if(n < 0) return 0;
+    private int memoization(int i, int[] nums, int[] dp){
+        if(i<0) return 0;
+        if(i==0) return nums[0];
 
-		if(dp[n] != -1) return dp[n];
+        if(dp[i] != 0) return dp[i];
 
-		int take = valueInHouse[n] +  memorization(n-2, valueInHouse, dp) ;
-		int notTake = memorization(n-1, valueInHouse, dp);
+        int rob = nums[i] + memoization(i-2, nums, dp);
+        int notRob  = memoization(i-1, nums, dp);
 
-		dp[n] =  Math.max(take, notTake);
-		return dp[n];
-
-	}
-
-	private int tabulation(int n, int[] valueInHouse, int[] dp){
-		if(n == 0) return 0;
-		if(n == 1) return valueInHouse[1];
-		dp[0] = valueInHouse[0];
+        return dp[i] = Math.max(rob, notRob);
+    }
 
 
-		for(int i=1; i<=n; i++){
-			int take = valueInHouse[i] +  (i-2 >=0 ? dp[i-2] : 0);
-			int notTake = dp[i-1];
+    private int tabulation(int[] nums, int[] dp){
+        int n = nums.length;
+        dp[0] = nums[0];
 
-			dp[i] =  Math.max(take, notTake);
-		
-		}
-		return dp[n];
-	}
+        for(int i=1; i<n; i++){
+            int rob = nums[i] +  (i-2 >=0 ? dp[i-2] : 0);
+            int notRob  = dp[i-1];
 
-	private int spaceOptimization(int n, int[] valueInHouse){
-		if(n == 0) return 0;
-		if(n == 1) return valueInHouse[1];
-		
-		int prev1 = valueInHouse[0];
-		int prev2 = 0;
+            dp[i] = Math.max(rob, notRob);
+        }
 
-		for(int i=1; i<=n; i++){
-			int current = Math.max(valueInHouse[i] + prev2, prev1);
-			prev2 = prev1;
-			prev1 = current;
-		}
+        return dp[n-1];
+    }
 
-		return prev1;
-	}
+
+    private int spaceOptimization(int[] nums){
+        int n = nums.length;
+        int prev1 = nums[0];
+        int prev2 = 0;
+
+        for(int i=1; i<n; i++){
+            int rob = nums[i] +  (i-2 >=0 ? prev2 : 0);
+            int notRob  = prev1;
+
+            int curr = Math.max(rob, notRob);
+
+            prev2 = prev1;
+            prev1 = curr;
+        }
+
+        return prev1;
+    }
 
 
 	public static void main(String[] args) {
