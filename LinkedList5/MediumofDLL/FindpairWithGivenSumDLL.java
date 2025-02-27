@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/find-pairs-with-given-sum-in-doubly-linked-list/1
+
 public class FindpairWithGivenSumDLL{
 
     public static ArrayList<ArrayList<Integer>> findPairsWithGivenSum(int target, Node head) {

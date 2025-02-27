@@ -1,3 +1,5 @@
+# https://www.geeksforgeeks.org/problems/remove-duplicates-from-a-sorted-doubly-linked-list/1
+
 class RemoveDuplicateFromSorted:
 
 	 def removeDuplicates(self, head):
