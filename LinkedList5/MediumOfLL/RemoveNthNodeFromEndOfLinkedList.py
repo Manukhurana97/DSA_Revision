@@ -34,6 +34,30 @@ class RemoveNthNodeFromEndOfLinkedList:
 
 		return head
 
+
+	# public ListNode removeNthFromEnd(ListNode head, int n) {
+    #     ListNode ahead = head;
+    #     ListNode current = head;
+
+    #     if(head.next == null && n==1) return head.next;
+
+    #     while(ahead != null && n>=0){
+    #         n-=1;
+    #         ahead = ahead.next;
+    #     }
+    #     if(n>0) return null;
+    #     if(ahead == null && n==0) return head.next;
+        
+    #     while(ahead != null){
+    #         ahead = ahead.next;
+    #         current = current.next;
+    #     }
+        
+    #     current.next =  current.next.next;
+
+    #     return head;
+    # }
+
 obj = RemoveNthNodeFromEndOfLinkedList()
 
 head = ListNode(1)
