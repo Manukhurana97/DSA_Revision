@@ -22,13 +22,14 @@ def SortArray1(arr, n):
 
 
 def SortArray2(arr,  n):
-	if n <= 1: retu<n 
-
+	if n <= 1: return 
 
 	SortArray2(arr, n-1)
 
+
 	if arr[n-1] < arr[n-2]:
 		arr[n-1], arr[n-2] = arr[n-2], arr[n-1]
+		SortArray2(arr, n-1)
 
 
 # [4, 5, 3, 2, 1] 

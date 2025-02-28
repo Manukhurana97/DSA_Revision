@@ -2,10 +2,9 @@ def CountSequencesWithSumK(arr, k, i , n):
 	if i == n: return 1 if k == 0 else 0 
 
 
-	count = 0;
-	count += CountSequencesWithSumK(arr, k - arr[i], i + 1, n)
-	count += CountSequencesWithSumK(arr, k, i + 1, n)
-	return count
+	take = CountSequencesWithSumK(arr, k - arr[i], i + 1, n)
+	notTake = CountSequencesWithSumK(arr, k, i + 1, n)
+	return take + notTake
 			
 def printSebsequenceWithSumK(arr, k, i, n, result):
 	if i == n: 

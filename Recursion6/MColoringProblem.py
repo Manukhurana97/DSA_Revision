@@ -1,24 +1,29 @@
 # https://www.geeksforgeeks.org/problems/m-coloring-problem-1587115620/1
 
-def graphColoringProblem(graph, m, n):
-	colors = [0] * n
-	return graphColoring(0, graph, colors, m, n)
-
-
-def graphColoring(index, graph, colors, noOfColors, noOfNodes):
-	if index == noOfNodes : return True
-
-	for col in range(1, noOfColors+1):
-		if checkGraphColorPossible(index, graph, colors, noOfColors, noOfNodes, col):
-			color[ind] = col
-			if graphColoring(index+1, graph, colot, noOfColors, noOfNodes):return True
-			color[ind] = 0
-	return False
-
-
-def checkGraphColorPossible(index, graph, colors, noOfColors, noOfNodes, col ):
-	for i in range(0, noOfNodes):
-		if i != nodex and graph[i][index] and colors[i] == col: 
-			return False
-
-	return True
+def graphColoring(self, v, edges, m):
+        color = [0] * v
+        
+        def recursion(i: int):
+            
+            if(i == v): 
+                return True
+            
+            for col in range(1, m+1):
+                if canColor(i, col):
+                    color[i] = col
+                    if recursion(i+1):
+                        return True
+                    color[i] = 0
+            
+            return False
+            
+        def canColor(node, col):
+            
+            for u, v in edges:
+                if (node == u and color[v] == col) or (node == v and color[u] == col):
+                    return False
+            
+            return True
+            
+        
+        return recursion(0)

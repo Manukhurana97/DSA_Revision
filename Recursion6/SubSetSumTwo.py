@@ -3,36 +3,47 @@
 from typing import List
 
 class subsetSum:
-    def subsetsWithDupHelper(self, nums, index, arr, result):
-        if index == len(nums):
-            if arr not in result:
-                result.append(arr.copy())
-            return
-        
-        arr.append(nums[index])
-        self.subsetsWithDupHelper(nums, index + 1, arr, result)
-        arr.pop(-1)
-        self.subsetsWithDupHelper(nums, index + 1, arr, result)
-
-
-    def subsetsWithDupHelper1(self, nums, index, arr, result):
-        if index == len(nums):
-            result.append(arr.copy())
-            
-        
-        for i in range(index, len(nums)):
-            if i>index and nums[i-1] == nums[i] : continue
-            
-            arr.append(nums[i])
-            self.subsetsWithDupHelper1(nums, i + 1, arr, result)
-            arr.pop(-1)
-
-
-
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        result = [[]]
+        nums.sort()
+        
+        def recursion(i, list):
+            if(i == n):
+                if list not in result:
+                    result.append(list[:])
+                return
+
+
+            
+            list.append(nums[i])
+            recursion(i+1, list)
+            list.pop(-1);
+            recursion(i+1, list)
+
+        
+        recursion(0, [])
+        return result
+        
+
+    def subsetsWithDup1(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
         result = []
-        # nums.sort()
-        self.subsetsWithDupHelper1(nums, 0, [], result)
+        nums.sort()
+        
+        def recursion(i, list):
+            result.append(list[:])
+
+
+            for j in range(i, n):
+                if j > i and nums[j] == nums[j-1]: continue 
+                
+                list.append(nums[j])
+                recursion(j+1, list)
+                list.pop(-1);
+
+        
+        recursion(0, [])
         return result
 
 
