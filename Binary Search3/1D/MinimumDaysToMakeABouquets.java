@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/minimum-number-of-days-to-make-m-bouquets/
+
 public class MinimumDaysToMakeABouquets{
 
 	public static int getNumberOfDays(int[] arr, int m, int k){

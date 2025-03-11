@@ -13,7 +13,7 @@ public class ProductOfArrayExceptSelf{
             result[i] = product;
         }
 
-        return result;
+        return result;  
     }
 
     public int[] productExceptSelf(int[] nums) {

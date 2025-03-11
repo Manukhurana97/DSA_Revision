@@ -28,6 +28,7 @@ def sortAnArrayZeroOneTwo3(arr):
 	k=len(arr)-1
 
 	while(j<=k):
+	while(j<=k):
 		if(arr[j]==0):
 			arr[i], arr[j] = arr[j], arr[i]
 			i+=1

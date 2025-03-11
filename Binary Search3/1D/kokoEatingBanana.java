@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/koko-eating-bananas/description/
+
 public class kokoEatingBanana{
 	public static int getBananas(int[] arr, int k){
 		if(arr.length == 1) return arr[0];

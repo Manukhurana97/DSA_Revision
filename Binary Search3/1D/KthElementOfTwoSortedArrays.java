@@ -31,7 +31,6 @@ public class KthElementOfTwoSortedArrays{
 		}
 		while(j < n && k > 0){
 			current = arr2[j++];
-			k-=1;
 		}
 
 		return  (k == 0) ? current : -1;

@@ -38,3 +38,7 @@ class LongestConsequtiveElement:
                 currentLen = 1
             
         return maxLen
+
+
+obj = LongestConsequtiveElement()
+print(obj.longestConsecutive([1,5,2,4,3]))
