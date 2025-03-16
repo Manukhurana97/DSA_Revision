@@ -1,5 +1,6 @@
 public class KMSSubStringSearch{
 
+	// kmp algo
 	private boolean isSubstringExists(String a, String b){
 		if(b.length() == 0) return true;
 		if(a.length() == 0 || b.length() > a.length()) return false;
@@ -41,8 +42,8 @@ public class KMSSubStringSearch{
 
 	public static void main(String[] args) {
 		KMSSubStringSearch obj = new KMSSubStringSearch();
-		String text = "";
-		String pattern = "ABC";
-		System.out.println(obj.isSubstringExists(text, pattern));
+		String text = "ababcaabbcabcabcacbab";
+		String pattern = "abcabcacb"; // lps : [0 0 0 1 2 3 4 0 0]
+		System.out.println(obj.isSubstringExists(text, pattern)); // 0:0 1:1 2:0 3:1 4:2 5:3 6:0 7:1 8:0 9:0 10:0 11:1 12:2 13:3 14:4 15:5 16:6 17:7 18:8
 	}
 }
