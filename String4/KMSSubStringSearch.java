@@ -1,6 +1,6 @@
 public class KMSSubStringSearch{
 
-	// kmp algo
+	// KMP  algo
 	private boolean isSubstringExists(String a, String b){
 		if(b.length() == 0) return true;
 		if(a.length() == 0 || b.length() > a.length()) return false;

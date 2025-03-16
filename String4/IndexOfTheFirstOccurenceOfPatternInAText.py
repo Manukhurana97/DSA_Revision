@@ -1,5 +1,6 @@
 # https://www.geeksforgeeks.org/problems/index-of-the-first-occurrence-of-pattern-in-a-text/1
 
+# we can also use KMP algo to optimize
 class IndexOfTheFirstOccurenceOfPatternInAText:
     def findMatching(self, text, pattern):
         n, l = len(text), len(pattern)

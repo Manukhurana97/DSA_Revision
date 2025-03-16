@@ -1,4 +1,7 @@
+// https://leetcode.com/problems/repeated-string-match/description/
+
 class RepeatStringMatch:
+    // repeat the string b/2 time , eg 5/2 = 2.5 ~= 3 
 	def repeatedStringMatch(self, a: str, b: str) -> int:
         if a == b: return 1
 
