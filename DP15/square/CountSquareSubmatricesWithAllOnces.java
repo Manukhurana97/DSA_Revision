@@ -22,8 +22,7 @@ public class CountSquareSubmatricesWithAllOnces{
 
 		for(int r=1; r<rows; r++){
 			for(int c=1; c<cols; c++){
-				if(arr[r][c] == 0) dp[r][c] = 0;
-				else {
+				if(arr[r][c] != 0) {
 					dp[r][c] = 1 + Math.min(dp[r-1][c-1], Math.min(dp[r-1][c], dp[r][c-1]));
 					count += dp[r][c];
 				}

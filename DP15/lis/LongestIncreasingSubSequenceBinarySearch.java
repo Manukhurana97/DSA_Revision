@@ -26,6 +26,8 @@ public class LongestIncreasingSubSequenceBinarySearch{
 			}
 		}
 
+		System.out.println(list);
+
 		return list.size();
 	}
 

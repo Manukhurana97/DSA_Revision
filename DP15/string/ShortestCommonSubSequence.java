@@ -24,6 +24,10 @@ public class ShortestCommonSubSequence{
 			}
 		}
 		
+
+		/*
+			print / add backtracking response of dp in builder
+		*/
 		StringBuilder builder = new StringBuilder();
 		while(n1>0 && n2>0){
 			if(s1.charAt(n1-1) == s2.charAt(n2-1)){

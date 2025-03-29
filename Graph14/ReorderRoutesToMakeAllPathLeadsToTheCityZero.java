@@ -12,8 +12,8 @@ public class ReorderRoutesToMakeAllPathLeadsToTheCityZero{
             adjList.get(connection[0]).add(new int[]{connection[1], 1}); // 1 indicates road points away from city 0
             adjList.get(connection[1]).add(new int[]{connection[0], 0});  // 0 indicates road points towards city 0
         }
-        // if there is not from (eg 0 -> 1) ,this mean is away from 0, we will take 1 
-        // if there is not from (eg 1 -> 0) ,this mean is going twoards 0, but since 0 is initiali it will be alreeady visited we will not count this  
+        // if there is node from (eg 0 -> 1) ,this mean is away from 0, we will take 1 
+        // if there is node from (eg 1 -> 0) ,this mean is going twoards 0, but since 0 is initiali it will be alreeady visited we will not count this  
 
         int[] visited = new int[n];
         return dfs(0, adjList, visited);
@@ -21,20 +21,15 @@ public class ReorderRoutesToMakeAllPathLeadsToTheCityZero{
     }
 
 
-    public int dfs(int node, List<List<int[]>> adjList, int[] visited){
-        visited[node] = 1;
+    private int dfs(int current, List<List<int[]>> adj, boolean[] visited){
+        visited[current] = true;
         int count = 0;
 
-        for (int[] neighbor : adjList.get(node)) {
-        int nextNode = neighbor[0];
-        int direction = neighbor[1];
-
-        if (visited[nextNode]==0) {
-            count += direction;
-            count += dfs(nextNode, adjList, visited);
+        for(int[] neighbours: adj.get(current)){
+            if(!visited[neighbours[0]]){
+                count += neighbours[1] + dfs(neighbours[0], adj, visited);
+            }
         }
-    }
-
 
         return count;
     }

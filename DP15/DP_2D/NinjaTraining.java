@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/geeks-training/1
+
 import java.util.*;
 
 public class NinjaTraining{

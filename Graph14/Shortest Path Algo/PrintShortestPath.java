@@ -1,5 +1,9 @@
+// https://www.geeksforgeeks.org/problems/shortest-path-in-weighted-undirected-graph/1
+
+import java.util.*;
+
 public class PrintShortestPath{
-	public List<Integer> shortestPath(int n, int m, int edges[][]) {
+	public static List<Integer> shortestPath(int n, int m, int edges[][]) {
 
         // creating adjacy list
         List<List<int[]>> adj = new ArrayList<>();
@@ -39,8 +43,7 @@ public class PrintShortestPath{
 
         List<Integer> result = new ArrayList<>();
         if(distance[n] == Integer.MAX_VALUE){
-            result.add(-1);
-            return result;
+            return List.of(-1);
         }
         
         // O(n)
@@ -50,8 +53,13 @@ public class PrintShortestPath{
             currentNode = parent[currentNode];
         }
         result.add(1);
+        // result.add(distance[n]);
         Collections.reverse(result);
-        result.add(0, distance[n]);
         return result;
+    }
+
+    public static void main(String[] args) {
+        int[][] matrix = {{1,2,2}, {1,4,5}, {2,3,4}, {2,5,5}, {3,4,3}, {3,5,1}};
+        System.out.println(shortestPath(5,6,matrix));
     }
 }
