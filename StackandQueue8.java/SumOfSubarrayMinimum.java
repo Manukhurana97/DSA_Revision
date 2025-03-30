@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/sum-of-subarray-minimums/
+import java.util.*;
 
 public class SumOfSubarrayMinimum{
 	public int sumSubarrayMins(int[] arr) {
@@ -21,7 +22,7 @@ public class SumOfSubarrayMinimum{
 
     // ------------------------------------------------------------------------------------
 
-    public int sumSubarrayMins(int[] arr) {
+    public int sumSubarrayMins1(int[] arr) {
         int MOD = 1_000_000_007;
         int n = arr.length;
         long totalSum = 0;
@@ -30,7 +31,7 @@ public class SumOfSubarrayMinimum{
         int[] next = new int[n];
         Stack<Integer> stack = new Stack<>();
 
-        // Monotonic stack for previous less elements on both left and right
+        // Monotonic increasing stack for previous less elements on both left and right
 
         // get element with smallest index on left
         for(int i = 0;i<n;i++){
@@ -54,9 +55,15 @@ public class SumOfSubarrayMinimum{
         for(int i=0;i<n;i++){
             long leftCount = i - prev[i];
             long rightCount = next[i] - i;
-            totalSum = (totalSum + arr[i] * leftCount * rightCount) % MOD;
+            totalSum += (arr[i] * leftCount * rightCount) % MOD;
         }
         
         return (int)totalSum;
+    }
+
+    public static void main(String[] args) {
+        SumOfSubarrayMinimum obj = new SumOfSubarrayMinimum();
+        int[] arr = {3,1,2,4};
+        System.out.println(obj.sumSubarrayMins1(arr));
     }
 }

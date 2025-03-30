@@ -39,22 +39,33 @@ public class SlidingWindow{
 
     // Time : O(N+N)
     public int[] maxSlidingWindow(int[] nums, int k) {
-        int n = nums.length, maxElement = nums[0], maxElementIndex = 0;
+        Deque<Integer> queue = new LinkedList<>();
 
-        // monotonocally increasing queue
-        Deque<Integer> queue = new ArrayDeque<>();
-        int[] result = new int[n - k + 1];
-        
-        for(int i=0;i<n;i++){
-            if(!queue.isEmpty() && queue.peekFirst() < i-k+1) queue.removeFirst();
-                           
-            while(!queue.isEmpty() && nums[queue.peekLast()]<nums[i]) queue.removeLast();
+        // add the k element in queue
+        for(int i=0; i<k; i++){
+            int val = nums[i];
+            while(!queue.isEmpty() && nums[queue.peekLast()]<val){
+                queue.pollLast();
+            }
+            queue.addLast(i);
+        }
+
+        int n=nums.length, j=0;
+
+        int[] result = new int[n-k+1];
+        result[j++] = nums[queue.peekFirst()];
+
+        for(int i=k; i<n; i++){
+            if(!queue.isEmpty() && queue.peekFirst() < i-k+1) queue.pollFirst();
+
+            int val = nums[i];
+            while(!queue.isEmpty() && nums[queue.peekLast()]<val){
+                queue.pollLast();
+            }
             queue.addLast(i);
 
-            if(i >= k-1)
-                result[i - k + 1] = nums[queue.getFirst()];
-            
-        } 
+            result[j++] = nums[queue.peekFirst()];
+        }
 
         return result;
     }

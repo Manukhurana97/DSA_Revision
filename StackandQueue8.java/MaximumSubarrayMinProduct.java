@@ -19,7 +19,7 @@ public class MaximumSubarrayMinProduct{
     }
 
 
-    public int maxSumMinProduct1(int[] nums) {
+    public int maxSumMinProduct(int[] nums) {
         int n = nums.length;
         long mod = 1_000_000_007;
         long[] prefixSum = new long[n+1];
@@ -30,7 +30,6 @@ public class MaximumSubarrayMinProduct{
 
         int[] left = new int[n];
         int[] right = new int[n];
-        Arrays.fill(right, n);
 
         Stack<Integer> stack = new Stack<>();
 
@@ -44,7 +43,7 @@ public class MaximumSubarrayMinProduct{
         stack.clear();
 
         for(int i=n-1; i>=0; i--){
-            while(!stack.isEmpty() && nums[stack.peek()]>nums[i])  stack.pop();
+            while(!stack.isEmpty() && nums[stack.peek()]>=nums[i])  stack.pop();
             
             right[i] = stack.isEmpty() ? n : stack.peek();
             stack.push(i);
@@ -59,6 +58,4 @@ public class MaximumSubarrayMinProduct{
 
         return (int) (maxProduct % mod);
     }
-
-
 }

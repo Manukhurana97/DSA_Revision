@@ -30,6 +30,8 @@ public class NumberOfNGEsOnRight{
           if (arr[mid]> i) end = mid-1;
           else start = mid + 1;
       }
+
+      System.out.println(i+" "+start);
       
       return start;
   }
