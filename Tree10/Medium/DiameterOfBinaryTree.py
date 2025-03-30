@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
+
 class DiameterOfBinaryTree:
 	def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         if not root:        
@@ -14,6 +16,7 @@ class DiameterOfBinaryTree:
         left  = self.getMaxHeight(root.left, height)
         right = self.getMaxHeight(root.right, height)
 
+        # left + right, not left + right + 1. because the diameter counts edges, not nodes.
         height[0] = max(height[0], left + right)
 
         return 1 + max(left, right)

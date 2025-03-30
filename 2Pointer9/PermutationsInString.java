@@ -7,12 +7,12 @@ public class PermutationsInString{
         int right = 0, left = 0, n = s2.length();
         
         while(right < n){
+            s2Arr[s2.charAt(right) - 'a']++;
+
             if((right - left + 1) > s1.length()){
                 s2Arr[s2.charAt(left) - 'a']--;
                 left++;
             } 
-
-            s2Arr[s2.charAt(right) - 'a']++;
 
             if(Arrays.equals(s1Arr, s2Arr)) return true;
 

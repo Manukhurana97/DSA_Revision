@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/longest-happy-prefix/description/
+
 class LongestHappyPrefix:
     # KMP  algorithm
 	def longestPrefix(self, s: str) -> str:

@@ -31,3 +31,23 @@ class PathSum:
         
         
         return dfs(root, targetSum)
+
+
+
+# ----------------------------------------------------------------------
+
+    def maxPathSum(self, root: Optional[TreeNode]) -> int:
+        self.maxVal = -1e9
+
+        def dfs(root):
+            if not root: return 0
+
+            left = max(dfs(root.left),0)
+            right = max(dfs(root.right),0)
+
+            self.maxVal = max(self.maxVal, root.val + left+ right)
+
+            return root.val + max(left, right)
+
+        dfs(root)
+        return self.maxVal

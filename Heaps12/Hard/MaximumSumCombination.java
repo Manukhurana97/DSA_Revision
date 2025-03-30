@@ -12,13 +12,13 @@ public class MaximumSumCombination{
             }
         }
         
-        LinkedList<Integer> result = new LinkedList<>();
+        ArrayList<Integer> result = new ArrayList<>();
         while(!queue.isEmpty()){
             result.addFirst(queue.poll());
         }
         
         
-        return new ArrayList(result);
+        return result;
     }
 
     public static void main(String[] args) {

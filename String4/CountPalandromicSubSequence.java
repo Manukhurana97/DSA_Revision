@@ -1,3 +1,4 @@
+// https://www.geeksforgeeks.org/problems/count-palindromic-subsequences/1
 public class CountPalandromicSubSequence{
     public int countPS(String s) {
         int n = s.length();

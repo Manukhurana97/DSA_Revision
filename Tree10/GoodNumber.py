@@ -35,3 +35,25 @@ class GoodNumber:
         
         dfs(root, float('-inf'))
         return count 
+
+
+# ------------------------------------------------------------------------------------
+
+
+# public int goodNodes(TreeNode root) {
+    #     return dfs(root, root.val-1);
+    # }
+
+    # public int dfs(TreeNode root, int maxTillNow){
+    #     if(root == null) return 0;
+
+    #     int count = 0;
+    #     if(maxTillNow<=root.val){
+    #         maxTillNow=root.val;
+    #         count +=1;
+    #     }
+
+    #     count += dfs(root.left, maxTillNow);
+    #     count += dfs(root.right, maxTillNow);
+    #     return count;
+    # }

@@ -3,7 +3,7 @@
 public class MinimimNumberOfStringToMakeStringAlternating{
 	public int minFlips(String s) {
        int  slen = s.length();
-        s+=s;
+        s+=s; // 2x string
 
         StringBuilder s1 = new StringBuilder();
         StringBuilder s2 = new StringBuilder();
@@ -16,6 +16,7 @@ public class MinimimNumberOfStringToMakeStringAlternating{
         int s1DiffCount = 0, s2DiffCount = 0, last = 0, minFreq = Integer.MAX_VALUE;
         
         for(int i = 0;i < s.length(); i++){
+            // one validation is performed on s (orignal len) the just move to next change but bofore thar remove from first and add in last 
             if(i >= slen){
                 s1DiffCount -= s.charAt(last) != s1.charAt(last) ? 1 : 0;
                 s2DiffCount -= s.charAt(last) != s2.charAt(last) ? 1 : 0;
