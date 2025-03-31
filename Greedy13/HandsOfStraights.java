@@ -50,4 +50,24 @@ public class HandsOfStraights{
         }
         return true;
     }
+
+
+    // ----------------------------------------------------------------------------------------------
+
+
+    public boolean isNStraightHand(int[] hand, int groupSize) {
+        
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        for(int i: hand) queue.add(i);
+
+        while(!queue.isEmpty()){
+            int current = queue.poll();
+
+            for(int i=1; i<groupSize; i++){
+                if(!queue.remove(i+current)) return false;
+            }
+        }
+
+        return true;
+    }
 }

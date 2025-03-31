@@ -24,4 +24,29 @@ public class PartitionLabels{
 
         return result;
     }
+
+
+    // -------------------------------------------------------------------------------------------
+    
+
+    public List<Integer> partitionLabels(String s) {
+        List<Integer> result = new ArrayList<>();
+        Map<Character, Integer> map = new HashMap<>();
+
+        for(int i=0; i<s.length(); i++){
+            map.put(s.charAt(i), i);
+        }
+
+        int maxIndTillNow = 0, prev = 0;
+        for(int i=0; i<s.length(); i++){
+            maxIndTillNow = Math.max(map.get(s.charAt(i)), maxIndTillNow);
+
+            if(i == maxIndTillNow){
+                result.add(maxIndTillNow - prev+1);
+                prev = i+1;
+            }
+        }
+
+        return result;
+    }
 }

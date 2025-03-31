@@ -1,4 +1,5 @@
 # Time : O(2N), Space : O(N) // result space is not counted
+# https://leetcode.com/problems/copy-list-with-random-pointer/description/
 def copyRandomList(self, head: 'Optional[Node]') -> 'Optional[Node]':
 
         if not head: return head

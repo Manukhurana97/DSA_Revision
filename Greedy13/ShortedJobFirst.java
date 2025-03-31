@@ -1,5 +1,17 @@
 import java.util.*;
 
+class Node{
+    int index;
+    int time;
+    int data;
+
+    Node(int index, int data, int time){
+        this.index = index;
+        this.data = data;
+        this.time = time;
+    }
+}
+
 public class ShortedJobFirst{
 	public static float shortestJobFirst(int[] arr){
 		Arrays.sort(arr);
@@ -16,7 +28,7 @@ public class ShortedJobFirst{
 
 // -----------------------------------------------------------------------------------
 
-	public int[] getOrder(int[][] tasks) {
+	public static int[] getOrder(int[][] tasks) {
 
         PriorityQueue<Node> queue = new PriorityQueue<>((a, b) -> 
         a.data == b.data ? (a.time == b.time ? a.index - b.index : a.time - b.time) : a.data - b.data);
@@ -54,7 +66,10 @@ public class ShortedJobFirst{
 		int[] arr = {4,3,7,1,2};
 		System.out.println(shortestJobFirst(arr));
 
-		int[] arr1 = {{1,2},{2,4},{3,2},{4,1}};
-		System.out.println(getOrder(arr1));
+		int[][] arr1 = {{1,2},{2,4},{3,2},{4,1}};
+		var value = getOrder(arr1);
+        for(int i: value){
+            System.out.println(i);
+        }
 	}
 }

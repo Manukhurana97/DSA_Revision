@@ -2,20 +2,22 @@
 
 public class GasStations{
 	public int canCompleteCircuit(int[] gas, int[] cost) {
+        int n = gas.length, totalCost = 0, totalGas = 0, startingPoint = 0;
 
-        int startingPoint = 0, totalgas = 0;
-        int gasSum = 0, costSum=0;
-
-        for(int i = 0; i < gas.length; i++){
-            totalgas += gas[i] - cost[i];
-            if(totalgas < 0){
+        int total = 0;
+        for(int i=0; i<n; i++){
+            total += gas[i] - cost[i];
+            
+            if(total<0){
                 startingPoint = i+1;
-                totalgas = 0;
+                total = 0;
             }
-            gasSum += gas[i];
-            costSum += cost[i];
+
+            totalGas += gas[i];
+            totalCost += cost[i];
         }
 
-        return gasSum < costSum ? -1 : startingPoint;
+        if(startingPoint == n) return -1;
+        return totalGas < totalCost ? -1 : startingPoint;
     }
 }

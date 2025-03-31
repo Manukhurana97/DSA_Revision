@@ -54,13 +54,9 @@ public class ValidParanthesisString{
     }
 
     public boolean dfs(int i, int count, String s, Boolean[][] dp){
-        if (i == s.length()) {
-            return count == 0;
-        }
-
-        if (count < 0) {
-            return false;
-        }
+        if (i == s.length()) return count == 0;
+        if (count < 0) return false;
+        
 
         if(dp[i][count]!=null) return dp[i][count];
 

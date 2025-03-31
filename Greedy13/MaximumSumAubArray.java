@@ -4,13 +4,12 @@
 public class MaximumSumAubArray{
 
     public int maxSubArray(int[] nums) {
-        int sum = 0;
-        int maxSum = Integer.MIN_VALUE;
+        int sum = nums[0];
+        int maxSum = nums[0];
 
-        for(int num: nums){
-            sum += num;
-            sum = Math.max(num, sum);
-            maxSum = Math.max(sum, maxSum);
+        for(int i=1; i<nums.length; i++){
+            sum = Math.max(nums[i], sum+nums[i]);
+            maxSum = Math.max(maxSum, sum);
         }
 
         return maxSum;
