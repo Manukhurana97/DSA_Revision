@@ -24,7 +24,7 @@ def RatInMazeHelper(maze, r, c, s, result, visited):
 		visited[r][c + 1] = 1
 		RatInMazeHelper(maze, r, c+1 , s +'R', result, visited)
 		visited[r][c + 1] = 0
-
+		
 
 def RatInMaze(maze):
 	resultPaths = []

@@ -2,6 +2,7 @@ def getMaxElement(arr, n):
 	if(n == 0): return arr[0]
 		
 	no = getMaxElement(arr, n-1)
+	print(n, no)
 
 	return max(no, arr[n-1])
 
