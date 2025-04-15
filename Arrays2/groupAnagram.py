@@ -1,4 +1,6 @@
-def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+# https://leetcode.com/problems/group-anagrams/
+
+def cd (self, strs: List[str]) -> List[List[str]]:
     anagram_dict = {}   
 
     for str in strs: # O(N)

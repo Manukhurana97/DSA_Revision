@@ -13,8 +13,7 @@ def mergeOverLappingSubInterval(arr):
 			last[1] = max(arr[i][1], last[1]);
 		else:
 			result.append(arr[i])
-			
-
+		
 	return result
 
 

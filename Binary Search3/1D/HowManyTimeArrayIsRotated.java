@@ -22,7 +22,7 @@ public class HowManyTimeArrayIsRotated{
 
 			if(arr[left] < arr[right])return left;			
 			
-			if(arr[left] < arr[mid]) left = mid + 1;
+			if(arr[left] <= arr[mid]) left = mid + 1;
 			else right = mid - 1;	
 		}
 		return 0;

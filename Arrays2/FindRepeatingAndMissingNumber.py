@@ -31,8 +31,8 @@ def findRepeatingAndMissingNumber1(arr):
 	s1 = sum(x*x for x in arr)
 
 	# difference of expected and actual
-	v1 = s1n - s # x + y
-	v2 = s2n - s1 # x^2 - y^2
+	v1 = s1n - s # x - y
+	v2 = s2n - s1 # x^2 - y^2 : (x+y)*(x-y)
 
 	# X+Y = (X^2-Y^2)/(X-Y):
 	x_plus_y = v2 // v1
