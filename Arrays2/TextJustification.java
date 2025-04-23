@@ -1,15 +1,5 @@
 // https://leetcode.com/problems/text-justification/
 
-public class TextJustification {
-    public List<String> fullJustify(String[] words, int maxWidth) {
-        List<String> result = new ArrayList<>();
-
-        // when we have only one word
-        if(words.length == 1) {
-            result.add(words[0]+" ".repeat(maxWidth - words[0].length()));
-            return result;
-        }
-
         int clen = 0;
         List<String> temp = new ArrayList<>();
 
