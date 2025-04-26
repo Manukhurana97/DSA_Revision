@@ -2,3 +2,6 @@
 
 # Ignore all .class files
 *.class
+
+gitToken.txt
+/gitToken.txt
