@@ -18,7 +18,7 @@ def leaderInArray(arr):
 # Time O(N), Space O(N)
 def leaderInArray2(arr):
 	result = [0] * len(arr)
-	maxTillNow = -float('inf')
+	su = -float('inf')
 
 	for i in range(len(arr)-1, -1, -1):
 		if arr[i]>maxTillNow:

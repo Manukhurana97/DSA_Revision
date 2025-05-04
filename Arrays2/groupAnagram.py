@@ -37,3 +37,25 @@ def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         result.append(val)
 
     return result
+
+
+
+# ------------------------------------------------------------------------------------
+
+
+#     public List<List<String>> groupAnagrams(String[] strs) {
+#         List<List<String>> result = new ArrayList<>();
+        
+#         Map<String, List<String>> map = new HashMap<>();
+
+#         for(String str: strs){
+#             char chArr[] = new char[26];
+#             for(char ch: str.toCharArray()) chArr[ch - 'a']++;
+#             String word = new String(chArr);
+            
+#             map.computeIfAbsent(word, k-> new ArrayList<>()).add(str);              
+            
+#         }
+
+#         return new ArrayList<>(map.values());
+#     }
