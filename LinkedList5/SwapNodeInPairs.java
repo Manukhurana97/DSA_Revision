@@ -25,4 +25,28 @@ public class SwapNodeInPairs{
 
         return node.next; 
     }
+
+
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null) return head;
+
+        ListNode dummyNode = new ListNode();
+        ListNode prev = dummyNode;
+        ListNode current = head.next;
+        
+        while(current != null) {
+            ListNode next = current.next;
+
+            prev.next = current;
+            head.next = next;
+            current.next = head;
+            
+            prev = head;
+            head = next;
+            if(next == null) break;
+            current = next.next;
+        }
+        
+        return dummyNode.next;
+    }
 }
