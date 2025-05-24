@@ -1,6 +1,6 @@
 class LongestConsequtiveElement:
 	def longestConsecutive(self, arr: List[int]) -> int:
-        if len(arr) ==0: return 0
+        if len(arr) == 0: return 0
     
         arr = sorted(set(arr))
        

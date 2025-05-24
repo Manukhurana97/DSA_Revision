@@ -1,3 +1,5 @@
+from typing import List
+
 # Time: O(N^3), Space: O(1)
 def maxProductSubArray(arr):
 	maxProduct = float('-inf')
@@ -67,13 +69,13 @@ def maxProductSubArray2(arr):
     return result
 
 
-def maxProduct(self, nums: List[int]) -> int:
+def maxProduct3(nums: List[int]) -> int:
     prefix, sufix = 1,1
     maxResult = max(nums)
 
     for i in range(0, len(nums)):
         prefix  = (prefix or 1) * nums[i]
-        sufix = (sufix or 1) * nums[-1 - i]
+        sufix = (sufix or 1) * nums[i - i]
         
         maxResult = max(prefix, sufix, maxResult)
 
@@ -90,4 +92,7 @@ print(maxProductSubArray1([1,2,-3,0,-4,-5]))
 
 print(maxProductSubArray2([1,2,3,4,5,0]), end = ", ")
 print(maxProductSubArray2([1,2,-3,0,-4,-5]))
+
+print(maxProduct3([1,2,3,4,5,0]), end = ", ")
+print(maxProduct3([1,2,-3,0,-4,-5]))
 

@@ -57,6 +57,7 @@ def merge2SortedArrayWithoutExtraSpaceV3(arr1, arr2):
 		j = gap - n if gap > n else 0
 		while i < n and j < m:
 			if arr1[i] > arr2[j]:
+				print(i, j)
 				arr1[i], arr2[j] = arr2[j], arr1[i]
 			i+=1
 			j+=1
@@ -68,6 +69,8 @@ def merge2SortedArrayWithoutExtraSpaceV3(arr1, arr2):
 				if arr2[j] > arr2[j+gap]:
 					arr2[j], arr2[j+gap] = arr2[j+gap], arr2[j]
 				j += 1
+
+		print(gap, arr1, arr2)
 
 		gap = next_gap(gap)
 
@@ -88,7 +91,7 @@ def next_gap(l):
 
 
 
-merge2SortedArrayWithoutExtraSpaceV1([1,4,8,10], [2,3,9])
-merge2SortedArrayWithoutExtraSpaceV2([1,4,8,10], [2,3,9])
+# merge2SortedArrayWithoutExtraSpaceV1([1,4,8,10], [2,3,9])
+# merge2SortedArrayWithoutExtraSpaceV2([1,4,8,10], [2,3,9])
 merge2SortedArrayWithoutExtraSpaceV3([1,4,8,10], [2,3,9])
 

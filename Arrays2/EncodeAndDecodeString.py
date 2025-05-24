@@ -19,7 +19,7 @@ class EncodeAndDecodeString:
 				j+=1
 			length = int(s[i:j]) # get the length till hash
 			result.append(s[j + 1: j + 1 + length]) # #+1, #+1+length
-			i = j + 1 + length
+			i = j + length + 1
 
 		return result
 
