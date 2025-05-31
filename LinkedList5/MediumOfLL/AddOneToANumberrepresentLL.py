@@ -37,7 +37,7 @@ head = obj.addOne(node)
 
 while head:
 	print(head.val, end=", ")
-	head = head.next
+	head = head.nextsud
 
 
 

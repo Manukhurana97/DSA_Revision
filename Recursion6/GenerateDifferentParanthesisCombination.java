@@ -26,6 +26,8 @@ public class GenerateDifferentParanthesisCombination{
 			}
 		}
 
+
+
 		if (result.isEmpty()) {
             result.add(expression);
         }

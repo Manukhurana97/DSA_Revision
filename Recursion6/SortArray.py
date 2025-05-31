@@ -43,7 +43,7 @@ def SortArray2(arr,  n):
 
 
 arr = [5,4,3,2,1]
-# SortArray(arr, 0, len(arr)-1)
+SortArray(arr, 0, len(arr)-1)
 # SortArray1(arr, len(arr))
-SortArray2(arr, len(arr))
+# SortArray2(arr, len(arr))
 print(arr)

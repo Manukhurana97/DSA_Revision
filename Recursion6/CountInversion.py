@@ -33,6 +33,7 @@ def divide(arr, start, end, count):
 	mid = (start + end) // 2
 	count = divide(arr, start, mid, count)
 	count = divide(arr, mid + 1, end, count)
+	print(arr[start], arr[mid], arr[end])
 	return merge(arr, start, mid, end, count)
 
 	

@@ -1,7 +1,7 @@
 def printNumber(n):
 	if(n == 0 ): return
 	printNumber(n - 1)
-	print(n, end = ",, ")
+	print(n, end = ", ")
 
 
 def printNumberInReverse(n):

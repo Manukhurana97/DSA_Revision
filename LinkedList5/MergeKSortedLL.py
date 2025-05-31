@@ -126,3 +126,35 @@ def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
             current.next = l2
 
         return dummyNode.next
+
+
+# class Solution {
+#     public ListNode mergeKLists(ListNode[] lists) {
+#         // store only the current head of all the list
+
+#         PriorityQueue<ListNode> queue = new PriorityQueue<>((a, b) -> a.val - b.val);
+
+#         for(ListNode list : lists) {
+#             if(list != null) {
+#                 queue.add(list); // store only the head of all the list
+#             }
+#         }
+
+#         ListNode result = new ListNode();
+#         ListNode current = result;
+
+#         while(!queue.isEmpty()){
+#             current.next = queue.poll();
+#             current = current.next;
+
+#             if(current.next!=null)
+#                 queue.add(current.next);
+
+            
+            
+#         }
+
+
+#         return result.next;
+#     }
+# }

@@ -1,7 +1,7 @@
 // https://leetcode.com/problems/permutations-ii/
 
 public class Permutations2 {
-	ublic List<List<Integer>> permuteUnique(int[] nums) {
+	public List<List<Integer>> permuteUnique(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
         Set<List<Integer>> set = new HashSet<>();
         if(nums.length == 0) return result;

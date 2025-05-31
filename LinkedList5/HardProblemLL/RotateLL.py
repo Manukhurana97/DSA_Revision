@@ -52,11 +52,11 @@ def rotateRight1(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
     if k == 0:
         return head
     
-    current.next = head
+    current.next = head # created a cycle
     for _ in range(l - k):
         current = current.next
     
-    new_head = current.next
-    current.next = None
+    new_head = current.next # new head
+    current.next = None  # broke cycle
     
     return new_head

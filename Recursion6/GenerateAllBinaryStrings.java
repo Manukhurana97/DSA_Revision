@@ -50,7 +50,7 @@ public class GenerateAllBinaryStrings{
 
 	public static void main(String[] args) {
 		GenerateAllBinaryStrings obj = new GenerateAllBinaryStrings();
-		System.out.println(obj.generate(3));
+		System.out.println(obj.generate(4));
 	}
 	
 }
