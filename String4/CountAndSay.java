@@ -17,7 +17,13 @@ public class CountAndSay {
             }
             builder.append(j-prev).append(result.charAt(j-1));
             result = builder.toString();
+            
         }
         return result;
+    }
+
+    public static void main(String[] args) {
+        CountAndSay obj = new CountAndSay();
+        System.out.println(obj.countAndSay(4));
     }
 }
