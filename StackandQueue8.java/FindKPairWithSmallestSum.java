@@ -29,7 +29,7 @@ public class FindKPairWithSmallestSum{
         
         PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a[0] + a[1]));
 
-        for(int i=0; i<Math.min(k, nums2.length); i++){
+        for(int i=0; i<Math.min(k, nums1.length); i++){
             queue.add(new int[]{nums1[i], nums2[0], 0});
         }
 
