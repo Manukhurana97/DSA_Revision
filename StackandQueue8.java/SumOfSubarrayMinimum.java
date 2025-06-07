@@ -45,7 +45,7 @@ public class SumOfSubarrayMinimum{
 
         // get element with smallest index on right
         for(int i = n-1;i>=0;i--){
-            while(!stack.isEmpty() && arr[stack.peek()]>arr[i]) stack.pop();
+            while(!stack.isEmpty() && arr[stack.peek()]>=arr[i]) stack.pop();
             
             next[i] = stack.isEmpty() ? n: stack.peek();
             stack.push(i); 

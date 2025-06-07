@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class NGEsOnRight{
 
 	public static int[] count_NGEs(int N, int arr[], int queries, int indices[]) {
@@ -12,6 +14,8 @@ public class NGEsOnRight{
             map.put(i, stack.size());
             stack.push(val);
         }
+
+        System.out.println(map);
         
 
         int[] result = new int[queries];
@@ -21,7 +25,21 @@ public class NGEsOnRight{
         }
         
         return result;
-     
   }
+
+    public static void main(String[] args) {
+        int[] arr = {5, 3, 8, -2, 7, 10};
+        int N = arr.length;
+
+        int[] indices = {0, 1, 2, 3, 4, 5};
+        int queries = indices.length;
+
+        int[] result = NGEsOnRight.count_NGEs(N, arr, queries, indices);
+
+        System.out.println("Result:");
+        for (int val : result) {
+            System.out.print(val + " ");
+        }
+    }
 	
 }
