@@ -42,7 +42,22 @@ public class MaximumPointObtainFromCard{
         return maxSum;
     }
 
-    public static void main(String[] args) {
+    public int maxScore(int[] cardPoints, int k) {
+        int n = cardPoints.length, sum = 0;
         
+        for(int i=n-k; i<n; i++) {
+            sum += cardPoints[i];
+        }
+
+        int result = sum;
+
+        for(int i=0; i<k; i++) {
+            sum -= cardPoints[n - k + i];
+            sum += cardPoints[i];
+
+            result = Math.max(result, sum);
+        }
+
+        return result;
     }
 }
