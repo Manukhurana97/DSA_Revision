@@ -1,7 +1,6 @@
 class TwoSum:
 	def findTarget(self, root: Optional[TreeNode], k: int) -> bool:
-
-
+        
         valSet = set()
         queue = deque([root])
 
