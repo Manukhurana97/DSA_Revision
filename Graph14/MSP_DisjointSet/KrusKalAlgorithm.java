@@ -49,13 +49,16 @@ public class KrusKalAlgorithm{
 
 	public static int spanningTree(int V, List<List<List<Integer>>> adj) {
 		PriorityQueue<Node> queue = new PriorityQueue<>((a, b)-> a.wt - b.wt);
-		for(List<Integer> lst: adj){
-			int u = lst.get(0);
-			int v = lst.get(1);
-			int wt = lst.get(2);
-
-			queue.add(new Node(u, v, wt));
+		
+		for (int u = 0; u < V; u++) {
+			for (List<Integer> neighbor : adj.get(u)) {
+				int v = neighbor.get(0);
+				int wt = neighbor.get(1);
+				if (u < v) 
+					queue.add(new Node(u, v, wt));
+			}
 		}
+
 
 		int sum = 0;
 		while(!queue.isEmpty()){

@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/reconstruct-itinerary/description/
+
 public class reconstructItinerary{
     	public List<String> findItinerary(List<List<String>> tickets) {
         // using priority queue in order to sort in lexical graphical order <a,b, c...>
