@@ -51,7 +51,7 @@ public class MakingLargestIsland {
             for(int c=0; c<n; c++){
                 if(grid[r][c] == 1){
                     int index = r*n+c;
-                    
+                     
                     for(int i=0; i<4; i++){
                         int dr = r+rCoord[i];
                         int dc = c+cCoord[i];

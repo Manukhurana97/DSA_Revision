@@ -107,6 +107,72 @@ public class NinjaTraining{
 	    return maxPoints;
 	}
 
+	// ---------------------------------------------------------------------------
+
+	// public int maximumPoints(int arr[][]) {
+    //     int[][] dp = new int[arr.length][arr[0].length+1];
+        
+    //     return recursion(arr.length-1, arr[0].length, arr, dp);
+        
+    //     return tabulation(arr, dp);
+        
+    //     return spaceOptimization(arr);
+    // }
+    
+    // private int recursion(int day, int prevIndex, int[][] arr, int[][] dp) {
+    //     if(day<0) return 0;
+        
+    //     if(dp[day][prevIndex] != 0) return dp[day][prevIndex];
+         
+    //     int profit = 0;
+    //     for(int i=0; i<arr[day].length; i++) {
+    //         if(prevIndex != i) {
+    //             int cost = arr[day][i] + recursion(day-1, i, arr, dp);
+    //             profit = Math.max(profit, cost);
+    //         }
+    //     }
+    //     return dp[day][prevIndex] = profit;
+    // }
+    
+    // private int tabulation(int[][] arr, int[][] dp) {
+        
+    //     for(int day=0; day<arr.length; day++){
+    //         for(int prev = 0; prev<=arr[day].length; prev++) {
+    //             int profit = 0;
+    //             for(int i=0; i<arr[day].length; i++) {
+    //                 if(prev != i) {
+    //                     int cost = arr[day][i] + (day-1<0 ? 0 : dp[day-1][i]);
+    //                     profit = Math.max(profit, cost);
+    //                 }
+    //             }
+    //             dp[day][prev] = profit;
+    //         }
+    //     }
+        
+    //     return dp[arr.length-1][arr[0].length];
+    // }
+    
+    // private int spaceOptimization(int[][] arr) {
+    //     int[] prev1 = new int[arr[0].length+1];
+        
+    //     for(int day=0; day<arr.length; day++){
+    //         int[] curr = new int[arr[0].length+1];
+    //         for(int prev = 0; prev<=arr[day].length; prev++) {
+    //             int profit = 0;
+    //             for(int i=0; i<arr[day].length; i++) {
+    //                 if(prev != i) {
+    //                     int cost = arr[day][i] + (day-1<0 ? 0 : prev1[i]);
+    //                     profit = Math.max(profit, cost);
+    //                 }
+    //             }
+    //             curr[prev] = profit;
+    //         }
+    //         prev1 = curr;
+    //     }
+        
+    //     return prev1[arr[0].length];
+    // }
+
 
 	public static void main(String[] args) {
 		NinjaTraining obj = new NinjaTraining();

@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/graph-valid-tree/description/
 
+import java.util.*;
+
 class DisJointSet{
 
     List<Integer> parent = new ArrayList<>();
@@ -60,5 +62,29 @@ public class GraphValidTree {
 
 
         return true;
+    }
+
+    public static void main(String[] args) {
+        int n = 5;
+        int[][] edges = {
+            {0, 1},
+            {0, 2},
+            {0, 3},
+            {3, 4}
+        };
+
+        int n2 = 5;
+        int[][] edges2 = {
+            {0, 1},
+            {1, 2},
+            {2, 3},
+            {1, 3},
+            {1, 4}
+        };
+
+
+        GraphValidTree obj = new GraphValidTree();
+        System.out.println(obj.validTree(n, edges));
+        System.out.println(obj.validTree(n2, edges2));
     }
 }
