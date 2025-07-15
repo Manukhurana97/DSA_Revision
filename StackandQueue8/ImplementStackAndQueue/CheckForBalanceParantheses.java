@@ -15,7 +15,7 @@ public class CheckForBalanceParantheses{
                         stack.pop();
                         break; 
 
-                    case ']':
+                    case ']':   
                         if (stack.peek() != '[') return false;
                         stack.pop();
                         break; 

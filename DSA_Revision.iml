@@ -3,7 +3,18 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/2Pointer9" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Arrays2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/BitManuplation7" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Graph14" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Greedy13" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/LinkedList5" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Recursion6" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Sorting1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/StackandQueue8" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/String4" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tree10" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Trie12" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
