@@ -10,7 +10,13 @@ def run_command(cmd):
 
 def main():
     # Get commit message from CLI or use today's date
-    commit_msg = sys.argv[1] if len(sys.argv) > 1 else datetime.now().strftime("%Y-%m-%d")
+    commit_msg = ""
+    if len(sys.argv) > 1:
+        commit_msg = sys.argv[1] 
+    else:
+        commit_msg = input("Enter commit message: ").strip()
+        if not commit_msg:
+            commit_msg = datetime.now().strftime("%Y-%m-%d")
 
     print("📥 Pulling latest changes...")
     run_command("git pull")
