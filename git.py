@@ -1,5 +1,6 @@
 import subprocess
 import sys
+import shlex
 from datetime import datetime
 
 def run_command(cmd):
@@ -8,11 +9,13 @@ def run_command(cmd):
         print(f"❌ Error running command: {cmd}")
         sys.exit(result.returncode)
 
+def has_staged_changes():
+    return subprocess.run("git diff --cached --quiet", shell=True).returncode != 0
+
 def main():
-    # Get commit message from CLI or use today's date
-    commit_msg = ""
+    # Combine all CLI args for full commit message
     if len(sys.argv) > 1:
-        commit_msg = sys.argv[1] 
+        commit_msg = " ".join(sys.argv[1:])
     else:
         commit_msg = input("Enter commit message: ").strip()
         if not commit_msg:
@@ -24,8 +27,12 @@ def main():
     print("📦 Adding all changes...")
     run_command("git add .")
 
+    if not has_staged_changes():
+        print("⚠️  No changes to commit.")
+        sys.exit(0)
+
     print(f"📝 Committing with message: '{commit_msg}'")
-    run_command(f'git commit -m "{commit_msg}"')
+    run_command(f'git commit -m {shlex.quote(commit_msg)}')
 
     print("📤 Pushing to remote...")
     run_command("git push")
