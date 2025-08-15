@@ -5,30 +5,30 @@ import java.util.*;
 
 public class NumberOfSubsetContainingAll3Char{
 	public int numberOfSubstrings(String s) {
-
-        return  atMostElement(s, 3)-atMostElement(s, 2);
+        return numberOfSubstringsContainAtMost(s, 3) - numberOfSubstringsContainAtMost(s, 2);
     }
 
-    public int atMostElement(String s, int atMost){
-        Map<Character, Integer> charSet = new HashMap<>(); // max size 3
-        int current = 0, last = 0, n = s.length(), result = 0;
+    private int numberOfSubstringsContainAtMost(String s, int k) {
+        int n = s.length(), current = 0, prev = 0;
+        int result = 0;
+        Map<Character, Integer> map = new HashMap<>();
 
-        while(current < n){
-            charSet.put(s.charAt(current), charSet.getOrDefault(s.charAt(current), 0) + 1);
+        while(current < n) {
+            map.put(s.charAt(current), map.getOrDefault(s.charAt(current), 0) + 1);
 
-            while(charSet.size() > atMost)
-                if(charSet.get(s.charAt(last)) == 1) charSet.remove(s.charAt(last++));
-                else charSet.put(s.charAt(last), charSet.get(s.charAt(last++)) - 1);
+            while(map.size() > k && current >= prev) {
+                map.put(s.charAt(prev), map.get(s.charAt(prev)) - 1);
 
-            result += (charSet.size()<=atMost) ? current - last: 0;
-            current+=1;
+                if(map.get(s.charAt(prev)) == 0) {
+                    map.remove(s.charAt(prev));
+                }
 
+                prev += 1;
+            }
+            result += current - prev + 1;
+            current ++;
         }
 
         return result;
-    }
-
-    public static void main(String[] args) {
-        
     }
 }

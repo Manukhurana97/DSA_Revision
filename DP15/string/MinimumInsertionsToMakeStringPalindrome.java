@@ -16,7 +16,7 @@ public class MinimumInsertionsToMakeStringPalindrome{
 		return n - spaceOptimization(s, builder.reverse().toString());
 	}
 
-	public int recursion(int index1, int index2, String s1, String s2){
+	public int recursion(int index1, int index2, String s1, String s2){ 
 
 		if(index1<0 || index2<0) return 0;	
 

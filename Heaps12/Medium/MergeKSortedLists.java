@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/merge-k-sorted-lists/description/
+//  
 
 // // Time : O(nlogk) , space (n+k)
 public class MergeKSortedLists(){

@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/scramble-string/s
+// https://leetcode.com/problems/scramble-string/
 
 public class ScrambleString {
 	

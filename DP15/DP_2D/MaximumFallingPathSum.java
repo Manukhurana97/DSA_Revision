@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/minimum-falling-path-sum/
+// here we are doing max path sum
 
 
 public class MaximumFallingPathSum{
