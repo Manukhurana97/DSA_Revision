@@ -1,4 +1,4 @@
-// con
+// https://leetcode.com/problems/binary-subarrays-with-sum/description/
 
 public class BinarySubarraysWithSum{
 
