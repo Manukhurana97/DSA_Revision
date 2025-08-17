@@ -9,7 +9,7 @@ class LongestSubstringWithAtMostKChars:
 		n = len(s)
 		maxLen = 0
 
-		while(current < n):
+		while(current < n):	
 			currentval = s[current]
 			countMap[currentval] = countMap[currentval] + 1 if currentval in countMap else 1
 
