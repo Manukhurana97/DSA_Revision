@@ -3,12 +3,15 @@ import re
 from collections import defaultdict
 
 EXCLUDE_DIRS = {'.git', '.idea', '.vscode', '__pycache__'}
+VALID_EXTENSIONS = {'.java', '.py'}
 
 def count_files_per_folder(base_path='.'):
     folder_counts = defaultdict(int)
     for dirpath, dirnames, filenames in os.walk(base_path):
         dirnames[:] = [d for d in dirnames if d not in EXCLUDE_DIRS]
-        folder_counts[dirpath] += len(filenames)
+        folder_counts[dirpath] += sum(
+            1 for f in filenames if os.path.splitext(f)[1] in VALID_EXTENSIONS
+        )
     return folder_counts
 
 def extract_number(name):
@@ -42,7 +45,7 @@ def main():
     choice = input("Do you want full hierarchy (y/n)? ").strip().lower()
     base_path = '.'
 
-    if choice == 'y' or choice == 'Y':
+    if choice == 'y':
         folder_counts = count_files_per_folder(base_path)
         print_tree(folder_counts, base_path, "", True, skip_root=True, level=0)
     else:
@@ -54,7 +57,9 @@ def main():
             rel_path = os.path.relpath(dirpath, base_path)
             parts = rel_path.split(os.sep) if rel_path != '.' else []
             top_folder = parts[0] if parts else root_name
-            counts[top_folder] += len(filenames)
+            counts[top_folder] += sum(
+                1 for f in filenames if os.path.splitext(f)[1] in VALID_EXTENSIONS
+            )
 
         print(f"{'Folder':<25} | {'File Count':>10}")
         print("-" * 40)
