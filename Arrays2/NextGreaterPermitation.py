@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/next-permutation/submissions/
+
 # generate all possible permutations and get the perms[currentIndex+1] Time: O(!N) ,Space: O(1)
 def generateAllPossiblePermutations(arr, lst, result, flag):
     if len(lst) == len(arr):
