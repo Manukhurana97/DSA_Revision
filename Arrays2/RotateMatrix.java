@@ -34,11 +34,9 @@ public class RotateMatrix{
 		int n  = arr.length;
 	
 		for(int i=0; i<n/2; i++){
-			for(int j=0; j<n; j++){
-				int temp = arr[i][j];
-				arr[i][j] = arr[n-i-1][j];
-				arr[n-i-1][j] = temp;
-			}
+			int[] temp = arr[i];
+			arr[i] = arr[n-i-1];
+			arr[n-i-1] = temp;
 		}
 
 		print(arr);
