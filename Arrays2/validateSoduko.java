@@ -2,42 +2,27 @@
 
 public class validateSoduko{
 	public boolean isValidSudoku(char[][] board) {
-        
-        for(int r=0; r<9; r++){
+        // use sets to track seen numbers
+        boolean[][] rows = new boolean[9][9];
+        boolean[][] cols = new boolean[9][9];
+        boolean[][] boxes = new boolean[9][9];
 
-            boolean[] row = new boolean[9];
-            boolean[] col = new boolean[9];
-            boolean[] box = new boolean[9];
+        for (int r = 0; r < 9; r++) {
+            for (int c = 0; c < 9; c++) {
+                char ch = board[r][c];
+                if (ch == '.') continue;
 
-            for(int c=0; c<9; c++){
-                // check row
-                if(board[r][c] != '.') {
-                    int val = board[r][c] - '1';
-                    if(row[val]) return false;
-                    row[val] = true;
+                int num = ch - '1'; // convert '1'–'9' → 0–8
+                int boxIndex = (r / 3) * 3 + (c / 3);
+
+                // check row, col, and box
+                if (rows[r][num] || cols[c][num] || boxes[boxIndex][num]) {
+                    return false;
                 }
 
-                // check col        
-                if(board[c][r] != '.') {
-                    int val = board[c][r] - '1';
-                    if(col[val]) return false;
-                    col[val] = true;
-                }
-        
-                // check column
-                int rowIndex = (r / 3) * 3;
-                int colIndex = (r % 3) * 3;
-                int dr = rowIndex + c / 3;
-                int dc = colIndex + c % 3;
-                if(board[dr][dc] != '.') {
-                    int val = board[dr][dc] - '1';
-                    if(box[val]) return false;
-                    box[val] = true;
-                }
-
+                rows[r][num] = cols[c][num] = boxes[boxIndex][num] = true;
             }
         }
-
         return true;
     }
 }
