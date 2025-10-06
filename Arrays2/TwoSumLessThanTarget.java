@@ -46,14 +46,48 @@ public class TwoSumLessThanTarget{
 		return maxSum;
 	}
 
+	// counting sort
+	// constraints : this will work if the n<=10^4
+	public static int twoSumLessThanTarget2(int[] nums, int target) {
+		int MAX = 1000;
+		int[] count = new int[MAX+1];
+
+		for(int num: nums) {
+			if(num < target) {
+				count[num]++;
+			}
+		}
+
+		int left = 1, right = MAX;
+		int maxSum = -1;
+
+		while(left <=  right) {
+			while(left <= right && count[left] == 0) left++;
+			while(left <= right && count[right] == 0) right--;
+
+			if(left>right) break;
+
+
+			int sum = left + right;
+			if(sum < target) {
+				maxSum = Math.max(maxSum, sum);
+				left++;
+			} else {
+				right -= 1;
+			}
+ 		}
+
+ 		return maxSum;
+	}
+
 
 
 	public static void main(String[] args) {
 		int[] arr = {2,7,11,15};
-		System.out.println(twoSumLessThanTarget(arr, 24)+" "+twoSumLessThanTarget1(arr, 24));
+		System.out.println(twoSumLessThanTarget(arr, 24)+" "+twoSumLessThanTarget1(arr, 24)+" "+twoSumLessThanTarget2(arr, 24));
 	
 
 		int[] arr1 = {3,5,1,9,7};
-		System.out.println(twoSumLessThanTarget(arr1, 3) +" "+ twoSumLessThanTarget1(arr1, 3));
+		System.out.println(twoSumLessThanTarget(arr1, 3) +" "+ twoSumLessThanTarget1(arr1, 3)+" "+ twoSumLessThanTarget2(arr1, 3));
 	}
 }
