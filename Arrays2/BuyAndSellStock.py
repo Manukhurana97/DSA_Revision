@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/best-time-to-buy-and-sell-stock/description/
+
 
 # run 2 for loop and compare the element and find the max diff pair, Time: O(N^2), Space: O(1)
 def maxProfit1(prices) -> int:

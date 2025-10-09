@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/majority-element
+
 # use for loop and compare Time: O(n^2), Space: O(1)
 def majorityElement1(arr):
 	for i in range(len(arr)):

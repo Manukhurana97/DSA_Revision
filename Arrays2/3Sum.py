@@ -1,4 +1,4 @@
- # https://leetcode.com/problems/3sum/submissions/
+ # https://leetcode.com/problems/3sum/
 
 from typing import List
 
