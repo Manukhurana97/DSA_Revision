@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/single-element-in-a-sorted-array/
+
 public class SearchSingleElementInSortedArray{
 
 	public static int getElement(int[] arr){

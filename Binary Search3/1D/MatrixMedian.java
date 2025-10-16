@@ -21,7 +21,7 @@ public class MatrixMedian{
 		int left = 1;
 		int right = 1000000000;
 		int n = arr.length;
-		int m = arr[0].length;
+		int m = arr[0].length;                                                                                                                                                                                                                                                                                          
 
 		while(left <= right){
 			// (left 	

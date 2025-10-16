@@ -46,6 +46,77 @@ public class FindPeekElementTwo {
 	}
 
 
+    // --------------------------------------------------------------------------------
+
+    public boolean isPeakElement(int r, int c, int[][] mat) {
+        if(r > 0 && mat[r-1][c] > mat[r][c]) return false;
+        if(r < mat.length-1 && mat[r+1][c] > mat[r][c]) return false;
+        if(c > 0 && mat[r][c-1] > mat[r][c]) return false;
+        if(c < mat[r].length-1 && mat[r][c+1] > mat[r][c]) return false;
+        return true;
+    }
+
+    public int getPeakElement(int r, int[][] mat) {
+        for(int c = 0; c < mat[r].length; c++) {
+            if(isPeakElement(r, c, mat)) {
+                return c;
+            }
+        }
+        
+        return -1;
+    }
+    
+    public int[] findPeakGrid(int[][] mat) {
+        int n = mat.length;
+
+        for(int r = 0; r < n; r++) {
+            int c = getPeakElement(r, mat);
+            if(c >= 0) {
+                return new int[]{r, c}; 
+            }
+        }
+
+        return new int[]{-1, -1};
+    }
+
+        public int getCol(int r, int[][] mat) {
+            int maxCol=0;
+            for(int c=0; c<mat[r].length; c++) 
+                if(mat[r][maxCol] < mat[r][c]) {
+                    maxCol = c;
+                }
+                
+            return maxCol;
+        } 
+
+    // --------------------------------------------------------------------------------
+
+
+    public int[] findPeakGrid(int[][] mat) {
+        int top= 0, bottom = mat.length-1;
+
+        while(top<=bottom) {
+            int mid = (top + bottom) / 2;
+            int c = getCol(mid, mat);
+
+            boolean isUpperBigger = (mid>0 && mat[mid-1][c] > mat[mid][c]);
+            boolean isLowerBigger = (mid<mat.length-1 && mat[mid+1][c] > mat[mid][c]);
+
+            if(!isUpperBigger && !isLowerBigger) {
+                return new int[]{mid, c};
+            }
+
+            if(isUpperBigger) {
+                bottom = mid-1;
+            } else{ 
+                top = mid+1;
+            }
+        }   
+
+        return new int[]{-1, -1};
+    }
+
+
 
 	public static void main(String[] args) {
 		int[][] arr = {

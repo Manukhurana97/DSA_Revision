@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/description/
+
 public class CapacityToShipPackageWithinDdays{
 
 	public static int getMinCapacity(int[] arr, int d){

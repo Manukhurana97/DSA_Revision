@@ -1,5 +1,7 @@
+// https://leetcode.com/problems/magnetic-force-between-two-balls
+
 public class MagneticForceBetweenTwoBalls{
-public int maxDistance(int[] positions, int m) {
+    public int maxDistance(int[] positions, int m) {
         int n = positions.length;
         int maxDistance = 0;
 
