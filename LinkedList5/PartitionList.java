@@ -45,4 +45,30 @@ public class PartitionList{
 
         return head;
     }
+
+
+// -------------------------------------------------------------------------
+
+
+    public ListNode partition(ListNode head, int x) {
+        ListNode lessthenDummy = new ListNode();
+        ListNode greaterthenDummy = new ListNode();
+        ListNode prev1 = lessthenDummy, prev2 = greaterthenDummy;
+
+        while(head != null) {
+            if(head.val < x) {
+                prev1.next = head;
+                prev1 = prev1.next;
+            } else{
+                prev2.next = head;
+                prev2 = prev2.next;
+            }
+
+            head = head.next;
+        }
+
+        prev2.next = null;
+        prev1.next = greaterthenDummy.next;
+        return lessthenDummy.next;
+    }
 }
