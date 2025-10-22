@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/subsets/description/
+
 def AllPermutation(str):
 	
 	result = []
