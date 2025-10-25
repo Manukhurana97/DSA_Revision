@@ -1,3 +1,5 @@
+# http://leetcode.com/problems/implement-stack-using-queues/description/
+
 import queue
 class MyStack:
 
