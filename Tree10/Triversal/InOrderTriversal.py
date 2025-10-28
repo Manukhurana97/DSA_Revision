@@ -52,9 +52,9 @@ tree.left.left = TreeNode(4)
 tree.left.right = TreeNode(5)
 tree.right.left = TreeNode(6)
 tree.right.right = TreeNode(7)
-tree.left.left.right = TreeNode(8)
-tree.left.left.right.left = TreeNode(9)
-tree.left.left.right.right = TreeNode(10)
+# tree.left.left.right = TreeNode(8)
+# tree.left.left.right.left = TreeNode(9)
+# tree.left.left.right.right = TreeNode(10)
 
 
 obj = InOrderTriversal()

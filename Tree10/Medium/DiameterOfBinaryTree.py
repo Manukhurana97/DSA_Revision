@@ -1,4 +1,4 @@
-# https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
+# https://leetcode.com/problems/diameter-of-binary-tree/description/
 
 class DiameterOfBinaryTree:
 	def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
