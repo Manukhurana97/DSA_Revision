@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+
 class ConstructBinaryTreeFromPreorderAndInorderTraversal:
 
 	def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
@@ -51,7 +53,7 @@ class ConstructBinaryTreeFromPreorderAndInorderTraversal:
         inRootIndex = inorder_index_map[rootvalue]
         leftSize = inRootIndex - inStartInd # size of left array
 
-        root.left = self.constructTree(preorder, inorder, preStartInd + 1, preStartInd + leftSize, inStartInd, inRootIndex-1, inorder_index_map)
+        root.left = self.constructTree(preorder, inorder, preStartInd + 1, preStartInd + leftSize, inStartInd,  -1, inorder_index_map)
         root.right = self.constructTree(preorder, inorder, preStartInd + leftSize+1, preEndInd, inRootIndex+1, inEndInd, inorder_index_map)
 
         return root

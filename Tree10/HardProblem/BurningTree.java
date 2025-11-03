@@ -1,3 +1,5 @@
+// Similar to : https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/description/
+
 import java.util.*;
 
 class Node {

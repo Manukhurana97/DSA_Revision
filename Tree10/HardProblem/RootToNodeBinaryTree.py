@@ -1,3 +1,4 @@
+# similar to : https://leetcode.com/problems/binary-tree-paths/description/
 
 class TreeNode:
 	def __init__(self, val = 0, left = None, right = None):
