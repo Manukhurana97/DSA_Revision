@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/last-stone-weight/description/ 
+
 public class LastStoneWeight{
 	public int lastStoneWeight(int[] stones) {
         PriorityQueue<Integer> queue = new PriorityQueue<>(Comparator.reverseOrder());

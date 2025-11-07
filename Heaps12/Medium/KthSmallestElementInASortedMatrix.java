@@ -25,4 +25,66 @@ public class KthSmallestElementInASortedMatrix{
 
         return -1;
     }
+
+
+    // -------------------------------------------------------------------------------------------------------
+
+
+
+    public int kthSmallest(int[][] matrix, int k) {
+        int n = matrix.length;
+        int left = matrix[0][0], right = matrix[n-1][n-1];
+
+        while(left<right) {
+            int mid = left + (right - left) / 2;
+            int count = getElementLessThenEquals2(matrix, mid);
+
+            if(count < k) {
+                left = mid+1;
+            } else {
+                right = mid;
+            }
+        }
+
+        return left;
+    }
+
+
+    public int getElementLessThenEquals1(int[][] matrix, int val) {
+        int n = matrix.length, count = 0;
+
+        for(int r=0; r<n; r++) {
+            int left = 0, right = n-1;
+            
+            while(left<=right) {
+                int mid = (left + right) / 2;
+
+                if(matrix[r][mid] <= val) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+
+            count += left;
+        }
+
+        return count;
+    }
+
+
+    public int getElementLessThenEquals2(int[][] matrix, int val) {
+        int n = matrix.length;
+        int r = 0, c = n-1, count = 0;
+
+        while(r<n && c>=0) {
+            if(matrix[r][c] <= val) {
+                count += c+1;
+                r++;
+            } else {
+                c--;
+            }
+        }
+        return count;
+    }
 }
