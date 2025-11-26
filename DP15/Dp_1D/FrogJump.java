@@ -8,7 +8,7 @@ public class FrogJump{
 		// return dfs(n-1, heights);
 		
 		int[] visited = new int[n+1];
-		Arrays.fill(visited, -1);
+		Arrays.fill(visited, -1); 
 		// return memoization(n-1, heights, visited);
 
 		// return tabulation(n-1, heights, visited);

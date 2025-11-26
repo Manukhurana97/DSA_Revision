@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/fibonacci-number/
+
 import java.util.*;
 
 public class Fibonarcci{
@@ -31,28 +33,24 @@ public class Fibonarcci{
 		if (n == 0) dp[0] = 0;
         if (n == 1) dp[1] = 1;
 
-        for(int i=2; i<=n; i++){
+        for(int i=2; i<n; i++){
         	dp[i] = dp[i - 1] + dp[i - 2];
         }
 
-        return dp[n];
+        return dp[n-1];
 	}
 
-	private int spaceOptimization(int n){
-		if(n == 0) return 0;
-		if(n == 1) return 1;
+	private int spaceOptimization(int n) {
+        int prev2 = 1, prev1 = 1, current = 0;
 
-		int prev = 0;
-		int current = 1;
+        for(int i=2; i<n; i++) {
+            current = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = current;
+        }
 
-		for(int i=2; i<=n;i++){
-			int temp = current;
-			current += prev;
-			prev = temp;
-		}
-
-		return current;
-	}
+        return prev1;
+    }
 
 
 

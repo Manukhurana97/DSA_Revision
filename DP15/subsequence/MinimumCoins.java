@@ -2,94 +2,76 @@
 
 public class MinimumCoins{
 
-	public int getMinCoins(int target, int[] coins){
+	public int coinChange(int[] coins, int amount) {
+        // int n = coins.length;
+        // long[][] dp = new long[n][amount + 1];
 
-		int n = coins.length;
-		// return recursion(n-1, target, coins);
+        // var result = recursion(n-1, amount, coins, dp);
 
-		int[][] dp = new int[n][target+1];
-		// return memoization(n-1, target, coins, dp);
-		
-		// return tabulation(target, coins, dp);
+        // var result = tabulation(amount, coins);
 
-		return spaceOptimization(target, coins);
-	}
+        var result = spaceOptimization(amount, coins);
+    
+        return (int)(result >= Integer.MAX_VALUE ? -1 : result);
+    }
 
-	public int recursion(int n, int target, int[] coins){
-		if(n == 0){
-			if(target % coins[n] == 0) return target/coins[n];
-			return Integer.MAX_VALUE;
-		}
+    private long recursion(int i, int amount, int[] coins, long[][] dp) {
+        if(i == 0) {
+            return amount % coins[i] == 0 ? amount / coins[i] : Integer.MAX_VALUE;
+        }
 
+        if(dp[i][amount] != 0) return dp[i][amount];
 
-		int notTake = recursion(n-1, target, coins);
-		int take = target >= coins[n] ? 1 + recursion(n, target-coins[n], coins) : Integer.MAX_VALUE;
+        long notTake = recursion(i-1, amount, coins, dp);
+        long take = amount >= coins[i] ? 1 + recursion(i, amount - coins[i], coins, dp) : Integer.MAX_VALUE;
 
+        return dp[i][amount] = Math.min(take, notTake);
+    }
 
-		return Math.min(take, notTake);
-	}
+    private long tabulation(int amount, int[] coins) {
+        int n = coins.length;
+        long[][] dp = new long[n][amount+1];
 
+        for(int a=0; a<=amount; a++) {
+            dp[0][a] = (a % coins[0] == 0) ? a / coins[0] : Integer.MAX_VALUE;
+        }
 
-	public int memoization(int n, int target, int[] coins, int[][] dp){
-		if(n == 0){
-			if(target % coins[n] == 0) return target/coins[n];
-			return Integer.MAX_VALUE;
-		}
+        for(int i=1; i<n; i++) {
+            for(int a = 0; a<=amount; a++) {
+                long notTake = dp[i-1][a];
+                long take = (a >= coins[i]) ? 1 + dp[i][a - coins[i]] : Integer.MAX_VALUE;
 
-		if(dp[n][target] != 0) return dp[n][target];
+                dp[i][a] = Math.min(take, notTake);
+            }
+        }
 
-		int notTake = memoization(n-1, target, coins, dp);
-		int take = target >= coins[n] ? 1 + memoization(n, target-coins[n], coins, dp) : Integer.MAX_VALUE;
-
-
-		return dp[n][target] = Math.min(take, notTake);
-	}
-
-
-	public int tabulation(int target, int[] coins, int[][] dp){
-		int n = coins.length;
-
-		for(int t=0; t<=target; t++){
-			if(t % coins[0] == 0) dp[0][t] = t/coins[0];
-			else dp[0][t] = Integer.MAX_VALUE;
-		}
-
-		for(int index=1; index<n; index++){
-			for(int t=0; t<=target; t++){
-				int notTake =dp[index-1][t];
-				int take = t >= coins[index] ? 1 + dp[index][t-coins[index]] : Integer.MAX_VALUE;
-
-				dp[index][t] = Math.min(take, notTake);
-			}
-		}
-
-		return dp[n-1][target] == Integer.MAX_VALUE ? -1: dp[n-1][target];
-	}
+        return dp[n-1][amount];
+    }
 
 
-	public int spaceOptimization(int target, int[] coins){
-		int n = coins.length;
+    private long spaceOptimization(int amount, int[] coins) {
+        int n = coins.length;
+        long[] prev = new long[amount+1];
 
-		int[] prev = new int[target+1];
-		int[] curr = new int[target+1];
+        for(int a=0; a<=amount; a++) {
+            prev[a] = (a % coins[0] == 0) ? a / coins[0] : Integer.MAX_VALUE;
+        }
 
-		
-		for(int t=0; t<=target; t++){
-			if(t % coins[0] == 0) prev[t] = t/coins[0];
-			else prev[t] = Integer.MAX_VALUE;
-		}
-		for(int index=1; index<n; index++){
-			for(int t=0; t<=target; t++){
-				int notTake =prev[t];
-				int take = t >= coins[index] ? 1 + curr[t-coins[index]] : Integer.MAX_VALUE;
+        for(int i=1; i<n; i++) {
+            long[] curr = new long[amount+1];
 
-				curr[t] = Math.min(take, notTake);
-			}
-			prev = curr;
-		}
+            for(int a = 0; a<=amount; a++) {
+                long notTake = prev[a];
+                long take = (a >= coins[i]) ? 1 + curr[a - coins[i]] : Integer.MAX_VALUE;
 
-		return prev[target] == Integer.MAX_VALUE ? -1: prev[target];
-	}
+                curr[a] = Math.min(take, notTake);
+            }
+
+            prev = curr;
+        }
+
+        return prev[amount];
+    }
 
 
 
@@ -97,6 +79,6 @@ public class MinimumCoins{
 		MinimumCoins obj = new MinimumCoins();
 		int[] arr = {1,2,5};
 
-		System.out.println(obj.getMinCoins(23, arr));
+		System.out.println(obj.coinChange(arr, 23));
 	}
 }

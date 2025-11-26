@@ -3,7 +3,7 @@ public class AllocatingMinNumberOfPages{
 	public static int countStudent(int[] arr, int pages){
 		int pagesStudent = 0;
 		int student  = 0;
-		for(var i: arr){
+	for(var i: arr){
 			if(i + pagesStudent <= pages){
 				pagesStudent += i;
 			}else{
