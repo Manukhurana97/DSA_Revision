@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class LongestIncreasingSubSequence{
+public class /{
 
 	public int longestIncSubSequence(int[] nums) {
         int n = nums.length;

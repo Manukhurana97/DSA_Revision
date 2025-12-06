@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/count-square-submatrices-with-all-ones/description/
+
 public class CountSquareSubmatricesWithAllOnces{
 
 	/**
@@ -31,6 +33,31 @@ public class CountSquareSubmatricesWithAllOnces{
 
 		return count;
 	}
+
+
+
+	// ---------------------------------------------------
+
+	public int countSquares(int[][] matrix) {
+        int rows = matrix.length, cols = matrix[0].length;
+        int count = 0;
+
+        for(int r=0; r<rows; r++) count += matrix[r][0];
+        for(int c=1; c<cols; c++) count += matrix[0][c];
+
+
+        for(int r=1; r<rows; r++) {
+            for(int c=1; c<cols; c++) {
+                if(matrix[r][c] == 1) {
+                    matrix[r][c] = 1 + Math.min(matrix[r-1][c-1], Math.min(matrix[r-1][c], matrix[r][c-1]));
+                    count += matrix[r][c];
+                }
+                
+            }
+        }
+
+        return count;
+    }
 
 	public static void main(String[] args) {
 		CountSquareSubmatricesWithAllOnces obj = new CountSquareSubmatricesWithAllOnces();

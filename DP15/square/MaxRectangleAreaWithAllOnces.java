@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/maximal-rectangle/
+
 import java.util.*;
 
 public class MaxRectangleAreaWithAllOnces{

@@ -29,7 +29,7 @@ public class StoneGame {
     }
 
 
-
+  
     private int tabulation( int[] piles){
         int n = piles.length;
         int[][] dp = new int[n][n];

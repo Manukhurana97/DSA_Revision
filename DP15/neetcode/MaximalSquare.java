@@ -108,6 +108,30 @@ public class MaximalSquare{
         return maxValue * maxValue;
     }
 
+
+    // ------------------------------------------------------------------------------
+    public int maximalSquare1(char[][] matrix) {
+        int maxSize = 0;
+
+        for(int r=1; r<matrix.length; r++) {
+            for(int c=1; c<matrix[0].length; c++) {
+                if(matrix[r][c]-'0' >= 1) {
+                    int max = 1 + Math.min(matrix[r-1][c]-'0', Math.min(matrix[r-1][c-1]-'0', matrix[r][c-1]-'0'));
+                    
+                    matrix[r][c] = (char)(max+'0');
+                    maxSize = Math.max(maxSize, max);
+                }
+            }
+        }
+
+        if(maxSize == 0){
+            for(int r=0; r<matrix.length; r++) if(matrix[r][0] == '1') return 1;
+            for(int c=0; c<matrix[0].length; c++) if(matrix[0][c] == '1') return 1;
+        }
+
+        return maxSize * maxSize;
+    }
+
     public static void main(String[] args) {
         char[][] arr = {{'1','1','1','1'}, {'1', '1','1','1'},{'1','1','1','1'}, {'1', '1','1','1'}};
 
