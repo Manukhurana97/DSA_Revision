@@ -23,9 +23,7 @@ public class PartitionASetIntoTwoSubsetsWithMinimumAbsoluteSumDifference{
 		// for all the values of s1
 		for(int i=0; i<=sum/2; i++){
 			if(dp[i]){
-				int s1 = i;
-				int s2 = sum-i;
-				minDiff = Math.min(minDiff, Math.abs(s2 - s1));
+				minDiff = Math.min(minDiff, Math.abs(i - (sum - i)));
 			}
 		}
 

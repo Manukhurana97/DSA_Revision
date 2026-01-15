@@ -53,7 +53,7 @@ public class TopViewOfBinaryTree{
 		ArrayList<Integer> result = new ArrayList<>();
 		for(var values: map.values())
 			result.add(values.get(0)); // for top view
-			// result.add(values.get(values.size() - 1)); // for top view
+			// result.add(values.get(values.size() - 1)); // for buttom view
 		return result;
 	}
 

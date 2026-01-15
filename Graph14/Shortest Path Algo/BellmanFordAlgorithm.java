@@ -18,7 +18,7 @@ public class BellmanFordAlgorithm{
         for(int i = 0; i<V-1; i++){
             for(int[] edge: edges){
                 int u = edge[0];
-                int v = edge[1];
+                int v = edge[1]; 
                 int w = edge[2];
                 if(distance[u] != (int)1e8 && distance[v] > w +  distance[u]){
                     distance[v] = w + distance[u];

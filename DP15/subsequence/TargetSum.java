@@ -1,5 +1,3 @@
-
-
 public class TargetSum{
 
 	// s1 - s2 = d :: s1 + s2 = totalSum

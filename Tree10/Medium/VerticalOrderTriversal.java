@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/vertical-order-traversal-of-a-binary-tree/description/
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -102,7 +104,7 @@ public class VerticalOrderTriversal {
 
         map.computeIfAbsent(order, k -> new TreeMap<>()).computeIfAbsent(level, k-> new PriorityQueue<>()).add(root.val);
 
-        dfs(root.left, order-1, level + 1, map);
+        dfs(root.left, order-1, level+1, map);
         dfs(root.right, order+1, level+1, map);
     }
 }
