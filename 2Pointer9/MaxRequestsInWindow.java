@@ -70,7 +70,7 @@ public class MaxRequestsInWindow {
 
 
 	public static void main(String[] args) {
-		Test test = new Test();
+		MaxRequestsInWindow test = new MaxRequestsInWindow();
 
 		int[] arr = {1,3,7,5};
 		System.out.println(test.maxRequestsInWindow(arr, 4));

@@ -1,26 +1,25 @@
 // https://leetcode.com/problems/remove-element/
 
 public class RemoveElement {
-	public int removeElement(int[] nums, int val) {
-        int n = nums.length, current = 0, valIndex = 0;
+    public int removeElement(int[] nums, int val) {
+        int i = 0,n = nums.length;
 
-        if(n==0) return 0;
-
-        // get the first element with nums[i] == val
-        while(current < n && nums[current] != val) current ++;
-        if(current == n) return n; // if there are no element equals to val
-
-        valIndex = current;
-        while(current < n) {
-            if(nums[current] != val){
-                nums[valIndex] = nums[current];
-                nums[current] = val;
-                valIndex+=1;
-            }
-
-            current += 1;
+        // get first elemenet with is equals to val
+        while(i<n) {
+            if(nums[i] == val) 
+                break;
+            i++;
         }
 
-        return valIndex;
+        int j = i+1;
+        while(j<n) {
+            if(nums[j] != val) {
+                nums[i] = nums[j]; // replace the value
+                i++;
+            }
+            j++;
+        }
+
+        return i;
     }
-}Fz
+}

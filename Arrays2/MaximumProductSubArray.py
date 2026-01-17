@@ -1,4 +1,4 @@
-from typing import List
+ from typing import List
 
 # Time: O(N^3), Space: O(1)
 def maxProductSubArray(arr):

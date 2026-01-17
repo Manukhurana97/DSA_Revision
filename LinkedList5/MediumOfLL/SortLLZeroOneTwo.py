@@ -76,7 +76,7 @@ class SortLLZeroOneTwo:
 		# return head
 
 		zero.next = dummyOne.next
-		dummyOne.next = dummyTwo.next
+		one.next = dummyTwo.next
 		return dummyZero.next
 
 
