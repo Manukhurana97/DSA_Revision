@@ -88,4 +88,4 @@ public class LongestStringChain{
 		String[] arr = {"a", "b", "c", "ab", "ac", "bc", "abc"};
 		System.out.println(obj.longestChain(arr));
 	}
-}4
+}

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class /{
+public class LongestIncreasingSubSequence{
 
 	public int longestIncSubSequence(int[] nums) {
         int n = nums.length;
@@ -13,7 +13,7 @@ public class /{
 
         // return tabulation(nums, memo);
 
-        return spaceOptimization(nums);
+        return spaceOptimization1(nums);
     }
 
     private int recursion(int i, int prev, int[] nums){
@@ -39,6 +39,8 @@ public class /{
 
     private int tabulation(int[] nums, int[][] dp){
         int n = nums.length;
+
+        List<Integer> lis = new ArrayList<>();
         
         for(int i=n-1; i>=0; i--){
             for(int prev = i; prev>=-1; prev--){
@@ -48,6 +50,7 @@ public class /{
                 dp[i][prev+1] = Math.max(take , notTake);
             }
         }
+
 
         return dp[0][0];
     }
@@ -73,21 +76,45 @@ public class /{
     }
 
 
-    private int spaceOptimization1(int[] nums){
+    private int spaceOptimization1(int[] nums) {
         int n = nums.length;
+        if (n == 0) return 0; 
 
-        int[] ahread = new int[n+1];
+        int[] ahead = new int[n];
+        int[] parent = new int[n];
+
+        Arrays.fill(ahead, 1);
+        Arrays.fill(parent, -1);
+
+        int maxLen = 1;
+        int lastIndex = 0;
         
-        for(int i=n-1; i>=0; i--){
-            for(int prev = i; prev>=-1; prev--){
-                int notTake = ahread[prev+1];
-                int take = (prev == -1 || nums[prev] < nums[i]) ? 1 + ahread[i+1] : 0;
+        for (int i = 0; i < n; i++) {
+            for (int prev = 0; prev < i; prev++) {
+                if (nums[prev] < nums[i] && ahead[prev] + 1 > ahead[i]) {
+                    ahead[i] = 1 + ahead[prev];
+                    parent[i] = prev;
+                }
+            }
 
-                ahread[prev+1] = Math.max(take , notTake);
+            if (ahead[i] > maxLen) {
+                maxLen = ahead[i];
+                lastIndex = i;
             }
         }
 
-        return ahread[0];
+        // Reconstruction
+        List<Integer> result = new ArrayList<>();
+        int temp = lastIndex; 
+        while (temp != -1) {
+            result.add(nums[temp]);
+            temp = parent[temp];
+        }
+
+        Collections.reverse(result);
+        System.out.println("Longest Increasing Subsequence: " + result);
+
+        return maxLen;
     }
 
 
