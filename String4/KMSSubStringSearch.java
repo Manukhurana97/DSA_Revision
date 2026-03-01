@@ -31,7 +31,7 @@ public class KMSSubStringSearch{
 			}
 			
 			if (a.charAt(i) == b.charAt(j)){ 
-				j+=1;
+				j+=1;if(haystack.charAt(i) == haystack.charAt(j)) {
 			}
 			
 			i+=1;
