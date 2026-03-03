@@ -31,3 +31,30 @@ def CombinationSum(arr, k):
 
 arr = [2,3,6,7]
 CombinationSum(arr, 7)
+
+
+
+
+# public List<List<Integer>> combinationSum(int[] candidates, int target) {
+#         List<List<Integer>> result = new ArrayList<>();
+#         recursion(0, candidates, target, new ArrayList<>(), result);
+#         return result;
+#     }
+
+#     private void recursion(int i, int[] arr, int target, List<Integer> list, List<List<Integer>> result) {
+#         if(target == 0) {
+#             result.add(new ArrayList(list));
+#             return;
+#         }
+#         if(i == arr.length || target < 0) {
+#             return;
+#         }
+
+#         if(target >= arr[i]) {
+#             list.add(arr[i]);
+#             recursion(i, arr, target - arr[i], list, result);
+#             list.remove(list.size() - 1);
+#         }
+#         recursion(i+1, arr, target, list, result);
+#     }
+# }
