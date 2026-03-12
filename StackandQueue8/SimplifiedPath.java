@@ -2,26 +2,26 @@
 
 public class SimplifiedPath{
 	public String simplifyPath(String path) {
-        
-        String[] arr = path.split("/");
-        Stack<String> stack = new Stack<>();
+        String[] str = path.split("/");
+        Deque<String> queue = new ArrayDeque<>();
 
-        for(var str: arr){
-            if(str.equals(".") || str.isEmpty()) continue;
-            else if(str.equals("..")){
-                if(!stack.isEmpty()){
-                    stack.pop();
+        for(String s: str) {
+            if(s.equals("") || s.equals(".")) continue;
+            if(s.equals("..")) {
+                if(!queue.isEmpty()) {
+                    queue.pollLast();
                 }
-            }else stack.push(str);
+                continue;
+            }
+
+            queue.addLast(s);
         }
 
-        if(stack.isEmpty()) return "/";
-
-        StringBuilder result = new StringBuilder();
-        for(int i=0;i<stack.size();i++){
-            result.append("/").append(stack.get(i));
+        StringBuilder builder = new StringBuilder();
+        while(!queue.isEmpty()) {
+            builder.append("/").append(queue.pollFirst());
         }
 
-        return result;
+        return builder.isEmpty() ? "/" : builder.toString();
     }
 }
