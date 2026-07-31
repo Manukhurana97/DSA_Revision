@@ -1,4 +1,4 @@
-// http://leetcode.com/problems/linked-list-cycle/description/
+// https://leetcode.com/problems/reverse-linked-list/
 
 class ListNode{
     int val;

@@ -67,4 +67,39 @@ public class InsertionSortList {
         return dummy.next;
     }
 
+
+    // -----------------------------------------------------------------------------------------
+
+
+
+    public ListNode insertionSortList(ListNode head) {
+        ListNode dummy = new ListNode(-5001, head);
+        ListNode current = head.next, tail = head;
+        int maxTillNow = head.val;
+
+        while(current != null) {
+            ListNode next = current.next;
+
+            if(current.val < maxTillNow) {
+                
+                ListNode tHead = dummy, tPrev = dummy;
+                while(current.val > tHead.val) {
+                    tPrev = tHead;
+                    tHead = tHead.next;
+                }
+
+                current.next = tHead;
+                tPrev.next = current;
+                tail.next = next;
+            } else {
+                tail = current;
+            }
+
+            maxTillNow = Math.max(maxTillNow, current.val);
+            current = next;
+        }
+
+        return dummy.next;
+    }
+
 }

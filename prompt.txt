@@ -1,0 +1,182 @@
+You are my personal CFA, CAIA and institutional mutual fund research analyst.
+
+IMPORTANT RULES
+
+- Spend NO MORE than $125 worth of compute on this stage.
+- Think deeply before answering.
+- Optimize for correctness rather than speed.
+- If more research would exceed the budget, stop and summarize remaining work.
+
+My Profile
+
+Country: India
+Monthly SIP: ₹30,000
+Investment Horizon: 20+ years
+Risk Appetite: Aggressive
+Goal: Maximum long-term wealth creation.
+
+Research the COMPLETE Indian mutual fund universe.
+
+Analyze every relevant fund across
+
+• Large Cap
+• Flexi Cap
+• Multi Cap
+• Mid Cap
+• Small Cap
+• Value
+• Contra
+• Nifty 50 Index
+• Nifty Next 50
+
+Ignore marketing and popularity.
+
+Rank every fund using
+
+• Rolling Returns
+• Sharpe Ratio
+• Sortino Ratio
+• Maximum Drawdown
+• Downside Capture
+• Expense Ratio
+• Portfolio Quality
+• Fund Manager Quality
+• Manager Stability
+• Portfolio Concentration
+• AUM
+• Consistency
+• Risk-adjusted Return
+
+Create a Top-10 shortlist in every category.
+
+DO NOT recommend a portfolio yet.
+
+Only produce the research.
+
+
+
+
+
+
+Continue from the previous research.
+
+Spend NO MORE than another $125.
+
+Now perform institutional-level due diligence on every shortlisted fund.
+
+Investigate
+
+• Portfolio overlap
+• Style drift
+• Sector concentration
+• Valuation discipline
+• Cash allocation
+• Manager changes
+• AMC quality
+• Risk management philosophy
+• Historical behavior during crashes
+• Recovery speed
+• Turnover ratio
+• Portfolio churn
+• Alpha consistency
+
+Eliminate weak candidates.
+
+Keep only the strongest funds.
+
+For every rejected fund explain exactly why it was rejected.
+
+
+
+
+
+
+Continue from previous work.
+
+Spend NO MORE than another $125.
+
+Construct the optimal portfolio.
+
+Create
+
+1. Best 3-fund portfolio
+2. Best 4-fund portfolio
+3. Maximum growth portfolio
+4. Growth with lower volatility portfolio
+
+For each portfolio calculate
+
+• Expected long-term return
+• Expected volatility
+• Maximum historical drawdown
+• Diversification score
+• Portfolio overlap
+• Rebalancing frequency
+
+Then compare every portfolio.
+
+Select ONE winner.
+
+Challenge your own recommendation.
+
+Attempt to prove yourself wrong.
+
+If you still believe the portfolio is optimal explain why.
+
+
+
+
+
+Continue from previous work.
+
+Spend NO MORE than another $125.
+
+Perform one final independent audit.
+
+Assume you are a different investment committee.
+
+Your job is to reject the previous recommendation if there is any weakness.
+
+Look for
+
+• Better alternatives
+• Missing categories
+• Better diversification
+• Lower-cost alternatives
+• Hidden risks
+• Concentration risks
+• Fund manager risks
+• Future survivability
+• Historical weaknesses
+
+If no better portfolio exists say so clearly.
+
+Finally produce one professional investment report containing
+
+• Executive Summary
+
+• Final Recommended Portfolio
+
+• Why every fund was selected
+
+• Why every rejected fund was rejected
+
+• Risk Analysis
+
+• Worst-case Scenario
+
+• Quarterly Review Checklist
+
+• Annual Review Checklist
+
+• Rules for replacing a fund
+
+• Rules for increasing SIP
+
+• Rules for ignoring market noise
+
+End with
+
+"Would I invest my own family's money into this portfolio?"
+
+Answer Yes or No with detailed reasoning.

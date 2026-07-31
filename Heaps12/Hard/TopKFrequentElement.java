@@ -12,34 +12,23 @@ class Node{
 
 public class TopKFrequentElement{
 	public int[] topKFrequent(int[] nums, int k) {
-                PriorityQueue<Node> queue = new PriorityQueue<>(((a, b) ->  a.freq - b.freq));
-
-        Map<Integer, Node> map = new HashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        for(int i: nums)
+            map.put(i, map.getOrDefault(i, 0) + 1);
         
-        for(int i: nums){
-            Node current = new Node(1, i); 
+        PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
 
-            if(map.containsKey(i)){
-                current = map.get(i);
-                queue.remove(current);
-                current.freq +=1;
-            }
-            
-            map.put(i, current);
-            queue.add(current);
+        for(int i: map.keySet()) {
+            queue.add(i);
 
-            if(queue.size() > k){
+            if(queue.size() > k) 
                 queue.poll();
-            }
         }
-            
-        int index = queue.size();
-        int[] result = new int[queue.size()];
-        while(!queue.isEmpty()){
-            result[--index] = queue.poll().data;
-        }
-        
 
+        int[] result = new int[k];
+        while(!queue.isEmpty())
+            result[queue.size()-1] = queue.poll();
+    
         return result;
     }
 }

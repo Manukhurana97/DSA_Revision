@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/rotate-list/description/
+
     # Time: O(n+n), Space: O(1)
     def rotateRight(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
         if not head or not head.next or k == 0: return head
