@@ -2,44 +2,40 @@
 
 public class ScrambleString {
 	
-	public boolean isScramble(String s1, String s2) {
+	public boolean isScramble(String a, String b) {
         Map<String, Boolean> map = new HashMap<>();
 
-        return recursion(s1.length(), s1, s2, map);
+        return recursion(a, b, map);
     }
 
-    private boolean recursion(int n, String a, String b, Map<String, Boolean> map) {
+    public boolean recursion(String a, String b, Map<String, Boolean> map) {
         if(a.equals(b)) return true;
         if(a.length() != b.length()) return false;
+        
+        char[] arr = a.toCharArray();
+        char[] brr = b.toCharArray();
 
-        n = a.length();
-        String key = a+" "+b;
+        Arrays.sort(arr);
+        Arrays.sort(brr);
+
+        if(!Arrays.equals(arr, brr)) return false;
+
+        int n = a.length();
+        String key = a +" "+b;
+
         if(map.containsKey(key)) return map.get(key);
 
-        var ta = a.toCharArray();
-        var tb = b.toCharArray();
-        Arrays.sort(ta);
-        Arrays.sort(tb);
-
-        if(!Arrays.equals(ta, tb)) return false;
-
         for(int i=1; i<n; i++) {
-            if(recursion(n, a.substring(0, i), b.substring(0, i), map) && recursion(n, a.substring(i), b.substring(i), map)) {
+            if(recursion(a.substring(0, i), b.substring(0, i), map) && recursion( a.substring(i), b.substring(i), map)) { // no swap
                 map.put(key, true);
                 return true;
             }
-
-            if(recursion(n, a.substring(0, i), b.substring(n-i), map) && recursion(n, a.substring(i), b.substring(0, n-i), map)) {
+            if(recursion(a.substring(0, i), b.substring(n-i), map) && recursion(a.substring(i), b.substring(0, n-i), map)) { // swap
                 map.put(key, true);
-                return true;
+                return  true;
             }
         }
-
         map.put(key, false);
         return false;
     }
-
-	public static void main(String[] args) {
-		
-	}
 }

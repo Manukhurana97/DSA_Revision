@@ -1,5 +1,6 @@
 public class SplitArrayintoFibonacciSequence {
-	List<Integer> result = new ArrayList<>();
+	public List<Integer> splitIntoFibonacci(String num) {
+        List<Integer> result = new ArrayList<>();
         if(num.length() < 3) return result;
 
         recursion(0, num, new ArrayList<Integer>(), result);
@@ -28,4 +29,5 @@ public class SplitArrayintoFibonacciSequence {
 
         return false;
     }
+
 }

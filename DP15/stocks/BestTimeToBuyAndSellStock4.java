@@ -1,115 +1,57 @@
- // https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
-// continuation of BestTimeToBuyAndSellStock3,  at max 2 transactions ( times buy and sell)
+// https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv
 
-/* using transaction as index key*/
-public class BestTimeToBuyAndSellStock4{
+public class BestTimeToBuyAndSellStock4 {
+	public int maxProfit(int k, int[] prices) {
+        // Integer[][][] dp = new Integer[prices.length][2][k+1];
+        // return recursion(0, true, prices, k, dp);
 
-	private int maxProfit(int[] arr, int k){
-		if(k==0) return 0;
+        // return tabulation(prices, k);
 
-		// return recursion(0, arr, 0, k);
+        return spaceOptimization(prices, k);
+    }
 
-		int[][] dp = new int[arr.length+1][2*k+1];
-		// return memoization(0, arr, 0, k, dp);
+    public int recursion(int i, boolean canBuy, int[] prices, int k, Integer[][][] dp) {
+        if(i == prices.length) return 0;
+        if(k <= 0) return 0;
 
-		// return tabulation(arr, k, dp);
+        if(dp[i][canBuy?1:0][k] != null) return dp[i][canBuy?1:0][k];
 
-		return spaceOptimization(arr, k);
-	}
+        if(canBuy) {
+            return dp[i][canBuy?1:0][k] = Math.max(-prices[i] + recursion(i+1, false, prices, k, dp), recursion(i+1, true, prices, k, dp));
+        } else {
+            return dp[i][canBuy?1:0][k] = Math.max(prices[i] + recursion(i+1, true, prices, k-1, dp), recursion(i+1, false, prices, k, dp));
+        }
+    }
 
+    public int tabulation(int[] prices, int t) {
+        int n = prices.length;
+        int[][][] dp = new int[n+1][2][t+1];
 
-	/**
-	 * 1. represent everything in terms of index
-	 * 2. explore all possibilities
-	 * 3, return max profit
-	 * 4. base case
-	 * */
-	private int recursion(int index, int[] arr, int transactionLeft, int k){
-		if(index == arr.length || transactionLeft == 2*k) return 0;
+        for(int i=n-1; i>=0; i--) {
+            for(int k=1; k<=t; k++){
+                dp[i][1][k] = Math.max(-prices[i] + dp[i+1][0][k], dp[i+1][1][k]);
+                dp[i][0][k] = Math.max(prices[i] + dp[i+1][1][k-1], dp[i+1][0][k]);
+            }
+        }
 
-		int profit = 0;
-		if(transactionLeft %2==0){
-			profit = Math.max(-arr[index] + recursion(index+1, arr, transactionLeft+1, k), recursion(index+1, arr, transactionLeft, k));
-		}else{
-			profit = Math.max(arr[index] + recursion(index+1,  arr, transactionLeft+1, k), recursion(index+1, arr, transactionLeft, k));
-		}
+        return dp[0][1][t];
+    }
 
-		return profit;
-	}
-
-
-	private int memoization(int index, int[] arr, int transactionLeft, int k, int[][] dp){
-		if(index == arr.length || transactionLeft == 2*k) return 0;
-
-		if(dp[index][transactionLeft] != 0) return dp[index][transactionLeft];
-
-		int profit = 0;
-		if(transactionLeft %2==0){
-			profit = Math.max(-arr[index] + memoization(index+1, arr, transactionLeft+1, k, dp), memoization(index+1, arr, transactionLeft, k, dp));
-		}else{
-			profit = Math.max(arr[index] + memoization(index+1,  arr, transactionLeft+1, k, dp), memoization(index+1, arr, transactionLeft, k, dp));
-		}
-
-		return dp[index][transactionLeft]= profit;
-	}
+    public int spaceOptimization(int[] prices, int t) {
+        int n = prices.length;
+        int[][] prev = new int[2][t+1];
+        int[][] curr = new int[2][t+1];
 
 
-	/**
-	 * 1. base case
-	 * 2. changing parameter to loop
-	 * 3. copy recurrence
-	 * 
-	 * */
-	private int tabulation(int[] arr, int k, int[][] dp){
-		int n = arr.length;
+        for(int i=n-1; i>=0; i--) {            
+            for(int k=1; k<=t; k++){
+                curr[1][k] = Math.max(-prices[i] + prev[0][k], prev[1][k]);
+                curr[0][k] = Math.max(prices[i] + prev[1][k-1], prev[0][k]);
 
-		for(int index=n-1; index>=0; index--){
-			for(int transactionLeft=2*k-1; transactionLeft>=0; transactionLeft--){
-				int profit = 0;
-				if(transactionLeft %2==0){
-					profit = Math.max(-arr[index] + dp[index+1][transactionLeft+1], dp[index+1][transactionLeft]);
-				}else{
-					profit = Math.max(arr[index] + dp[index+1][transactionLeft+1], dp[index+1][transactionLeft]);
-				}
+                prev = curr;
+            }
+        }
 
-				dp[index][transactionLeft] = profit;
-			}
-			
-		}
-		
-		return dp[0][0];
-	}
-
-
-	private int spaceOptimization(int[] arr, int k){
-		int n = arr.length;
-
-		int[] curr = new int[2*k+1];
-		int[] next = new int[2*k+1];
-
-		for(int index=n-1; index>=0; index--){
-			for(int transactionLeft=2*k-1; transactionLeft>=0; transactionLeft--){
-				int profit = 0;
-				if(transactionLeft %2==0){
-					profit = Math.max(-arr[index] + next[transactionLeft+1], next[transactionLeft]);
-				}else{
-					profit = Math.max(arr[index] + next[transactionLeft+1], next[transactionLeft]);
-				}
-
-				curr[transactionLeft] = profit;
-			}
-			next = curr;
-			
-		}
-		
-		return next[0];
-	}
-	
-
- 
-	public static void main(String[] args) {
-		BestTimeToBuyAndSellStock4 obj =new BestTimeToBuyAndSellStock4();
-		int[] arr = {7,1,5,3,60,4,10,10,30};
-		System.out.println(obj.maxProfit(arr, 2));
-	}
+        return prev[1][t];
+    }
 }
