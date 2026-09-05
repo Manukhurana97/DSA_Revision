@@ -1,0 +1,59 @@
+// https://leetcode.com/problems/minimum-falling-path-sum-ii
+
+public class MinimumFallingPathSum {
+	
+    public int minFallingPathSum(int[][] grid) {
+        Integer[][] dp = new Integer[grid.length][grid.length+1];
+
+        // return recursion(grid.length-1, -1, grid, dp);
+
+        return tabulation(grid);
+    }
+
+    public int recursion(int r, int prev, int[][] grid, Integer[][] dp) {
+        if(r<0) return 0;
+        if(dp[r][prev+1] != null) return dp[r][prev+1];
+
+        int minPathSum = Integer.MAX_VALUE;
+        for(int c=0; c<grid.length; c++) {
+            if(prev != c) {
+                int minValue = grid[r][c] + recursion(r-1, c, grid, dp);
+                minPathSum = Math.min(minPathSum, minValue);
+            } 
+        }
+
+        return dp[r][prev+1] = minPathSum;
+    }
+
+    public int tabulation(int[][] grid) {
+        int[][] dp = new int[grid.length][grid.length+1];
+
+        for(int prev=-1; prev<grid.length; prev++){
+            int minPathSum = Integer.MAX_VALUE;
+            for(int c=0; c<grid.length; c++) {
+                if(prev != c) {
+                    minPathSum = Math.min(minPathSum, grid[0][c]);
+                } 
+            }
+
+            dp[0][prev+1] = minPathSum;
+        }
+
+        for(int r=1; r<grid.length; r++) {
+            for(int prev=-1; prev<grid.length; prev++){
+                int minPathSum = Integer.MAX_VALUE;
+                for(int c=0; c<grid.length; c++) {
+                    if(prev != c) {
+                        int minValue = grid[r][c] + dp[r-1][c+1];
+                        minPathSum = Math.min(minPathSum, minValue);
+                    } 
+                }
+
+                dp[r][prev+1] = minPathSum;
+            }
+        }
+
+
+        return dp[grid.length-1][0];
+    }
+}
