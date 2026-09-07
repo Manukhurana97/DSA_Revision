@@ -11,6 +11,23 @@ public class PalindromePartitioning3 {
     // find the valid case first 
     // minimize the string split (while back tracking)
 
+    /**
+     *          Choose [i...index]
+                        |
+                        ↓
+              Solve remaining part
+                        |
+              ┌─────────┴─────────┐
+              ↓                   ↓
+           INVALID              VALID
+              |                   |
+           ignore            calculate cost
+                                  |
+                                  ↓
+                           current + remaining
+     * 
+     * */ 
+
     public int recursion(int i, int sp, String s, int k, Integer[][] dp) {
         if(sp > k) return Integer.MAX_VALUE;
         if(i == s.length()) {
